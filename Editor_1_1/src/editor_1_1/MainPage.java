@@ -8,6 +8,7 @@ package editor_1_1;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ButtonGroup;
 import org.jdesktop.swingx.border.DropShadowBorder;
@@ -60,7 +61,7 @@ public class MainPage extends javax.swing.JFrame {
         previewLayPane = new javax.swing.JLayeredPane();
         mobileFrame = new javax.swing.JLabel();
         mobileBack = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        pnlMenu = new javax.swing.JPanel();
         headerLayPane = new javax.swing.JLayeredPane();
         langP = new javax.swing.JPanel();
         langL = new javax.swing.JLabel();
@@ -70,10 +71,10 @@ public class MainPage extends javax.swing.JFrame {
         collogL = new javax.swing.JLabel();
         lang = new javax.swing.JPanel();
         lblLang1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        pnlScrPnEX = new javax.swing.JPanel();
+        scrollPaneLang = new javax.swing.JScrollPane();
+        pnlScrPnIN = new javax.swing.JPanel();
+        pnlBtnAdd = new javax.swing.JPanel();
         fiel = new javax.swing.JPanel();
         collog = new javax.swing.JPanel();
 
@@ -126,10 +127,10 @@ public class MainPage extends javax.swing.JFrame {
 
         getContentPane().add(jLayeredPane1);
 
-        jPanel1.setMaximumSize(new java.awt.Dimension(402, 542));
-        jPanel1.setMinimumSize(new java.awt.Dimension(402, 542));
-        jPanel1.setPreferredSize(new java.awt.Dimension(402, 542));
-        jPanel1.setLayout(null);
+        pnlMenu.setMaximumSize(new java.awt.Dimension(402, 542));
+        pnlMenu.setMinimumSize(new java.awt.Dimension(402, 542));
+        pnlMenu.setPreferredSize(new java.awt.Dimension(402, 542));
+        pnlMenu.setLayout(null);
 
         headerLayPane.setBorder(shadow);
         headerLayPane.setForeground(textColor);
@@ -282,7 +283,7 @@ public class MainPage extends javax.swing.JFrame {
         collogP.setBounds(268, 0, 134, 46);
         collogP.getAccessibleContext().setAccessibleName("Colori e logo");
 
-        jPanel1.add(headerLayPane);
+        pnlMenu.add(headerLayPane);
         headerLayPane.setBounds(0, 0, 402, 56);
 
         lang.setMaximumSize(new java.awt.Dimension(402, 542));
@@ -293,40 +294,40 @@ public class MainPage extends javax.swing.JFrame {
         lblLang1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLang1.setText("Seleziona le lingue da visualizzare");
 
-        jPanel2.setPreferredSize(new java.awt.Dimension(402, 360));
-        jPanel2.setLayout(null);
+        pnlScrPnEX.setPreferredSize(new java.awt.Dimension(402, 360));
+        pnlScrPnEX.setLayout(null);
 
-        jScrollPane1.setMaximumSize(new java.awt.Dimension(350, 300));
-        jScrollPane1.setMinimumSize(new java.awt.Dimension(350, 300));
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(350, 300));
+        scrollPaneLang.setMaximumSize(new java.awt.Dimension(350, 300));
+        scrollPaneLang.setMinimumSize(new java.awt.Dimension(350, 300));
+        scrollPaneLang.setPreferredSize(new java.awt.Dimension(350, 300));
 
-        jPanel4.setLayout(new java.awt.GridLayout(5, 0));
-        jScrollPane1.setViewportView(jPanel4);
+        pnlScrPnIN.setLayout(new java.awt.GridLayout(2, 0));
+        scrollPaneLang.setViewportView(pnlScrPnIN);
 
-        jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(26, 30, 350, 300);
+        pnlScrPnEX.add(scrollPaneLang);
+        scrollPaneLang.setBounds(26, 30, 350, 300);
 
-        jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.PAGE_AXIS));
+        pnlBtnAdd.setLayout(new javax.swing.BoxLayout(pnlBtnAdd, javax.swing.BoxLayout.PAGE_AXIS));
 
         javax.swing.GroupLayout langLayout = new javax.swing.GroupLayout(lang);
         lang.setLayout(langLayout);
         langLayout.setHorizontalGroup(
             langLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblLang1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlScrPnEX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlBtnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         langLayout.setVerticalGroup(
             langLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(langLayout.createSequentialGroup()
                 .addComponent(lblLang1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlScrPnEX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnlBtnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(lang);
+        pnlMenu.add(lang);
         lang.setBounds(0, 56, 402, 542);
 
         fiel.setMaximumSize(new java.awt.Dimension(402, 542));
@@ -344,7 +345,7 @@ public class MainPage extends javax.swing.JFrame {
             .addGap(0, 542, Short.MAX_VALUE)
         );
 
-        jPanel1.add(fiel);
+        pnlMenu.add(fiel);
         fiel.setBounds(801, 56, 402, 542);
 
         collog.setMaximumSize(new java.awt.Dimension(402, 542));
@@ -361,10 +362,10 @@ public class MainPage extends javax.swing.JFrame {
             .addGap(0, 542, Short.MAX_VALUE)
         );
 
-        jPanel1.add(collog);
+        pnlMenu.add(collog);
         collog.setBounds(801, 56, 402, 542);
 
-        getContentPane().add(jPanel1);
+        getContentPane().add(pnlMenu);
 
         pack();
         setLocationRelativeTo(null);
@@ -448,6 +449,7 @@ public class MainPage extends javax.swing.JFrame {
     private void initPersonalComponent() {
         mainF = new Font("Sans Serif",Font.BOLD, 17);
         subTitleFont = new Font("Sans Serif",Font.PLAIN, 19);
+        checkBoxLang = new ArrayList<>();
         
         primaryColor = Color.decode("#607D8B"); //sclego il colore primario
         secondaryColor = Color.decode("#5E7A88");
@@ -464,8 +466,11 @@ public class MainPage extends javax.swing.JFrame {
         shadow.setCornerSize(25);
         
         checkLang = new ButtonGroup();
-        checkLang.add(new CheckBoxGenerator("itFlag.png", "Italiano"));
-        checkLang.add(new )
+        
+        checkBoxLang.add(new CheckBoxGenerator("itFlag.png", "Italiano"));
+        checkBoxLang.add(new CheckBoxGenerator("enFlag.png", "English"));
+        checkLang.add(checkBoxLang.get(0));
+        checkLang.add(checkBoxLang.get(1));
     }
     
     
@@ -473,10 +478,13 @@ public class MainPage extends javax.swing.JFrame {
         lang.setVisible(true);
         fiel.setVisible(false);
         collog.setVisible(false);
+        
+        pnlScrPnIN.add(checkBoxLang.get(0));
+        pnlScrPnIN.add(checkBoxLang.get(1));
     }
     
     private void selection(byte finalIndx) {
-        switch (indx) {
+        switch (finalIndx) {
             case 0: {
                 langP.setBackground(primaryColor);
                 langL.setForeground(textColor);
@@ -676,11 +684,6 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel fieldP;
     private javax.swing.JLayeredPane headerLayPane;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel lang;
     private javax.swing.JLabel langL;
     private javax.swing.JPanel langP;
@@ -688,6 +691,11 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel leftPane;
     private javax.swing.JLabel mobileBack;
     private javax.swing.JLabel mobileFrame;
+    private javax.swing.JPanel pnlBtnAdd;
+    private javax.swing.JPanel pnlMenu;
+    private javax.swing.JPanel pnlScrPnEX;
+    private javax.swing.JPanel pnlScrPnIN;
     private javax.swing.JLayeredPane previewLayPane;
+    private javax.swing.JScrollPane scrollPaneLang;
     // End of variables declaration//GEN-END:variables
 }

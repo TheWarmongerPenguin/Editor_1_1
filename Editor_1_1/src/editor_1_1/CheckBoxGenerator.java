@@ -4,6 +4,7 @@ package editor_1_1;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -20,7 +21,7 @@ import javax.swing.JCheckBox;
  *
  * @author Samuele Pozzebon
  */
-public class CheckBoxGenerator extends JCheckBox {
+public class CheckBoxGenerator extends JCheckBox implements Serializable{
     
     String src;
     ImageIcon imageIcon;
