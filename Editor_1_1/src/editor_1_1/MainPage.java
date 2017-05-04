@@ -7,6 +7,9 @@ package editor_1_1;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.io.File;
+import java.util.List;
+import javax.swing.ButtonGroup;
 import org.jdesktop.swingx.border.DropShadowBorder;
 
 /**
@@ -28,6 +31,9 @@ public class MainPage extends javax.swing.JFrame {
     
     Font mainF;
     Font subTitleFont;
+    
+    ButtonGroup checkLang;
+    List<CheckBoxGenerator> checkBoxLang;
     
     SlidingAnimation s1;
     SlidingAnimation s2;
@@ -62,9 +68,14 @@ public class MainPage extends javax.swing.JFrame {
         fieldL = new javax.swing.JLabel();
         collogP = new javax.swing.JPanel();
         collogL = new javax.swing.JLabel();
-        collog = new javax.swing.JPanel();
         lang = new javax.swing.JPanel();
+        lblLang1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         fiel = new javax.swing.JPanel();
+        collog = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Site editor");
@@ -80,6 +91,8 @@ public class MainPage extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(804, 598));
         getContentPane().setLayout(new java.awt.GridLayout(1, 2));
 
+        jLayeredPane1.setAlignmentX(0.0F);
+        jLayeredPane1.setAlignmentY(0.0F);
         jLayeredPane1.setMaximumSize(new java.awt.Dimension(402, 598));
         jLayeredPane1.setMinimumSize(new java.awt.Dimension(402, 598));
         jLayeredPane1.setPreferredSize(new java.awt.Dimension(402, 598));
@@ -90,9 +103,10 @@ public class MainPage extends javax.swing.JFrame {
         leftPane.setRequestFocusEnabled(false);
         leftPane.setLayout(null);
 
-        previewLayPane.setMaximumSize(new java.awt.Dimension(400, 542));
-        previewLayPane.setMinimumSize(new java.awt.Dimension(400, 542));
-        previewLayPane.setPreferredSize(new java.awt.Dimension(400, 542));
+        previewLayPane.setBorder(shadow);
+        previewLayPane.setMaximumSize(new java.awt.Dimension(400, 598));
+        previewLayPane.setMinimumSize(new java.awt.Dimension(400, 598));
+        previewLayPane.setPreferredSize(new java.awt.Dimension(400, 598));
 
         mobileFrame.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mobileFrame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/mobileFrame.png"))); // NOI18N
@@ -106,7 +120,7 @@ public class MainPage extends javax.swing.JFrame {
         mobileBack.setBounds(114, 114, 170, 310);
 
         leftPane.add(previewLayPane);
-        previewLayPane.setBounds(0, 0, 400, 542);
+        previewLayPane.setBounds(0, 0, 400, 598);
 
         jLayeredPane1.add(leftPane, java.awt.BorderLayout.CENTER);
 
@@ -154,21 +168,15 @@ public class MainPage extends javax.swing.JFrame {
         langP.setLayout(langPLayout);
         langPLayout.setHorizontalGroup(
             langPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 134, Short.MAX_VALUE)
-            .addGroup(langPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(langPLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(langL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, langPLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(langL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         langPLayout.setVerticalGroup(
             langPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGap(0, 46, Short.MAX_VALUE)
-            .addGroup(langPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(langPLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(langL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(langPLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(langL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         headerLayPane.add(langP);
@@ -277,36 +285,45 @@ public class MainPage extends javax.swing.JFrame {
         jPanel1.add(headerLayPane);
         headerLayPane.setBounds(0, 0, 402, 56);
 
-        collog.setMaximumSize(new java.awt.Dimension(402, 542));
-        collog.setPreferredSize(new java.awt.Dimension(402, 542));
-
-        javax.swing.GroupLayout collogLayout = new javax.swing.GroupLayout(collog);
-        collog.setLayout(collogLayout);
-        collogLayout.setHorizontalGroup(
-            collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 402, Short.MAX_VALUE)
-        );
-        collogLayout.setVerticalGroup(
-            collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 542, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(collog);
-        collog.setBounds(801, 56, 402, 542);
-
         lang.setMaximumSize(new java.awt.Dimension(402, 542));
         lang.setMinimumSize(new java.awt.Dimension(402, 542));
         lang.setPreferredSize(new java.awt.Dimension(402, 542));
+
+        lblLang1.setFont(subTitleFont);
+        lblLang1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLang1.setText("Seleziona le lingue da visualizzare");
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(402, 360));
+        jPanel2.setLayout(null);
+
+        jScrollPane1.setMaximumSize(new java.awt.Dimension(350, 300));
+        jScrollPane1.setMinimumSize(new java.awt.Dimension(350, 300));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(350, 300));
+
+        jPanel4.setLayout(new java.awt.GridLayout(5, 0));
+        jScrollPane1.setViewportView(jPanel4);
+
+        jPanel2.add(jScrollPane1);
+        jScrollPane1.setBounds(26, 30, 350, 300);
+
+        jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.PAGE_AXIS));
 
         javax.swing.GroupLayout langLayout = new javax.swing.GroupLayout(lang);
         lang.setLayout(langLayout);
         langLayout.setHorizontalGroup(
             langLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 402, Short.MAX_VALUE)
+            .addComponent(lblLang1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         langLayout.setVerticalGroup(
             langLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 542, Short.MAX_VALUE)
+            .addGroup(langLayout.createSequentialGroup()
+                .addComponent(lblLang1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(lang);
@@ -329,6 +346,23 @@ public class MainPage extends javax.swing.JFrame {
 
         jPanel1.add(fiel);
         fiel.setBounds(801, 56, 402, 542);
+
+        collog.setMaximumSize(new java.awt.Dimension(402, 542));
+        collog.setPreferredSize(new java.awt.Dimension(402, 542));
+
+        javax.swing.GroupLayout collogLayout = new javax.swing.GroupLayout(collog);
+        collog.setLayout(collogLayout);
+        collogLayout.setHorizontalGroup(
+            collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 402, Short.MAX_VALUE)
+        );
+        collogLayout.setVerticalGroup(
+            collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 542, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(collog);
+        collog.setBounds(801, 56, 402, 542);
 
         getContentPane().add(jPanel1);
 
@@ -428,6 +462,10 @@ public class MainPage extends javax.swing.JFrame {
         shadow.setShowBottomShadow(true);
         shadow.setShadowSize(10);
         shadow.setCornerSize(25);
+        
+        checkLang = new ButtonGroup();
+        checkLang.add(new CheckBoxGenerator("itFlag.png", "Italiano"));
+        checkLang.add(new )
     }
     
     
@@ -639,9 +677,14 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JLayeredPane headerLayPane;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel lang;
     private javax.swing.JLabel langL;
     private javax.swing.JPanel langP;
+    private javax.swing.JLabel lblLang1;
     private javax.swing.JPanel leftPane;
     private javax.swing.JLabel mobileBack;
     private javax.swing.JLabel mobileFrame;
