@@ -33,13 +33,16 @@ public class MainPage extends javax.swing.JFrame {
     Font mainF;
     Font subTitleFont;
     
-    ButtonGroup checkLang;
-    List<CheckBoxGenerator> checkBoxLang;
+    CheckBoxGenerator checkBoxTable;
     
     SlidingAnimation s1;
     SlidingAnimation s2;
     SlidingAnimation s3;
     SlidingAnimation s4;
+    
+    ReadLanguagesFile langRead;
+    OutLanguagesFile langOut;
+    List<ClassLanguages> langList;
     
     public MainPage() {
         initPersonalComponent();
@@ -90,13 +93,20 @@ public class MainPage extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(804, 598));
         setResizable(false);
         setSize(new java.awt.Dimension(804, 598));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new java.awt.GridLayout(1, 2));
 
         jLayeredPane1.setAlignmentX(0.0F);
         jLayeredPane1.setAlignmentY(0.0F);
         jLayeredPane1.setMaximumSize(new java.awt.Dimension(402, 598));
         jLayeredPane1.setMinimumSize(new java.awt.Dimension(402, 598));
-        jLayeredPane1.setPreferredSize(new java.awt.Dimension(402, 598));
         jLayeredPane1.setLayout(new java.awt.BorderLayout());
 
         leftPane.setMaximumSize(new java.awt.Dimension(400, 542));
@@ -107,7 +117,6 @@ public class MainPage extends javax.swing.JFrame {
         previewLayPane.setBorder(shadow);
         previewLayPane.setMaximumSize(new java.awt.Dimension(400, 598));
         previewLayPane.setMinimumSize(new java.awt.Dimension(400, 598));
-        previewLayPane.setPreferredSize(new java.awt.Dimension(400, 598));
 
         mobileFrame.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mobileFrame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/mobileFrame.png"))); // NOI18N
@@ -137,7 +146,6 @@ public class MainPage extends javax.swing.JFrame {
         headerLayPane.setFont(subTitleFont);
         headerLayPane.setMaximumSize(new java.awt.Dimension(402, 56));
         headerLayPane.setMinimumSize(new java.awt.Dimension(402, 56));
-        headerLayPane.setPreferredSize(new java.awt.Dimension(402, 56));
 
         langP.setBackground(primaryColor);
         langP.setMaximumSize(new java.awt.Dimension(134, 46));
@@ -233,8 +241,6 @@ public class MainPage extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        fieldL.getAccessibleContext().setAccessibleName("Campi");
-
         headerLayPane.add(fieldP);
         fieldP.setBounds(134, 0, 134, 46);
         fieldP.getAccessibleContext().setAccessibleName("Campi");
@@ -299,13 +305,13 @@ public class MainPage extends javax.swing.JFrame {
 
         scrollPaneLang.setMaximumSize(new java.awt.Dimension(350, 300));
         scrollPaneLang.setMinimumSize(new java.awt.Dimension(350, 300));
-        scrollPaneLang.setPreferredSize(new java.awt.Dimension(350, 300));
+        scrollPaneLang.setPreferredSize(new java.awt.Dimension(250, 300));
 
         pnlScrPnIN.setLayout(new java.awt.GridLayout(2, 0));
         scrollPaneLang.setViewportView(pnlScrPnIN);
 
         pnlScrPnEX.add(scrollPaneLang);
-        scrollPaneLang.setBounds(26, 30, 350, 300);
+        scrollPaneLang.setBounds(76, 30, 250, 300);
 
         pnlBtnAdd.setLayout(new javax.swing.BoxLayout(pnlBtnAdd, javax.swing.BoxLayout.PAGE_AXIS));
 
@@ -445,11 +451,26 @@ public class MainPage extends javax.swing.JFrame {
         collogP.setBackground(primaryColor);
         collogL.setForeground(textColor);
     }//GEN-LAST:event_collogPMouseReleased
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        langOut = new OutLanguagesFile(langList);
+        System.out.println("Languages printed");
+        System.out.println("closing");
+    }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+    }//GEN-LAST:event_formWindowOpened
     
     private void initPersonalComponent() {
+        langRead = new ReadLanguagesFile();
+        langList = langRead.getList();
         mainF = new Font("Sans Serif",Font.BOLD, 17);
         subTitleFont = new Font("Sans Serif",Font.PLAIN, 19);
-        checkBoxLang = new ArrayList<>();
+        //if (langList != null) {checkBoxTable = new CheckBoxGenerator(langList);}
+        //else {langList = new ArrayList<>(); langList.add(new ClassLanguages(true, "itFlag.png", "Italiano")); langList.add(new ClassLanguages(true, "enFlag.png", "English")); checkBoxTable = new CheckBoxGenerator(langList);};
+        checkBoxTable = new CheckBoxGenerator(langList);
+        checkBoxTable.setFont(subTitleFont);
         
         primaryColor = Color.decode("#607D8B"); //sclego il colore primario
         secondaryColor = Color.decode("#5E7A88");
@@ -465,12 +486,10 @@ public class MainPage extends javax.swing.JFrame {
         shadow.setShadowSize(10);
         shadow.setCornerSize(25);
         
-        checkLang = new ButtonGroup();
-        
-        checkBoxLang.add(new CheckBoxGenerator("itFlag.png", "Italiano"));
+        /*checkBoxLang.add(new CheckBoxGenerator("itFlag.png", "Italiano"));
         checkBoxLang.add(new CheckBoxGenerator("enFlag.png", "English"));
         checkLang.add(checkBoxLang.get(0));
-        checkLang.add(checkBoxLang.get(1));
+        checkLang.add(checkBoxLang.get(1));*/
     }
     
     
@@ -479,8 +498,7 @@ public class MainPage extends javax.swing.JFrame {
         fiel.setVisible(false);
         collog.setVisible(false);
         
-        pnlScrPnIN.add(checkBoxLang.get(0));
-        pnlScrPnIN.add(checkBoxLang.get(1));
+        pnlScrPnIN.add(checkBoxTable);
     }
     
     private void selection(byte finalIndx) {
