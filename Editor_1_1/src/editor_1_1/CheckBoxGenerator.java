@@ -20,12 +20,6 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.table.TableColumnModel;
 
-// <editor-fold defaultstate="collapsed" desc="License">
-/*
- * I told you that copy was not the way to do it
- */
-// </editor-fold>
-
 /**
  *
  * @author Samuele Pozzebon

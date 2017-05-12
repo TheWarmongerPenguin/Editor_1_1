@@ -1,8 +1,3 @@
-// <editor-fold defaultstate="collapsed" desc="License">
-/*
- * I told you that copy was not the way to do it
- */
-// </editor-fold>
 package editor_1_1;
 
 import java.awt.Color;
@@ -78,6 +73,7 @@ public class MainPage extends javax.swing.JFrame {
         scrollPaneLang = new javax.swing.JScrollPane();
         pnlScrPnIN = new javax.swing.JPanel();
         pnlBtnAdd = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         fiel = new javax.swing.JPanel();
         collog = new javax.swing.JPanel();
 
@@ -91,7 +87,6 @@ public class MainPage extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(804, 598));
         setName("Site editor"); // NOI18N
         setPreferredSize(new java.awt.Dimension(804, 598));
-        setResizable(false);
         setSize(new java.awt.Dimension(804, 598));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -313,7 +308,28 @@ public class MainPage extends javax.swing.JFrame {
         pnlScrPnEX.add(scrollPaneLang);
         scrollPaneLang.setBounds(76, 30, 250, 300);
 
-        pnlBtnAdd.setLayout(new javax.swing.BoxLayout(pnlBtnAdd, javax.swing.BoxLayout.PAGE_AXIS));
+        pnlBtnAdd.setMaximumSize(new java.awt.Dimension(402, 107));
+        pnlBtnAdd.setMinimumSize(new java.awt.Dimension(402, 107));
+        pnlBtnAdd.setPreferredSize(new java.awt.Dimension(402, 107));
+        pnlBtnAdd.setLayout(null);
+
+        jPanel1.setBackground(new java.awt.Color(255, 204, 0));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.setPreferredSize(new java.awt.Dimension(100, 50));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        pnlBtnAdd.add(jPanel1);
+        jPanel1.setBounds(151, 25, 100, 50);
 
         javax.swing.GroupLayout langLayout = new javax.swing.GroupLayout(lang);
         lang.setLayout(langLayout);
@@ -465,12 +481,12 @@ public class MainPage extends javax.swing.JFrame {
     private void initPersonalComponent() {
         langRead = new ReadLanguagesFile();
         langList = langRead.getList();
-        mainF = new Font("Sans Serif",Font.BOLD, 17);
+        mainF = new Font("Sans Serif",Font.PLAIN, 15);
         subTitleFont = new Font("Sans Serif",Font.PLAIN, 19);
         //if (langList != null) {checkBoxTable = new CheckBoxGenerator(langList);}
         //else {langList = new ArrayList<>(); langList.add(new ClassLanguages(true, "itFlag.png", "Italiano")); langList.add(new ClassLanguages(true, "enFlag.png", "English")); checkBoxTable = new CheckBoxGenerator(langList);};
         checkBoxTable = new CheckBoxGenerator(langList);
-        checkBoxTable.setFont(subTitleFont);
+        checkBoxTable.setFont(mainF);
         
         primaryColor = Color.decode("#607D8B"); //sclego il colore primario
         secondaryColor = Color.decode("#5E7A88");
@@ -702,6 +718,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel fieldP;
     private javax.swing.JLayeredPane headerLayPane;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel lang;
     private javax.swing.JLabel langL;
     private javax.swing.JPanel langP;
