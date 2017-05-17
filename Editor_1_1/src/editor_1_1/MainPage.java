@@ -6,6 +6,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import org.jdesktop.swingx.border.DropShadowBorder;
 
 /**
@@ -54,7 +55,11 @@ public class MainPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLayeredPane1 = new javax.swing.JLayeredPane();
+        pnlTopHeader = new javax.swing.JPanel();
+        exitButton = new javax.swing.JButton();
+        barIcon = new javax.swing.JLabel();
+        titleLbl = new javax.swing.JLabel();
+        leftLayPane = new javax.swing.JLayeredPane();
         leftPane = new javax.swing.JPanel();
         previewLayPane = new javax.swing.JLayeredPane();
         mobileFrame = new javax.swing.JLabel();
@@ -83,11 +88,12 @@ public class MainPage extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setLocation(new java.awt.Point(0, 0));
-        setMaximumSize(new java.awt.Dimension(804, 598));
-        setMinimumSize(new java.awt.Dimension(804, 598));
+        setMaximumSize(new java.awt.Dimension(804, 623));
+        setMinimumSize(new java.awt.Dimension(804, 623));
         setName("Site editor"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(804, 598));
-        setSize(new java.awt.Dimension(804, 598));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(804, 623));
+        setSize(new java.awt.Dimension(804, 623));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -96,13 +102,58 @@ public class MainPage extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
-        getContentPane().setLayout(new java.awt.GridLayout(1, 2));
+        getContentPane().setLayout(null);
 
-        jLayeredPane1.setAlignmentX(0.0F);
-        jLayeredPane1.setAlignmentY(0.0F);
-        jLayeredPane1.setMaximumSize(new java.awt.Dimension(402, 598));
-        jLayeredPane1.setMinimumSize(new java.awt.Dimension(402, 598));
-        jLayeredPane1.setLayout(new java.awt.BorderLayout());
+        pnlTopHeader.setBackground(new java.awt.Color(255, 255, 255));
+        pnlTopHeader.setMaximumSize(new java.awt.Dimension(804, 25));
+        pnlTopHeader.setMinimumSize(new java.awt.Dimension(804, 25));
+        pnlTopHeader.setPreferredSize(new java.awt.Dimension(804, 25));
+        pnlTopHeader.setLayout(null);
+
+        exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/closeIconEmpty.png"))); // NOI18N
+        exitButton.setToolTipText("");
+        exitButton.setBorder(null);
+        exitButton.setBorderPainted(false);
+        exitButton.setContentAreaFilled(false);
+        exitButton.setMaximumSize(new java.awt.Dimension(21, 21));
+        exitButton.setMinimumSize(new java.awt.Dimension(21, 21));
+        exitButton.setRolloverEnabled(false);
+        exitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                exitButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                exitButtonMouseExited(evt);
+            }
+        });
+        exitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButtonActionPerformed(evt);
+            }
+        });
+        pnlTopHeader.add(exitButton);
+        exitButton.setBounds(784, 5, 15, 15);
+
+        barIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/editor_icon.jpg"))); // NOI18N
+        pnlTopHeader.add(barIcon);
+        barIcon.setBounds(3, 2, 20, 20);
+
+        titleLbl.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        titleLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleLbl.setText(getTitle());
+        titleLbl.setPreferredSize(new java.awt.Dimension(200, 25));
+        titleLbl.setRequestFocusEnabled(false);
+        pnlTopHeader.add(titleLbl);
+        titleLbl.setBounds(302, 0, 200, 25);
+
+        getContentPane().add(pnlTopHeader);
+        pnlTopHeader.setBounds(0, 0, 804, 25);
+
+        leftLayPane.setAlignmentX(0.0F);
+        leftLayPane.setAlignmentY(0.0F);
+        leftLayPane.setMaximumSize(new java.awt.Dimension(402, 598));
+        leftLayPane.setMinimumSize(new java.awt.Dimension(402, 598));
+        leftLayPane.setLayout(new java.awt.BorderLayout());
 
         leftPane.setMaximumSize(new java.awt.Dimension(400, 542));
         leftPane.setMinimumSize(new java.awt.Dimension(400, 542));
@@ -120,16 +171,21 @@ public class MainPage extends javax.swing.JFrame {
         mobileFrame.setBounds(0, 0, 400, 542);
 
         mobileBack.setBackground(new java.awt.Color(0, 0, 0));
+        mobileBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mobileBack.setMaximumSize(new java.awt.Dimension(169, 304));
+        mobileBack.setMinimumSize(new java.awt.Dimension(169, 304));
         mobileBack.setOpaque(true);
+        mobileBack.setPreferredSize(new java.awt.Dimension(169, 304));
         previewLayPane.add(mobileBack);
-        mobileBack.setBounds(114, 114, 170, 310);
+        mobileBack.setBounds(115, 117, 169, 304);
 
         leftPane.add(previewLayPane);
         previewLayPane.setBounds(0, 0, 400, 598);
 
-        jLayeredPane1.add(leftPane, java.awt.BorderLayout.CENTER);
+        leftLayPane.add(leftPane, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(jLayeredPane1);
+        getContentPane().add(leftLayPane);
+        leftLayPane.setBounds(0, 25, 402, 619);
 
         pnlMenu.setMaximumSize(new java.awt.Dimension(402, 542));
         pnlMenu.setMinimumSize(new java.awt.Dimension(402, 542));
@@ -352,6 +408,7 @@ public class MainPage extends javax.swing.JFrame {
         pnlMenu.add(lang);
         lang.setBounds(0, 56, 402, 542);
 
+        fiel.setBackground(new java.awt.Color(102, 255, 51));
         fiel.setMaximumSize(new java.awt.Dimension(402, 542));
         fiel.setMinimumSize(new java.awt.Dimension(402, 542));
         fiel.setPreferredSize(new java.awt.Dimension(402, 542));
@@ -368,8 +425,9 @@ public class MainPage extends javax.swing.JFrame {
         );
 
         pnlMenu.add(fiel);
-        fiel.setBounds(801, 56, 402, 542);
+        fiel.setBounds(0, 56, 402, 542);
 
+        collog.setBackground(new java.awt.Color(204, 255, 153));
         collog.setMaximumSize(new java.awt.Dimension(402, 542));
         collog.setPreferredSize(new java.awt.Dimension(402, 542));
 
@@ -385,9 +443,10 @@ public class MainPage extends javax.swing.JFrame {
         );
 
         pnlMenu.add(collog);
-        collog.setBounds(801, 56, 402, 542);
+        collog.setBounds(0, 56, 402, 542);
 
         getContentPane().add(pnlMenu);
+        pnlMenu.setBounds(402, 25, 402, 619);
 
         pack();
         setLocationRelativeTo(null);
@@ -469,14 +528,24 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_collogPMouseReleased
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        langOut = new OutLanguagesFile(langList);
-        System.out.println("Languages printed");
-        System.out.println("closing");
+        //
     }//GEN-LAST:event_formWindowClosing
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
     }//GEN-LAST:event_formWindowOpened
+
+    private void exitButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMouseEntered
+        exitButton.setIcon(new ImageIcon(getClass().getResource("/editor_1_1/closeIconCrossed.png")));
+    }//GEN-LAST:event_exitButtonMouseEntered
+
+    private void exitButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMouseExited
+        exitButton.setIcon(new ImageIcon(getClass().getResource("/editor_1_1/closeIconEmpty.png")));
+    }//GEN-LAST:event_exitButtonMouseExited
+
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        close();
+    }//GEN-LAST:event_exitButtonActionPerformed
     
     private void initPersonalComponent() {
         langRead = new ReadLanguagesFile();
@@ -710,19 +779,21 @@ public class MainPage extends javax.swing.JFrame {
     }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel barIcon;
     private javax.swing.JPanel collog;
     private javax.swing.JLabel collogL;
     private javax.swing.JPanel collogP;
+    private javax.swing.JButton exitButton;
     private javax.swing.JPanel fiel;
     private javax.swing.JLabel fieldL;
     private javax.swing.JPanel fieldP;
     private javax.swing.JLayeredPane headerLayPane;
-    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel lang;
     private javax.swing.JLabel langL;
     private javax.swing.JPanel langP;
     private javax.swing.JLabel lblLang1;
+    private javax.swing.JLayeredPane leftLayPane;
     private javax.swing.JPanel leftPane;
     private javax.swing.JLabel mobileBack;
     private javax.swing.JLabel mobileFrame;
@@ -730,7 +801,16 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel pnlMenu;
     private javax.swing.JPanel pnlScrPnEX;
     private javax.swing.JPanel pnlScrPnIN;
+    private javax.swing.JPanel pnlTopHeader;
     private javax.swing.JLayeredPane previewLayPane;
     private javax.swing.JScrollPane scrollPaneLang;
+    private javax.swing.JLabel titleLbl;
     // End of variables declaration//GEN-END:variables
+
+    private void close() {
+        langOut = new OutLanguagesFile(langList);
+        System.out.println("Languages printed");
+        System.out.println("closing");
+        System.exit(0);
+    }
 }
