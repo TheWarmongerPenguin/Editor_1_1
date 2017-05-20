@@ -166,9 +166,9 @@ public class MainPage extends javax.swing.JFrame {
 
         mobileFrame.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mobileFrame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/mobileFrame.png"))); // NOI18N
-        previewLayPane.setLayer(mobileFrame, javax.swing.JLayeredPane.PALETTE_LAYER);
         previewLayPane.add(mobileFrame);
         mobileFrame.setBounds(0, 0, 400, 542);
+        previewLayPane.setLayer(mobileFrame, javax.swing.JLayeredPane.PALETTE_LAYER);
 
         mobileBack.setBackground(new java.awt.Color(0, 0, 0));
         mobileBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
