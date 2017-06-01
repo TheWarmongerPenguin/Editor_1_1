@@ -408,7 +408,6 @@ public class MainPage extends javax.swing.JFrame {
         pnlMenu.add(lang);
         lang.setBounds(0, 56, 402, 542);
 
-        fiel.setBackground(new java.awt.Color(102, 255, 51));
         fiel.setMaximumSize(new java.awt.Dimension(402, 542));
         fiel.setMinimumSize(new java.awt.Dimension(402, 542));
         fiel.setPreferredSize(new java.awt.Dimension(402, 542));

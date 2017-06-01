@@ -101,5 +101,16 @@ public class CheckBoxGenerator extends JTable implements Serializable{
         
     }
     
+    public String[] getLanguages() {
+        String[] languages;
+        int contatore = 0;
+        while (true) {            
+            try {
+                get
+            } catch (Exception e) { break; }
+            contatore ++;
+        }
+    }
+    
     
 }
