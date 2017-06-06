@@ -5,30 +5,22 @@
  */
 package editor_1_1;
 
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import static javax.swing.JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS;
 import javax.swing.table.DefaultTableModel;
+import java.lang.String;
 
 /**
  *
  * @author samuele.pozzebon
  */
 public class TranslationMenuGenerator extends JTable implements Serializable{
-    
     String[] columnNames;
     DefaultTableModel model;
     String campo;
-    ImageIcon imageIcon;
-      
+    
     public TranslationMenuGenerator(List<ClassTranslations> list, String[] languages) {
         modelSetting();
         setModel(model);
@@ -43,20 +35,27 @@ public class TranslationMenuGenerator extends JTable implements Serializable{
             try {
                 tran = list.get(contatore);
                 campo = tran.getField();
-                Object[] obj = {tran.isSelected(), imageIcon, tran.getLanguage()};
+                Object[] obj = {tran.getField(), tran.getTranslations()};
                 model.addRow(obj);
             } catch (Exception e) { break; }
             contatore ++;
         }
-        getColumnModel().getColumn(0).setPreferredWidth(36);
-        getColumnModel().getColumn(1).setPreferredWidth(100);
-        getColumnModel().getColumn(2).setPreferredWidth(107);
+        //getColumnModel().getColumn(0).setPreferredWidth(36);
+        //getColumnModel().getColumn(1).setPreferredWidth(100);
+        //getColumnModel().getColumn(2).setPreferredWidth(107);
+        
+        columnNames = new String[languages.length-1];
+        int cont = 0;
+        while (true) {
+            try {
+                columnNames[cont] = languages[cont];
+            } catch (Exception e) { break; }
+            cont++;
+        }
     }
     
-    public void addRowManually(String imagine, String title) {
-        src = imagine;
-        imgResize(src);
-        model.addRow(new Object[] {true, imageIcon, title});
+    public void addRowManually(String field, String[] tran) {
+        model.addRow(new Object[] {field, tran});
     }
 
     private void modelSetting() {
@@ -64,10 +63,6 @@ public class TranslationMenuGenerator extends JTable implements Serializable{
             @Override
             public Class<?> getColumnClass(int column) {
                 switch (column) {
-                    case 0:
-                        return Boolean.class;
-                    case 1:
-                        return ImageIcon.class;
                     default:
                         return String.class;
                 }
@@ -75,8 +70,7 @@ public class TranslationMenuGenerator extends JTable implements Serializable{
             @Override
             public boolean isCellEditable(int row, int col) {
                 switch (col) {
-                    case 0: return true;
-                    default: return false;
+                    default: return true;
                 }
             }
         };

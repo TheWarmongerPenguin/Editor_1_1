@@ -2,10 +2,8 @@ package editor_1_1;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import org.jdesktop.swingx.border.DropShadowBorder;
 
@@ -30,6 +28,7 @@ public class MainPage extends javax.swing.JFrame {
     Font subTitleFont;
     
     CheckBoxGenerator checkBoxTable;
+    TranslationMenuGenerator tranTable;
     
     SlidingAnimation s1;
     SlidingAnimation s2;
@@ -39,6 +38,7 @@ public class MainPage extends javax.swing.JFrame {
     ReadLanguagesFile langRead;
     OutLanguagesFile langOut;
     List<ClassLanguages> langList;
+    List<ClassTranslations> tranList;
     
     public MainPage() {
         initPersonalComponent();
@@ -80,6 +80,9 @@ public class MainPage extends javax.swing.JFrame {
         pnlBtnAdd = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         fiel = new javax.swing.JPanel();
+        pnlScrTraEx = new javax.swing.JPanel();
+        scrollPaneTran = new javax.swing.JScrollPane();
+        pnlScrTraIn = new javax.swing.JPanel();
         collog = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -411,17 +414,29 @@ public class MainPage extends javax.swing.JFrame {
         fiel.setMaximumSize(new java.awt.Dimension(402, 542));
         fiel.setMinimumSize(new java.awt.Dimension(402, 542));
         fiel.setPreferredSize(new java.awt.Dimension(402, 542));
+        fiel.setLayout(null);
 
-        javax.swing.GroupLayout fielLayout = new javax.swing.GroupLayout(fiel);
-        fiel.setLayout(fielLayout);
-        fielLayout.setHorizontalGroup(
-            fielLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 402, Short.MAX_VALUE)
+        pnlScrTraEx.setPreferredSize(new java.awt.Dimension(350, 350));
+        pnlScrTraEx.setLayout(null);
+
+        javax.swing.GroupLayout pnlScrTraInLayout = new javax.swing.GroupLayout(pnlScrTraIn);
+        pnlScrTraIn.setLayout(pnlScrTraInLayout);
+        pnlScrTraInLayout.setHorizontalGroup(
+            pnlScrTraInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 348, Short.MAX_VALUE)
         );
-        fielLayout.setVerticalGroup(
-            fielLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 542, Short.MAX_VALUE)
+        pnlScrTraInLayout.setVerticalGroup(
+            pnlScrTraInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 348, Short.MAX_VALUE)
         );
+
+        scrollPaneTran.setViewportView(pnlScrTraIn);
+
+        pnlScrTraEx.add(scrollPaneTran);
+        scrollPaneTran.setBounds(0, 0, 350, 350);
+
+        fiel.add(pnlScrTraEx);
+        pnlScrTraEx.setBounds(26, 96, 350, 350);
 
         pnlMenu.add(fiel);
         fiel.setBounds(0, 56, 402, 542);
@@ -551,10 +566,18 @@ public class MainPage extends javax.swing.JFrame {
         langList = langRead.getList();
         mainF = new Font("Sans Serif",Font.PLAIN, 15);
         subTitleFont = new Font("Sans Serif",Font.PLAIN, 19);
-        //if (langList != null) {checkBoxTable = new CheckBoxGenerator(langList);}
-        //else {langList = new ArrayList<>(); langList.add(new ClassLanguages(true, "itFlag.png", "Italiano")); langList.add(new ClassLanguages(true, "enFlag.png", "English")); checkBoxTable = new CheckBoxGenerator(langList);};
+        
         checkBoxTable = new CheckBoxGenerator(langList);
         checkBoxTable.setFont(mainF);
+        if (tranList != null) {checkBoxTable = new CheckBoxGenerator(tranList);}
+        else {
+            tranList = new ArrayList<>();
+            tranList.add(new ClassTranslations("Nome", "Name"));
+            tranList.add(new ClassTranslations("Cgnome", "Surname"));
+            tranTable = new tranTable(tranList, checkBoxTable.getLanguages(langList));
+        };
+        tranTable = new TranslationMenuGenerator(tranList, checkBoxTable.getLanguages(langList));
+        tranTable.setFont(mainF);
         
         primaryColor = Color.decode("#607D8B"); //sclego il colore primario
         secondaryColor = Color.decode("#5E7A88");
@@ -583,6 +606,7 @@ public class MainPage extends javax.swing.JFrame {
         collog.setVisible(false);
         
         pnlScrPnIN.add(checkBoxTable);
+        pnlScrTraIn.add(tranTable);
     }
     
     private void selection(byte finalIndx) {
@@ -800,9 +824,12 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel pnlMenu;
     private javax.swing.JPanel pnlScrPnEX;
     private javax.swing.JPanel pnlScrPnIN;
+    private javax.swing.JPanel pnlScrTraEx;
+    private javax.swing.JPanel pnlScrTraIn;
     private javax.swing.JPanel pnlTopHeader;
     private javax.swing.JLayeredPane previewLayPane;
     private javax.swing.JScrollPane scrollPaneLang;
+    private javax.swing.JScrollPane scrollPaneTran;
     private javax.swing.JLabel titleLbl;
     // End of variables declaration//GEN-END:variables
 
