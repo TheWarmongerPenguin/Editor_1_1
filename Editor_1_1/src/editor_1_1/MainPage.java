@@ -2,8 +2,10 @@ package editor_1_1;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import org.jdesktop.swingx.border.DropShadowBorder; 
 
