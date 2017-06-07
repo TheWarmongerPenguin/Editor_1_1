@@ -5,7 +5,7 @@ import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
-import org.jdesktop.swingx.border.DropShadowBorder;
+import org.jdesktop.swingx.border.DropShadowBorder; 
 
 /**
  *
@@ -20,20 +20,15 @@ public class MainPage extends javax.swing.JFrame {
         
     byte indx;
     
-    Color primaryColor;     //colore di sfondo/primario
-    Color secondaryColor;   //colore di sfondo/secondario
+    Color defaultColor;     //colore di sfondo/primario
+    Color mousePassedColor;   //colore di sfondo/secondario
+    Color selectedColor;    //colore di sfondo/elemento selezionato
     Color textColor;        //colore dei testi
     
     Font mainF;
     Font subTitleFont;
     
     CheckBoxGenerator checkBoxTable;
-    TranslationMenuGenerator tranTable;
-    
-    SlidingAnimation s1;
-    SlidingAnimation s2;
-    SlidingAnimation s3;
-    SlidingAnimation s4;
     
     ReadLanguagesFile langRead;
     OutLanguagesFile langOut;
@@ -55,6 +50,17 @@ public class MainPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFileChooser1 = new javax.swing.JFileChooser();
+        jDialog1 = new javax.swing.JDialog();
+        jPanel2 = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        pnlTopHeader1 = new javax.swing.JPanel();
+        exitButton1 = new javax.swing.JButton();
+        barIcon1 = new javax.swing.JLabel();
+        titleLbl1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         pnlTopHeader = new javax.swing.JPanel();
         exitButton = new javax.swing.JButton();
         barIcon = new javax.swing.JLabel();
@@ -79,38 +85,118 @@ public class MainPage extends javax.swing.JFrame {
         pnlScrPnIN = new javax.swing.JPanel();
         pnlBtnAdd = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         fiel = new javax.swing.JPanel();
         pnlScrTraEx = new javax.swing.JPanel();
         scrollPaneTran = new javax.swing.JScrollPane();
         pnlScrTraIn = new javax.swing.JPanel();
         collog = new javax.swing.JPanel();
 
+        jFileChooser1.setApproveButtonText("");
+        jFileChooser1.setCurrentDirectory(new java.io.File("C:\\Users\\Samuele Pozzebon\\Pictures"));
+
+        jDialog1.setAlwaysOnTop(true);
+        jDialog1.setLocation(new java.awt.Point(0, 0));
+        jDialog1.setMaximumSize(new java.awt.Dimension(300, 200));
+        jDialog1.setMinimumSize(new java.awt.Dimension(300, 200));
+        jDialog1.setUndecorated(true);
+        jDialog1.setPreferredSize(new java.awt.Dimension(300, 200));
+        jDialog1.setResizable(false);
+        jDialog1.setSize(new java.awt.Dimension(300, 200));
+        jDialog1.getContentPane().setLayout(null);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(defaultColor));
+        jPanel2.setMaximumSize(new java.awt.Dimension(300, 200));
+        jPanel2.setPreferredSize(new java.awt.Dimension(300, 200));
+        jPanel2.setLayout(null);
+
+        jTextField1.setMaximumSize(new java.awt.Dimension(130, 20));
+        jTextField1.setMinimumSize(new java.awt.Dimension(130, 20));
+        jTextField1.setPreferredSize(new java.awt.Dimension(130, 20));
+        jPanel2.add(jTextField1);
+        jTextField1.setBounds(140, 50, 130, 20);
+
+        jLabel2.setText("Nome della lingua:");
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(40, 50, 87, 20);
+
+        pnlTopHeader1.setBackground(new java.awt.Color(255, 255, 255));
+        pnlTopHeader1.setMaximumSize(new java.awt.Dimension(300, 24));
+        pnlTopHeader1.setMinimumSize(new java.awt.Dimension(300, 24));
+        pnlTopHeader1.setPreferredSize(new java.awt.Dimension(298, 24));
+        pnlTopHeader1.setLayout(null);
+
+        exitButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/closeIconEmpty.png"))); // NOI18N
+        exitButton1.setToolTipText("");
+        exitButton1.setBorder(null);
+        exitButton1.setBorderPainted(false);
+        exitButton1.setContentAreaFilled(false);
+        exitButton1.setMaximumSize(new java.awt.Dimension(14, 14));
+        exitButton1.setMinimumSize(new java.awt.Dimension(14, 14));
+        exitButton1.setPreferredSize(new java.awt.Dimension(14, 14));
+        exitButton1.setRolloverEnabled(false);
+        exitButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                exitButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                exitButton1MouseExited(evt);
+            }
+        });
+        exitButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButton1ActionPerformed(evt);
+            }
+        });
+        pnlTopHeader1.add(exitButton1);
+        exitButton1.setBounds(280, 5, 14, 14);
+
+        barIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/editor_icon.jpg"))); // NOI18N
+        pnlTopHeader1.add(barIcon1);
+        barIcon1.setBounds(3, 2, 20, 20);
+
+        titleLbl1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        titleLbl1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleLbl1.setText("Aggiungi lingua");
+        titleLbl1.setPreferredSize(new java.awt.Dimension(200, 25));
+        titleLbl1.setRequestFocusEnabled(false);
+        pnlTopHeader1.add(titleLbl1);
+        titleLbl1.setBounds(49, 0, 200, 25);
+
+        jPanel2.add(pnlTopHeader1);
+        pnlTopHeader1.setBounds(1, 1, 298, 24);
+
+        jButton1.setText("Seleziona l'icona");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1);
+        jButton1.setBounds(20, 100, 109, 23);
+
+        jLabel3.setText("jLabel3");
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(160, 100, 120, 20);
+
+        jDialog1.getContentPane().add(jPanel2);
+        jPanel2.setBounds(0, 0, 300, 200);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Site editor");
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setLocation(new java.awt.Point(0, 0));
-        setMaximumSize(new java.awt.Dimension(804, 623));
         setMinimumSize(new java.awt.Dimension(804, 623));
         setName("Site editor"); // NOI18N
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(804, 623));
         setSize(new java.awt.Dimension(804, 623));
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
         getContentPane().setLayout(null);
 
         pnlTopHeader.setBackground(new java.awt.Color(255, 255, 255));
         pnlTopHeader.setMaximumSize(new java.awt.Dimension(804, 25));
         pnlTopHeader.setMinimumSize(new java.awt.Dimension(804, 25));
-        pnlTopHeader.setPreferredSize(new java.awt.Dimension(804, 25));
+        pnlTopHeader.setPreferredSize(new java.awt.Dimension(804, 24));
         pnlTopHeader.setLayout(null);
 
         exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/closeIconEmpty.png"))); // NOI18N
@@ -118,8 +204,9 @@ public class MainPage extends javax.swing.JFrame {
         exitButton.setBorder(null);
         exitButton.setBorderPainted(false);
         exitButton.setContentAreaFilled(false);
-        exitButton.setMaximumSize(new java.awt.Dimension(21, 21));
-        exitButton.setMinimumSize(new java.awt.Dimension(21, 21));
+        exitButton.setMaximumSize(new java.awt.Dimension(14, 14));
+        exitButton.setMinimumSize(new java.awt.Dimension(14, 14));
+        exitButton.setPreferredSize(new java.awt.Dimension(14, 14));
         exitButton.setRolloverEnabled(false);
         exitButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -135,7 +222,7 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
         pnlTopHeader.add(exitButton);
-        exitButton.setBounds(784, 5, 15, 15);
+        exitButton.setBounds(784, 5, 14, 14);
 
         barIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/editor_icon.jpg"))); // NOI18N
         pnlTopHeader.add(barIcon);
@@ -150,7 +237,7 @@ public class MainPage extends javax.swing.JFrame {
         titleLbl.setBounds(302, 0, 200, 25);
 
         getContentPane().add(pnlTopHeader);
-        pnlTopHeader.setBounds(0, 0, 804, 25);
+        pnlTopHeader.setBounds(0, 0, 804, 24);
 
         leftLayPane.setAlignmentX(0.0F);
         leftLayPane.setAlignmentY(0.0F);
@@ -188,7 +275,7 @@ public class MainPage extends javax.swing.JFrame {
         leftLayPane.add(leftPane, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(leftLayPane);
-        leftLayPane.setBounds(0, 25, 402, 619);
+        leftLayPane.setBounds(0, 24, 402, 619);
 
         pnlMenu.setMaximumSize(new java.awt.Dimension(402, 542));
         pnlMenu.setMinimumSize(new java.awt.Dimension(402, 542));
@@ -201,7 +288,7 @@ public class MainPage extends javax.swing.JFrame {
         headerLayPane.setMaximumSize(new java.awt.Dimension(402, 56));
         headerLayPane.setMinimumSize(new java.awt.Dimension(402, 56));
 
-        langP.setBackground(primaryColor);
+        langP.setBackground(selectedColor);
         langP.setMaximumSize(new java.awt.Dimension(134, 46));
         langP.setMinimumSize(new java.awt.Dimension(134, 46));
         langP.setPreferredSize(new java.awt.Dimension(134, 46));
@@ -246,7 +333,7 @@ public class MainPage extends javax.swing.JFrame {
         langP.setBounds(0, 0, 134, 46);
         langP.getAccessibleContext().setAccessibleName("Lingue");
 
-        fieldP.setBackground(secondaryColor);
+        fieldP.setBackground(defaultColor);
         fieldP.setMaximumSize(new java.awt.Dimension(134, 46));
         fieldP.setMinimumSize(new java.awt.Dimension(134, 46));
         fieldP.setPreferredSize(new java.awt.Dimension(134, 46));
@@ -299,7 +386,7 @@ public class MainPage extends javax.swing.JFrame {
         fieldP.setBounds(134, 0, 134, 46);
         fieldP.getAccessibleContext().setAccessibleName("Campi");
 
-        collogP.setBackground(secondaryColor);
+        collogP.setBackground(defaultColor);
         collogP.setMaximumSize(new java.awt.Dimension(134, 46));
         collogP.setMinimumSize(new java.awt.Dimension(134, 46));
         collogP.setPreferredSize(new java.awt.Dimension(134, 46));
@@ -372,23 +459,38 @@ public class MainPage extends javax.swing.JFrame {
         pnlBtnAdd.setPreferredSize(new java.awt.Dimension(402, 107));
         pnlBtnAdd.setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 0));
+        jPanel1.setBackground(defaultColor);
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.setPreferredSize(new java.awt.Dimension(100, 50));
+        jPanel1.setMaximumSize(new java.awt.Dimension(150, 35));
+        jPanel1.setMinimumSize(new java.awt.Dimension(150, 35));
+        jPanel1.setPreferredSize(new java.awt.Dimension(150, 35));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
+
+        jLabel1.setFont(subTitleFont);
+        jLabel1.setForeground(textColor);
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Aggiungi lingua");
+        jLabel1.setMaximumSize(new java.awt.Dimension(150, 35));
+        jLabel1.setMinimumSize(new java.awt.Dimension(150, 35));
+        jLabel1.setPreferredSize(new java.awt.Dimension(150, 35));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pnlBtnAdd.add(jPanel1);
-        jPanel1.setBounds(151, 25, 100, 50);
+        jPanel1.setBounds(126, 20, 150, 35);
 
         javax.swing.GroupLayout langLayout = new javax.swing.GroupLayout(lang);
         lang.setLayout(langLayout);
@@ -441,7 +543,6 @@ public class MainPage extends javax.swing.JFrame {
         pnlMenu.add(fiel);
         fiel.setBounds(0, 56, 402, 542);
 
-        collog.setBackground(new java.awt.Color(204, 255, 153));
         collog.setMaximumSize(new java.awt.Dimension(402, 542));
         collog.setPreferredSize(new java.awt.Dimension(402, 542));
 
@@ -460,7 +561,7 @@ public class MainPage extends javax.swing.JFrame {
         collog.setBounds(0, 56, 402, 542);
 
         getContentPane().add(pnlMenu);
-        pnlMenu.setBounds(402, 25, 402, 619);
+        pnlMenu.setBounds(402, 24, 402, 619);
 
         pack();
         setLocationRelativeTo(null);
@@ -474,20 +575,20 @@ public class MainPage extends javax.swing.JFrame {
 
     private void langPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_langPMouseEntered
         if (indx != 0) {
-            langP.setBackground(secondaryColor);
+            langP.setBackground(mousePassedColor);
             langL.setForeground(Color.LIGHT_GRAY);
         }
     }//GEN-LAST:event_langPMouseEntered
 
     private void langPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_langPMouseExited
         if (indx != 0) {
-            langP.setBackground(primaryColor);
+            langP.setBackground(defaultColor);
             langL.setForeground(textColor);
         }
     }//GEN-LAST:event_langPMouseExited
 
     private void langPMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_langPMouseReleased
-        langP.setBackground(primaryColor);
+        langP.setBackground(defaultColor);
         langL.setForeground(textColor);
     }//GEN-LAST:event_langPMouseReleased
 
@@ -499,20 +600,20 @@ public class MainPage extends javax.swing.JFrame {
 
     private void fieldPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fieldPMouseEntered
         if (indx != 1) {
-            fieldP.setBackground(secondaryColor);
+            fieldP.setBackground(mousePassedColor);
             fieldL.setForeground(Color.LIGHT_GRAY);
         }
     }//GEN-LAST:event_fieldPMouseEntered
 
     private void fieldPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fieldPMouseExited
         if (indx != 1) {
-            fieldP.setBackground(primaryColor);
+            fieldP.setBackground(defaultColor);
             fieldL.setForeground(textColor);
         }
     }//GEN-LAST:event_fieldPMouseExited
 
     private void fieldPMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fieldPMouseReleased
-        fieldP.setBackground(primaryColor);
+        fieldP.setBackground(defaultColor);
         fieldL.setForeground(textColor);
     }//GEN-LAST:event_fieldPMouseReleased
 
@@ -524,30 +625,22 @@ public class MainPage extends javax.swing.JFrame {
 
     private void collogPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_collogPMouseEntered
         if (indx != 2) {
-            collogP.setBackground(secondaryColor);
+            collogP.setBackground(mousePassedColor);
             collogL.setForeground(Color.LIGHT_GRAY);
         }
     }//GEN-LAST:event_collogPMouseEntered
 
     private void collogPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_collogPMouseExited
         if (indx != 2) {
-            collogP.setBackground(primaryColor);
+            collogP.setBackground(defaultColor);
             collogL.setForeground(textColor);
         }
     }//GEN-LAST:event_collogPMouseExited
 
     private void collogPMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_collogPMouseReleased
-        collogP.setBackground(primaryColor);
+        collogP.setBackground(defaultColor);
         collogL.setForeground(textColor);
     }//GEN-LAST:event_collogPMouseReleased
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        //
-    }//GEN-LAST:event_formWindowClosing
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
-    }//GEN-LAST:event_formWindowOpened
 
     private void exitButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMouseEntered
         exitButton.setIcon(new ImageIcon(getClass().getResource("/editor_1_1/closeIconCrossed.png")));
@@ -560,6 +653,26 @@ public class MainPage extends javax.swing.JFrame {
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         close();
     }//GEN-LAST:event_exitButtonActionPerformed
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        jDialog1.setVisible(true);
+    }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void exitButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButton1MouseEntered
+        exitButton1.setIcon(new ImageIcon(getClass().getResource("/editor_1_1/closeIconCrossed.png")));
+    }//GEN-LAST:event_exitButton1MouseEntered
+
+    private void exitButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButton1MouseExited
+        exitButton1.setIcon(new ImageIcon(getClass().getResource("/editor_1_1/closeIconEmpty.png")));
+    }//GEN-LAST:event_exitButton1MouseExited
+
+    private void exitButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton1ActionPerformed
+        jDialog1.setVisible(false);
+    }//GEN-LAST:event_exitButton1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jFileChooser1.showDialog(jPanel1, "Scegli l'immagine");
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     private void initPersonalComponent() {
         langRead = new ReadLanguagesFile();
@@ -579,8 +692,9 @@ public class MainPage extends javax.swing.JFrame {
         tranTable = new TranslationMenuGenerator(tranList, checkBoxTable.getLanguages(langList));
         tranTable.setFont(mainF);
         
-        primaryColor = Color.decode("#607D8B"); //sclego il colore primario
-        secondaryColor = Color.decode("#5E7A88");
+        defaultColor = Color.decode("#607D8B"); //sclego il colore primario
+        mousePassedColor = Color.decode("#5E7A88");
+        selectedColor = Color.decode("#718D9C");
         textColor = Color.decode("#ECEFF1"); //sclego il colore dei testi
         
         shadow = new DropShadowBorder();
@@ -592,11 +706,6 @@ public class MainPage extends javax.swing.JFrame {
         shadow.setShowBottomShadow(true);
         shadow.setShadowSize(10);
         shadow.setCornerSize(25);
-        
-        /*checkBoxLang.add(new CheckBoxGenerator("itFlag.png", "Italiano"));
-        checkBoxLang.add(new CheckBoxGenerator("enFlag.png", "English"));
-        checkLang.add(checkBoxLang.get(0));
-        checkLang.add(checkBoxLang.get(1));*/
     }
     
     
@@ -606,212 +715,73 @@ public class MainPage extends javax.swing.JFrame {
         collog.setVisible(false);
         
         pnlScrPnIN.add(checkBoxTable);
-        pnlScrTraIn.add(tranTable);
+        
+        jDialog1.setLocationRelativeTo(null);
     }
     
     private void selection(byte finalIndx) {
+        switch (indx) {
+            case 0: {
+                langP.setBackground(defaultColor);
+                langL.setForeground(textColor);
+            }break;
+            case 1: {
+                fieldP.setBackground(defaultColor);
+                fieldL.setForeground(textColor);
+            }break;
+            case 2: {
+                collogP.setBackground(defaultColor);
+                collogL.setForeground(textColor);
+            }break;
+        }
         switch (finalIndx) {
             case 0: {
-                langP.setBackground(primaryColor);
+                langP.setBackground(selectedColor);
                 langL.setForeground(textColor);
                 lang.setVisible(true);
                 fiel.setVisible(false);
                 collog.setVisible(false);
-            }; break;
+            }break;
             case 1: {
-                fieldP.setBackground(primaryColor);
+                fieldP.setBackground(selectedColor);
                 fieldL.setForeground(textColor);
                 lang.setVisible(false);
                 fiel.setVisible(true);
                 collog.setVisible(false);
-            }; break;
+            }break;
             case 2: {
-                collogP.setBackground(primaryColor);
+                collogP.setBackground(selectedColor);
                 collogL.setForeground(textColor);
                 lang.setVisible(false);
                 fiel.setVisible(false);
                 collog.setVisible(true);
-            }; break;
+            }break;
         }
         
         indx = finalIndx;
     }
     
-    /*private void sliding(byte finalIndx) {
-        switch (indx) {
-            case 0: {
-                langP.setBackground(primaryColor);
-                langL.setForeground(textColor);
-                switch (finalIndx) {
-                case 1: slideOnceRight(-super.getWidth(), 0, super.getWidth(), fieldP.getX()); break;
-                case 2: slideTwiceRight(-super.getWidth(), -super.getWidth(), 0, collogP.getX()); break;
-                }
-            }; break;
-            case 1: {
-                fieldP.setBackground(primaryColor);
-                fieldL.setForeground(textColor);
-                switch (finalIndx) {
-                case 0: slideOnceLeft(0, super.getWidth(), super.getWidth(), langP.getX()); break;
-                case 2: slideOnceRight(-super.getWidth(), -super.getWidth(), 0, collogP.getX()); break;
-                }
-            }; break;
-            case 2: {
-                collogP.setBackground(primaryColor);
-                collogL.setForeground(textColor);
-                switch (finalIndx) {
-                case 0: slideTwiceLeft(0, super.getWidth(), super.getWidth(), langP.getX()); break;
-                case 1: slideOnceLeft(-super.getWidth(), 0, super.getWidth(), fieldP.getX()); break;
-                }
-            }; break;
-        }
-        
-        indx = finalIndx;
-    }
-    
-    private void slideOnceLeft(int posX1, int posX2, int posX3, int posXBar) {
-        try {
-            try {
-                s1.join();
-            } catch (InterruptedException ex) {}
-        } catch (Exception e) {};
-        try {
-            try {
-                s2.join();
-            } catch (InterruptedException ex) {}
-        } catch (Exception e) {};
-        try {
-            try {
-                s3.join();
-            } catch (InterruptedException ex) {}
-        } catch (Exception e) {};
-        try {
-            try {
-                s4.join();
-            } catch (InterruptedException ex) {}
-        } catch (Exception e) {};
-        
-        
-        s1 = new SlidingAnimation(lang, posX1, 3);
-        s2 = new SlidingAnimation(fiel, posX2, 3);
-        s3 = new SlidingAnimation(collog, posX3, 3);
-        s4 = new SlidingAnimation(currentSec, posXBar, 1);
-        
-        s1.start();
-        s2.start();
-        s3.start();
-        s4.start();
-    }
-    
-    private void slideOnceRight(int posX1, int posX2, int posX3, int posXBar) {
-        try {
-            try {
-                s1.join();
-            } catch (InterruptedException ex) {}
-        } catch (Exception e) {};
-        try {
-            try {
-                s2.join();
-            } catch (InterruptedException ex) {}
-        } catch (Exception e) {};
-        try {
-            try {
-                s3.join();
-            } catch (InterruptedException ex) {}
-        } catch (Exception e) {};
-        try {
-            try {
-                s4.join();
-            } catch (InterruptedException ex) {}
-        } catch (Exception e) {};
-       
-        s1 = new SlidingAnimation(lang, posX1, 3);
-        s2 = new SlidingAnimation(fiel, posX2, 3);
-        s3 = new SlidingAnimation(collog, posX3, 3);
-        s4 = new SlidingAnimation(currentSec, posXBar, 1);
-        
-        s1.start();
-        s2.start();
-        s3.start();
-        s4.start();
-    }
-    
-    private void slideTwiceLeft(int posX1, int posX2, int posX3, int posXBar) {
-        try {
-            try {
-                s1.join();
-            } catch (InterruptedException ex) {}
-        } catch (Exception e) {};
-        try {
-            try {
-                s2.join();
-            } catch (InterruptedException ex) {}
-        } catch (Exception e) {};
-        try {
-            try {
-                s3.join();
-            } catch (InterruptedException ex) {}
-        } catch (Exception e) {};
-        try {
-            try {
-                s4.join();
-            } catch (InterruptedException ex) {}
-        } catch (Exception e) {};
-        
-        s1 = new SlidingAnimation(lang, posX1, 3);
-        fiel.setLocation(posX2, fiel.getY());
-        s3 = new SlidingAnimation(collog, posX3, 3);
-        s4 = new SlidingAnimation(currentSec, posXBar, 2);
-        
-        s1.start();
-        s3.start();
-        s4.start();
-    }
-    
-    private void slideTwiceRight(int posX1, int posX2, int posX3, int posXBar) {
-        try {
-            try {
-                s1.join();
-            } catch (InterruptedException ex) {}
-        } catch (Exception e) {};
-        try {
-            try {
-                s2.join();
-            } catch (InterruptedException ex) {}
-        } catch (Exception e) {};
-        try {
-            try {
-                s3.join();
-            } catch (InterruptedException ex) {}
-        } catch (Exception e) {};
-        try {
-            try {
-                s4.join();
-            } catch (InterruptedException ex) {}
-        } catch (Exception e) {};
-        
-        
-        
-        s1 = new SlidingAnimation(lang, posX1, 3);
-        fiel.setLocation(posX2, fiel.getY());
-        s3 = new SlidingAnimation(collog, posX3, 3);
-        s4 = new SlidingAnimation(currentSec, posXBar, 2);
-        
-        s1.start();
-        s3.start();
-        s4.start();
-    }*/
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel barIcon;
+    private javax.swing.JLabel barIcon1;
     private javax.swing.JPanel collog;
     private javax.swing.JLabel collogL;
     private javax.swing.JPanel collogP;
     private javax.swing.JButton exitButton;
+    private javax.swing.JButton exitButton1;
     private javax.swing.JPanel fiel;
     private javax.swing.JLabel fieldL;
     private javax.swing.JPanel fieldP;
     private javax.swing.JLayeredPane headerLayPane;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JDialog jDialog1;
+    private javax.swing.JFileChooser jFileChooser1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel lang;
     private javax.swing.JLabel langL;
     private javax.swing.JPanel langP;
@@ -827,10 +797,12 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel pnlScrTraEx;
     private javax.swing.JPanel pnlScrTraIn;
     private javax.swing.JPanel pnlTopHeader;
+    private javax.swing.JPanel pnlTopHeader1;
     private javax.swing.JLayeredPane previewLayPane;
     private javax.swing.JScrollPane scrollPaneLang;
     private javax.swing.JScrollPane scrollPaneTran;
     private javax.swing.JLabel titleLbl;
+    private javax.swing.JLabel titleLbl1;
     // End of variables declaration//GEN-END:variables
 
     private void close() {
