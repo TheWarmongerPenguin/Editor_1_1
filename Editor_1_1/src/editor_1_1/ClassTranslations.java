@@ -7,34 +7,29 @@ import java.io.Serializable;
  * @author Samuele Pozzebon
  */
 class ClassTranslations implements Serializable{
-    String field;
-    String[] translations;
+    private String field;
+    private String[] translations;
     
     public ClassTranslations() {}
     
     public ClassTranslations(String fi, String[] tran) {        //costruttore in caso sia inserito stringa del campi (in italiano) e array di stringhe delle traduzioni
         field = fi;
         translations = new String[tran.length];
-        
-        int cont = 0;
+        translations = tran;
+        /*int cont = 0;
         while(true) {
             try {
                 translations[cont] = tran[cont];
             } catch (NullPointerException e) {break;}
             cont++;
-        }
+        }*/
     }
     
     public ClassTranslations(String[] tran) {                   //costruttore in caso sia utilizzato un array di stringhe unico
         field = tran[0];
         translations = new String[tran.length-1];
-        
-        int cont = 0;
-        while(true) {
-            try {
-                translations[cont] = tran[cont+1];
-            } catch (NullPointerException e) {break;}
-            cont++;
+        for(int cont = 0; cont < tran.length-1; cont ++) {
+            translations[cont] = tran[cont+1];
         }
     }
     
@@ -49,6 +44,10 @@ class ClassTranslations implements Serializable{
     
     public String[] getTranslations() {
         return translations;
+    }
+    
+    public int getTranslationsLenght() {
+        return translations.length;
     }
     
     public void setField(String lang) {

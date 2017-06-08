@@ -35,7 +35,15 @@ public class TranslationMenuGenerator extends JTable implements Serializable{
             try {
                 tran = list.get(contatore);
                 campo = tran.getField();
-                Object[] obj = {tran.getField(), tran.getTranslations()};
+                Object[] obj = new Object[tran.getTranslationsLenght()];
+                obj[0] = tran.getField();
+                int cont = 0;
+                while(true) {
+                    try {
+                        
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                    }
+                }
                 model.addRow(obj);
             } catch (Exception e) { break; }
             contatore ++;

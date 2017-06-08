@@ -2,10 +2,8 @@ package editor_1_1;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import org.jdesktop.swingx.border.DropShadowBorder; 
 
@@ -31,10 +29,13 @@ public class MainPage extends javax.swing.JFrame {
     Font subTitleFont;
     
     CheckBoxGenerator checkBoxTable;
-    
     ReadLanguagesFile langRead;
     OutLanguagesFile langOut;
     List<ClassLanguages> langList;
+    
+    TranslationMenuGenerator tranTable;
+    ReadTranslationsFile tranRead;
+    OutTranslationsFile tranOut;
     List<ClassTranslations> tranList;
     
     public MainPage() {
@@ -679,18 +680,34 @@ public class MainPage extends javax.swing.JFrame {
     private void initPersonalComponent() {
         langRead = new ReadLanguagesFile();
         langList = langRead.getList();
+        
+        tranRead = new ReadTranslationsFile();
+        tranList = tranRead.getList();
+        
         mainF = new Font("Sans Serif",Font.PLAIN, 15);
         subTitleFont = new Font("Sans Serif",Font.PLAIN, 19);
         
         checkBoxTable = new CheckBoxGenerator(langList);
         checkBoxTable.setFont(mainF);
-        if (tranList != null) {checkBoxTable = new CheckBoxGenerator(tranList);}
+        
+        /*tranList = new ArrayList<>();
+        String[] n = {"Name"};
+        String[] s = {"Surname"};
+        String[] c = {"Company"};
+        String[] r = {"Company referrer"};
+        
+        tranList.add(new ClassTranslations("Nome", n));
+        tranList.add(new ClassTranslations("Cognome", s));
+        tranList.add(new ClassTranslations("Azienda", c));
+        tranList.add(new ClassTranslations("Referente aziendale", r));
+        
+        /*if (tranList != null) {checkBoxTable = new CheckBoxGenerator(tranList);}
         else {
             tranList = new ArrayList<>();
             tranList.add(new ClassTranslations("Nome", "Name"));
             tranList.add(new ClassTranslations("Cgnome", "Surname"));
             tranTable = new tranTable(tranList, checkBoxTable.getLanguages(langList));
-        };
+        };*/
         tranTable = new TranslationMenuGenerator(tranList, checkBoxTable.getLanguages(langList));
         tranTable.setFont(mainF);
         
@@ -808,6 +825,7 @@ public class MainPage extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void close() {
+        tranOut = new OutTranslationsFile(tranList);
         langOut = new OutLanguagesFile(langList);
         System.out.println("Languages printed");
         System.out.println("closing");
