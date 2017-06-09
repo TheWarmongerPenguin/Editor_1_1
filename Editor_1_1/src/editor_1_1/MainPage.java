@@ -100,10 +100,8 @@ public class MainPage extends javax.swing.JFrame {
 
         jDialog1.setAlwaysOnTop(true);
         jDialog1.setLocation(new java.awt.Point(0, 0));
-        jDialog1.setMaximumSize(new java.awt.Dimension(300, 200));
         jDialog1.setMinimumSize(new java.awt.Dimension(300, 200));
         jDialog1.setUndecorated(true);
-        jDialog1.setPreferredSize(new java.awt.Dimension(300, 200));
         jDialog1.setResizable(false);
         jDialog1.setSize(new java.awt.Dimension(300, 200));
         jDialog1.getContentPane().setLayout(null);
@@ -259,9 +257,9 @@ public class MainPage extends javax.swing.JFrame {
 
         mobileFrame.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mobileFrame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/mobileFrame.png"))); // NOI18N
+        previewLayPane.setLayer(mobileFrame, javax.swing.JLayeredPane.PALETTE_LAYER);
         previewLayPane.add(mobileFrame);
         mobileFrame.setBounds(0, 0, 400, 542);
-        previewLayPane.setLayer(mobileFrame, javax.swing.JLayeredPane.PALETTE_LAYER);
 
         mobileBack.setBackground(new java.awt.Color(0, 0, 0));
         mobileBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -524,6 +522,8 @@ public class MainPage extends javax.swing.JFrame {
         pnlScrTraEx.setPreferredSize(new java.awt.Dimension(350, 350));
         pnlScrTraEx.setLayout(null);
 
+        pnlScrTraIn.setBackground(new java.awt.Color(204, 255, 204));
+
         javax.swing.GroupLayout pnlScrTraInLayout = new javax.swing.GroupLayout(pnlScrTraIn);
         pnlScrTraIn.setLayout(pnlScrTraInLayout);
         pnlScrTraInLayout.setHorizontalGroup(
@@ -689,8 +689,8 @@ public class MainPage extends javax.swing.JFrame {
         
         checkBoxTable = new CheckBoxGenerator(langList);
         checkBoxTable.setFont(mainF);
-        
-        /*tranList = new ArrayList<>();
+        /*
+        tranList = new ArrayList<>();
         String[] n = {"Name"};
         String[] s = {"Surname"};
         String[] c = {"Company"};
@@ -734,7 +734,7 @@ public class MainPage extends javax.swing.JFrame {
         collog.setVisible(false);
         
         pnlScrPnIN.add(checkBoxTable);
-        
+        pnlScrTraIn.add(tranTable);
         jDialog1.setLocationRelativeTo(null);
     }
     

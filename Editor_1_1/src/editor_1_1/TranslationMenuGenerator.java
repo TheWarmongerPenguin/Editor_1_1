@@ -8,7 +8,6 @@ package editor_1_1;
 import java.io.Serializable;
 import java.util.List;
 import javax.swing.JTable;
-import static javax.swing.JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS;
 import javax.swing.table.DefaultTableModel;
 import java.lang.String;
 
@@ -22,11 +21,12 @@ public class TranslationMenuGenerator extends JTable implements Serializable{
     String campo;
     
     public TranslationMenuGenerator(List<ClassTranslations> list, String[] languages) {
+        columnNames = languages;
         modelSetting();
         setModel(model);
-        setAutoResizeMode(AUTO_RESIZE_SUBSEQUENT_COLUMNS);
+        setAutoResizeMode(AUTO_RESIZE_ALL_COLUMNS);
         setRowHeight(36);
-        setTableHeader(null);
+        //setTableHeader(new JTableHeader(columnModel));
         setShowVerticalLines(false);
         int contatore = 0;
         ClassTranslations tran;
@@ -35,30 +35,19 @@ public class TranslationMenuGenerator extends JTable implements Serializable{
             try {
                 tran = list.get(contatore);
                 campo = tran.getField();
-                Object[] obj = new Object[tran.getTranslationsLenght()];
+                Object[] obj = new Object[tran.getTranslationsLenght()+1];
                 obj[0] = tran.getField();
+                String[] t = tran.getTranslations();
                 int cont = 0;
                 while(true) {
                     try {
-                        
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                    }
+                        obj[cont+1] = t[cont];
+                    } catch (ArrayIndexOutOfBoundsException e) {break;}
+                    cont++;
                 }
                 model.addRow(obj);
             } catch (Exception e) { break; }
             contatore ++;
-        }
-        //getColumnModel().getColumn(0).setPreferredWidth(36);
-        //getColumnModel().getColumn(1).setPreferredWidth(100);
-        //getColumnModel().getColumn(2).setPreferredWidth(107);
-        
-        columnNames = new String[languages.length-1];
-        int cont = 0;
-        while (true) {
-            try {
-                columnNames[cont] = languages[cont];
-            } catch (Exception e) { break; }
-            cont++;
         }
     }
     
@@ -68,13 +57,13 @@ public class TranslationMenuGenerator extends JTable implements Serializable{
 
     private void modelSetting() {
         model = new DefaultTableModel(null,columnNames){
-            @Override
+            /*@Override
             public Class<?> getColumnClass(int column) {
                 switch (column) {
                     default:
                         return String.class;
                 }
-            }
+            }*/
             @Override
             public boolean isCellEditable(int row, int col) {
                 switch (col) {

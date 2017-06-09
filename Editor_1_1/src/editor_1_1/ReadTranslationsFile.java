@@ -15,7 +15,7 @@ public class ReadTranslationsFile {
 
     
     public List<ClassTranslations> getList() {
-        return this.readFile;
+        return readFile;
     }  
     
     public ReadTranslationsFile() {

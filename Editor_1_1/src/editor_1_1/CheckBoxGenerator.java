@@ -95,7 +95,7 @@ public class CheckBoxGenerator extends JTable implements Serializable{
     }
     
     public String[] getLanguages(List<ClassLanguages> list) {
-        String[] languages = new String[list.size()-1];
+        String[] languages = new String[list.size()];
         ClassLanguages lang;
         int contatore = 0;
         while (true) { 
