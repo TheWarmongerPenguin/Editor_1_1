@@ -13,7 +13,7 @@ public class ReadGeneralFile {
     private ClassGeneralSettings readFile = new ClassGeneralSettings();
 
     
-    public ClassGeneralSettings getList() {
+    public ClassGeneralSettings getSet() {
         return this.readFile;
     }  
     

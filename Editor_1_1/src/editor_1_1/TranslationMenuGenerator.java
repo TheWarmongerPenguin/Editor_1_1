@@ -5,7 +5,6 @@
  */
 package editor_1_1;
 
-import java.io.Serializable;
 import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -15,7 +14,7 @@ import java.lang.String;
  *
  * @author samuele.pozzebon
  */
-public class TranslationMenuGenerator extends JTable implements Serializable{
+public class TranslationMenuGenerator extends JTable{
     String[] columnNames;
     DefaultTableModel model;
     String campo;
@@ -24,9 +23,9 @@ public class TranslationMenuGenerator extends JTable implements Serializable{
         columnNames = languages;
         modelSetting();
         setModel(model);
-        setAutoResizeMode(AUTO_RESIZE_ALL_COLUMNS);
-        setRowHeight(36);
-        //setTableHeader(new JTableHeader(columnModel));
+        //setAutoResizeMode(AUTO_RESIZE_ALL_COLUMNS);
+        setRowHeight(25);
+        //setTableHeader(null);
         setShowVerticalLines(false);
         int contatore = 0;
         ClassTranslations tran;

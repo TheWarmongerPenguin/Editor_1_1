@@ -4,7 +4,6 @@ package editor_1_1;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Samuele Pozzebon
  */
-public class CheckBoxGenerator extends JTable implements Serializable{
+public class CheckBoxGenerator extends JTable{
     
     String[] columnNames = {"Visible", "Flag", "Language"};
     DefaultTableModel model;

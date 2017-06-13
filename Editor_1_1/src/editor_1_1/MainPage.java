@@ -2,7 +2,6 @@ package editor_1_1;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -39,6 +38,10 @@ public class MainPage extends javax.swing.JFrame {
     OutTranslationsFile tranOut;
     List<ClassTranslations> tranList;
     
+    ReadGeneralFile genRead;
+    OutGeneralFile genOut;
+    ClassGeneralSettings genSet;
+    
     public MainPage() {
         initPersonalComponent();
         initComponents();
@@ -54,8 +57,8 @@ public class MainPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFileChooser1 = new javax.swing.JFileChooser();
-        jDialog1 = new javax.swing.JDialog();
+        jFileChooser = new javax.swing.JFileChooser();
+        JDialAddLang = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -68,15 +71,12 @@ public class MainPage extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jColorChooser = new javax.swing.JColorChooser();
+        jDialog1 = new javax.swing.JDialog();
         pnlTopHeader = new javax.swing.JPanel();
         exitButton = new javax.swing.JButton();
         barIcon = new javax.swing.JLabel();
         titleLbl = new javax.swing.JLabel();
-        leftLayPane = new javax.swing.JLayeredPane();
-        leftPane = new javax.swing.JPanel();
-        previewLayPane = new javax.swing.JLayeredPane();
-        mobileFrame = new javax.swing.JLabel();
-        mobileBack = new javax.swing.JLabel();
         pnlMenu = new javax.swing.JPanel();
         headerLayPane = new javax.swing.JLayeredPane();
         langP = new javax.swing.JPanel();
@@ -90,32 +90,67 @@ public class MainPage extends javax.swing.JFrame {
         pnlScrPnEX = new javax.swing.JPanel();
         scrollPaneLang = new javax.swing.JScrollPane();
         pnlScrPnIN = new javax.swing.JPanel();
-        pnlBtnAdd = new javax.swing.JPanel();
+        pnlBtnAddLang = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         fiel = new javax.swing.JPanel();
         pnlScrTraEx = new javax.swing.JPanel();
         scrollPaneTran = new javax.swing.JScrollPane();
         pnlScrTraIn = new javax.swing.JPanel();
+        lblAddField = new javax.swing.JLabel();
         collog = new javax.swing.JPanel();
+        lblColBack = new javax.swing.JLabel();
+        lblColText = new javax.swing.JLabel();
+        lblColBox = new javax.swing.JLabel();
+        lblColExHead = new javax.swing.JLabel();
+        lblColInHead = new javax.swing.JLabel();
+        lblColIcon = new javax.swing.JLabel();
+        lblLogoDir = new javax.swing.JLabel();
+        lblColExHeadChoose = new javax.swing.JLabel();
+        lblColInHeadChoose = new javax.swing.JLabel();
+        lblColBoxChoose = new javax.swing.JLabel();
+        lblColTextChoose = new javax.swing.JLabel();
+        lblColBackChoose = new javax.swing.JLabel();
+        comBoxIcon = new javax.swing.JComboBox<>();
+        lblColInHeadCode = new javax.swing.JLabel();
+        lblColExHeadCode = new javax.swing.JLabel();
+        lblColBoxCode = new javax.swing.JLabel();
+        lblColTextCode = new javax.swing.JLabel();
+        lblColBackCode = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
+        lblLogoChoose = new javax.swing.JLabel();
+        lblDataPer = new javax.swing.JLabel();
+        lblSubTColLog = new javax.swing.JLabel();
+        lblSubTPri = new javax.swing.JLabel();
+        lblPriInfo = new javax.swing.JLabel();
+        lblUtlT = new javax.swing.JLabel();
+        txtFPriInfo = new javax.swing.JTextField();
+        txtFUtlT = new javax.swing.JTextField();
+        lblSave = new javax.swing.JLabel();
+        lblColTextAdv = new javax.swing.JLabel();
+        lblColTextAdvChoos = new javax.swing.JLabel();
+        lblColTextAdvCode = new javax.swing.JLabel();
+        txtFDataPer = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
-        jFileChooser1.setApproveButtonText("Aggiungi");
-        jFileChooser1.setCurrentDirectory(new java.io.File("C:\\Users\\Samuele Pozzebon\\Pictures"));
-        jFileChooser1.setPreferredSize(new java.awt.Dimension(570, 400));
-        jFileChooser1.addActionListener(new java.awt.event.ActionListener() {
+        jFileChooser.setApproveButtonText("Aggiungi");
+        jFileChooser.setCurrentDirectory(new java.io.File("C:\\Users\\Samuele Pozzebon\\Pictures"));
+        jFileChooser.setPreferredSize(new java.awt.Dimension(570, 400));
+        jFileChooser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFileChooser1ActionPerformed(evt);
+                jFileChooserActionPerformed(evt);
             }
         });
-        jFileChooser1.getAccessibleContext().setAccessibleParent(pnlTopHeader);
-        jFileChooser1.setLocation(0, 0);
+        jFileChooser.getAccessibleContext().setAccessibleParent(pnlTopHeader);
+        jFileChooser.setLocation(0, 0);
 
-        jDialog1.setLocation(new java.awt.Point(0, 0));
-        jDialog1.setMinimumSize(new java.awt.Dimension(300, 200));
-        jDialog1.setUndecorated(true);
-        jDialog1.setResizable(false);
-        jDialog1.setSize(new java.awt.Dimension(300, 200));
-        jDialog1.getContentPane().setLayout(null);
+        JDialAddLang.setLocation(new java.awt.Point(0, 0));
+        JDialAddLang.setMinimumSize(new java.awt.Dimension(300, 200));
+        JDialAddLang.setUndecorated(true);
+        JDialAddLang.setResizable(false);
+        JDialAddLang.setSize(new java.awt.Dimension(300, 200));
+        JDialAddLang.getContentPane().setLayout(null);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(defaultColor));
         jPanel2.setMaximumSize(new java.awt.Dimension(300, 200));
@@ -181,7 +216,6 @@ public class MainPage extends javax.swing.JFrame {
         pnlTopHeader1.setBounds(1, 1, 298, 24);
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        jLabel3.setText("jLabel3");
         jPanel2.add(jLabel3);
         jLabel3.setBounds(140, 100, 130, 20);
 
@@ -243,23 +277,34 @@ public class MainPage extends javax.swing.JFrame {
         jPanel2.add(jPanel4);
         jPanel4.setBounds(100, 150, 100, 20);
 
-        jDialog1.getContentPane().add(jPanel2);
+        JDialAddLang.getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 300, 200);
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Site editor");
         setBackground(new java.awt.Color(255, 255, 255));
         setLocation(new java.awt.Point(0, 0));
-        setMinimumSize(new java.awt.Dimension(804, 623));
+        setMinimumSize(new java.awt.Dimension(402, 623));
         setName("Site editor"); // NOI18N
         setUndecorated(true);
-        setSize(new java.awt.Dimension(804, 623));
+        setSize(new java.awt.Dimension(402, 623));
         getContentPane().setLayout(null);
 
         pnlTopHeader.setBackground(new java.awt.Color(255, 255, 255));
-        pnlTopHeader.setMaximumSize(new java.awt.Dimension(804, 25));
-        pnlTopHeader.setMinimumSize(new java.awt.Dimension(804, 25));
-        pnlTopHeader.setPreferredSize(new java.awt.Dimension(804, 24));
+        pnlTopHeader.setMaximumSize(new java.awt.Dimension(402, 24));
+        pnlTopHeader.setMinimumSize(new java.awt.Dimension(402, 24));
+        pnlTopHeader.setPreferredSize(new java.awt.Dimension(402, 24));
         pnlTopHeader.setLayout(null);
 
         exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/closeIconEmpty.png"))); // NOI18N
@@ -285,7 +330,7 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
         pnlTopHeader.add(exitButton);
-        exitButton.setBounds(784, 5, 14, 14);
+        exitButton.setBounds(383, 5, 14, 14);
 
         barIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/editor_icon.jpg"))); // NOI18N
         pnlTopHeader.add(barIcon);
@@ -297,52 +342,14 @@ public class MainPage extends javax.swing.JFrame {
         titleLbl.setPreferredSize(new java.awt.Dimension(200, 25));
         titleLbl.setRequestFocusEnabled(false);
         pnlTopHeader.add(titleLbl);
-        titleLbl.setBounds(302, 0, 200, 25);
+        titleLbl.setBounds(101, 0, 200, 25);
 
         getContentPane().add(pnlTopHeader);
-        pnlTopHeader.setBounds(0, 0, 804, 24);
-
-        leftLayPane.setAlignmentX(0.0F);
-        leftLayPane.setAlignmentY(0.0F);
-        leftLayPane.setMaximumSize(new java.awt.Dimension(402, 598));
-        leftLayPane.setMinimumSize(new java.awt.Dimension(402, 598));
-        leftLayPane.setLayout(new java.awt.BorderLayout());
-
-        leftPane.setMaximumSize(new java.awt.Dimension(400, 542));
-        leftPane.setMinimumSize(new java.awt.Dimension(400, 542));
-        leftPane.setRequestFocusEnabled(false);
-        leftPane.setLayout(null);
-
-        previewLayPane.setBorder(shadow);
-        previewLayPane.setMaximumSize(new java.awt.Dimension(400, 598));
-        previewLayPane.setMinimumSize(new java.awt.Dimension(400, 598));
-
-        mobileFrame.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        mobileFrame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/mobileFrame.png"))); // NOI18N
-        previewLayPane.setLayer(mobileFrame, javax.swing.JLayeredPane.PALETTE_LAYER);
-        previewLayPane.add(mobileFrame);
-        mobileFrame.setBounds(0, 0, 400, 542);
-
-        mobileBack.setBackground(new java.awt.Color(0, 0, 0));
-        mobileBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        mobileBack.setMaximumSize(new java.awt.Dimension(169, 304));
-        mobileBack.setMinimumSize(new java.awt.Dimension(169, 304));
-        mobileBack.setOpaque(true);
-        mobileBack.setPreferredSize(new java.awt.Dimension(169, 304));
-        previewLayPane.add(mobileBack);
-        mobileBack.setBounds(115, 117, 169, 304);
-
-        leftPane.add(previewLayPane);
-        previewLayPane.setBounds(0, 0, 400, 598);
-
-        leftLayPane.add(leftPane, java.awt.BorderLayout.CENTER);
-
-        getContentPane().add(leftLayPane);
-        leftLayPane.setBounds(0, 24, 402, 619);
+        pnlTopHeader.setBounds(0, 0, 402, 24);
 
         pnlMenu.setMaximumSize(new java.awt.Dimension(402, 542));
         pnlMenu.setMinimumSize(new java.awt.Dimension(402, 542));
-        pnlMenu.setPreferredSize(new java.awt.Dimension(402, 542));
+        pnlMenu.setPreferredSize(new java.awt.Dimension(402, 599));
         pnlMenu.setLayout(null);
 
         headerLayPane.setBorder(shadow);
@@ -509,18 +516,20 @@ public class MainPage extends javax.swing.JFrame {
 
         scrollPaneLang.setMaximumSize(new java.awt.Dimension(350, 300));
         scrollPaneLang.setMinimumSize(new java.awt.Dimension(350, 300));
+        scrollPaneLang.setOpaque(false);
         scrollPaneLang.setPreferredSize(new java.awt.Dimension(250, 300));
 
+        pnlScrPnIN.setBackground(new java.awt.Color(255, 255, 255));
         pnlScrPnIN.setLayout(new java.awt.GridLayout(2, 0));
         scrollPaneLang.setViewportView(pnlScrPnIN);
 
         pnlScrPnEX.add(scrollPaneLang);
         scrollPaneLang.setBounds(76, 30, 250, 300);
 
-        pnlBtnAdd.setMaximumSize(new java.awt.Dimension(402, 107));
-        pnlBtnAdd.setMinimumSize(new java.awt.Dimension(402, 107));
-        pnlBtnAdd.setPreferredSize(new java.awt.Dimension(402, 107));
-        pnlBtnAdd.setLayout(null);
+        pnlBtnAddLang.setMaximumSize(new java.awt.Dimension(402, 107));
+        pnlBtnAddLang.setMinimumSize(new java.awt.Dimension(402, 107));
+        pnlBtnAddLang.setPreferredSize(new java.awt.Dimension(402, 107));
+        pnlBtnAddLang.setLayout(null);
 
         jPanel1.setBackground(defaultColor);
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -533,7 +542,7 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(subTitleFont);
+        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel1.setForeground(textColor);
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Aggiungi lingua");
@@ -552,7 +561,7 @@ public class MainPage extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pnlBtnAdd.add(jPanel1);
+        pnlBtnAddLang.add(jPanel1);
         jPanel1.setBounds(126, 20, 150, 35);
 
         javax.swing.GroupLayout langLayout = new javax.swing.GroupLayout(lang);
@@ -561,7 +570,7 @@ public class MainPage extends javax.swing.JFrame {
             langLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblLang1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnlScrPnEX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlBtnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlBtnAddLang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         langLayout.setVerticalGroup(
             langLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -570,7 +579,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(pnlScrPnEX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(pnlBtnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnlBtnAddLang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlMenu.add(lang);
@@ -584,26 +593,36 @@ public class MainPage extends javax.swing.JFrame {
         pnlScrTraEx.setPreferredSize(new java.awt.Dimension(350, 350));
         pnlScrTraEx.setLayout(null);
 
-        pnlScrTraIn.setBackground(new java.awt.Color(204, 255, 204));
+        scrollPaneTran.setAutoscrolls(true);
+        scrollPaneTran.setPreferredSize(new java.awt.Dimension(350, 310));
 
-        javax.swing.GroupLayout pnlScrTraInLayout = new javax.swing.GroupLayout(pnlScrTraIn);
-        pnlScrTraIn.setLayout(pnlScrTraInLayout);
-        pnlScrTraInLayout.setHorizontalGroup(
-            pnlScrTraInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 348, Short.MAX_VALUE)
-        );
-        pnlScrTraInLayout.setVerticalGroup(
-            pnlScrTraInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 348, Short.MAX_VALUE)
-        );
-
+        pnlScrTraIn.setBackground(new java.awt.Color(255, 255, 255));
+        pnlScrTraIn.setLayout(new java.awt.GridLayout());
         scrollPaneTran.setViewportView(pnlScrTraIn);
+        pnlScrTraIn.setSize(pnlScrTraIn.getWidth(), (tranTable.getRowHeight()*tranTable.getRowCount()));
 
         pnlScrTraEx.add(scrollPaneTran);
-        scrollPaneTran.setBounds(0, 0, 350, 350);
+        scrollPaneTran.setBounds(0, 0, 350, 310);
 
         fiel.add(pnlScrTraEx);
-        pnlScrTraEx.setBounds(26, 96, 350, 350);
+        pnlScrTraEx.setBounds(26, 96, 350, 310);
+
+        lblAddField.setBackground(new java.awt.Color(96, 125, 139));
+        lblAddField.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        lblAddField.setForeground(new java.awt.Color(236, 239, 241));
+        lblAddField.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAddField.setText("Aggiungi campo");
+        lblAddField.setMaximumSize(new java.awt.Dimension(150, 35));
+        lblAddField.setMinimumSize(new java.awt.Dimension(150, 35));
+        lblAddField.setOpaque(true);
+        lblAddField.setPreferredSize(new java.awt.Dimension(150, 35));
+        lblAddField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAddFieldMouseClicked(evt);
+            }
+        });
+        fiel.add(lblAddField);
+        lblAddField.setBounds(126, 455, 150, 35);
 
         pnlMenu.add(fiel);
         fiel.setBounds(0, 56, 402, 542);
@@ -611,22 +630,303 @@ public class MainPage extends javax.swing.JFrame {
         collog.setMaximumSize(new java.awt.Dimension(402, 542));
         collog.setPreferredSize(new java.awt.Dimension(402, 542));
 
+        lblColBack.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblColBack.setText("Colore di sfondo:");
+
+        lblColText.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblColText.setText("Colore del testo:");
+
+        lblColBox.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblColBox.setText("Colore box:");
+
+        lblColExHead.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblColExHead.setText("Colore esterno dell'header:");
+
+        lblColInHead.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblColInHead.setText("Colore interno dell'header:");
+
+        lblColIcon.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblColIcon.setText("Tema delle icone:");
+
+        lblLogoDir.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblLogoDir.setPreferredSize(new java.awt.Dimension(86, 20));
+
+        lblColExHeadChoose.setBackground(new java.awt.Color(96, 125, 139));
+        lblColExHeadChoose.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblColExHeadChoose.setForeground(new java.awt.Color(236, 239, 241));
+        lblColExHeadChoose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblColExHeadChoose.setText("Scegli il colore");
+        lblColExHeadChoose.setOpaque(true);
+        lblColExHeadChoose.setPreferredSize(new java.awt.Dimension(80, 20));
+
+        lblColInHeadChoose.setBackground(new java.awt.Color(96, 125, 139));
+        lblColInHeadChoose.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblColInHeadChoose.setForeground(new java.awt.Color(236, 239, 241));
+        lblColInHeadChoose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblColInHeadChoose.setText("Scegli il colore");
+        lblColInHeadChoose.setOpaque(true);
+        lblColInHeadChoose.setPreferredSize(new java.awt.Dimension(80, 20));
+
+        lblColBoxChoose.setBackground(new java.awt.Color(96, 125, 139));
+        lblColBoxChoose.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblColBoxChoose.setForeground(new java.awt.Color(236, 239, 241));
+        lblColBoxChoose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblColBoxChoose.setText("Scegli il colore");
+        lblColBoxChoose.setOpaque(true);
+        lblColBoxChoose.setPreferredSize(new java.awt.Dimension(80, 20));
+
+        lblColTextChoose.setBackground(new java.awt.Color(96, 125, 139));
+        lblColTextChoose.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblColTextChoose.setForeground(new java.awt.Color(236, 239, 241));
+        lblColTextChoose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblColTextChoose.setText("Scegli il colore");
+        lblColTextChoose.setOpaque(true);
+        lblColTextChoose.setPreferredSize(new java.awt.Dimension(80, 20));
+
+        lblColBackChoose.setBackground(new java.awt.Color(96, 125, 139));
+        lblColBackChoose.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblColBackChoose.setForeground(new java.awt.Color(236, 239, 241));
+        lblColBackChoose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblColBackChoose.setText("Scegli il colore");
+        lblColBackChoose.setOpaque(true);
+        lblColBackChoose.setPreferredSize(new java.awt.Dimension(80, 20));
+        lblColBackChoose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblColBackChooseMouseClicked(evt);
+            }
+        });
+
+        comBoxIcon.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        comBoxIcon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chiaro", "Scuro"}));
+        comBoxIcon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comBoxIconActionPerformed(evt);
+            }
+        });
+
+        lblColInHeadCode.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblColInHeadCode.setOpaque(true);
+        lblColInHeadCode.setPreferredSize(new java.awt.Dimension(86, 20));
+
+        lblColExHeadCode.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblColExHeadCode.setOpaque(true);
+        lblColExHeadCode.setPreferredSize(new java.awt.Dimension(86, 20));
+
+        lblColBoxCode.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblColBoxCode.setOpaque(true);
+        lblColBoxCode.setPreferredSize(new java.awt.Dimension(86, 20));
+
+        lblColTextCode.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblColTextCode.setOpaque(true);
+        lblColTextCode.setPreferredSize(new java.awt.Dimension(86, 20));
+
+        lblColBackCode.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblColBackCode.setOpaque(true);
+        lblColBackCode.setPreferredSize(new java.awt.Dimension(86, 20));
+
+        lblLogo.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblLogo.setText("Logo aziendale:");
+
+        lblLogoChoose.setBackground(new java.awt.Color(96, 125, 139));
+        lblLogoChoose.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblLogoChoose.setForeground(new java.awt.Color(236, 239, 241));
+        lblLogoChoose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLogoChoose.setText("Scegli l'immagine");
+        lblLogoChoose.setOpaque(true);
+        lblLogoChoose.setPreferredSize(new java.awt.Dimension(90, 20));
+
+        lblDataPer.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblDataPer.setText("Persistenza dei dati:");
+
+        lblSubTColLog.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        lblSubTColLog.setText("Colori e logo");
+
+        lblSubTPri.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        lblSubTPri.setText("Privacy");
+
+        lblPriInfo.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblPriInfo.setText("Link informativa sulla privacy:");
+
+        lblUtlT.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblUtlT.setText("Link termini di utilizzo:");
+
+        txtFPriInfo.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtFPriInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFPriInfoActionPerformed(evt);
+            }
+        });
+
+        txtFUtlT.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+
+        lblSave.setBackground(new java.awt.Color(96, 125, 139));
+        lblSave.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        lblSave.setForeground(new java.awt.Color(236, 239, 241));
+        lblSave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSave.setText("Salva");
+        lblSave.setOpaque(true);
+        lblSave.setPreferredSize(new java.awt.Dimension(60, 25));
+
+        lblColTextAdv.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblColTextAdv.setText("Colore degli avvisi:");
+
+        lblColTextAdvChoos.setBackground(new java.awt.Color(96, 125, 139));
+        lblColTextAdvChoos.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblColTextAdvChoos.setForeground(new java.awt.Color(236, 239, 241));
+        lblColTextAdvChoos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblColTextAdvChoos.setText("Scegli il colore");
+        lblColTextAdvChoos.setOpaque(true);
+        lblColTextAdvChoos.setPreferredSize(new java.awt.Dimension(80, 20));
+
+        lblColTextAdvCode.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblColTextAdvCode.setOpaque(true);
+        lblColTextAdvCode.setPreferredSize(new java.awt.Dimension(86, 20));
+
+        txtFDataPer.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtFDataPer.setMinimumSize(new java.awt.Dimension(50, 20));
+        txtFDataPer.setPreferredSize(new java.awt.Dimension(50, 20));
+
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        jLabel6.setText("giorni");
+
+        jCheckBox1.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        jCheckBox1.setText("Per sempre");
+        jCheckBox1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBox1StateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout collogLayout = new javax.swing.GroupLayout(collog);
         collog.setLayout(collogLayout);
         collogLayout.setHorizontalGroup(
             collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 402, Short.MAX_VALUE)
+            .addGroup(collogLayout.createSequentialGroup()
+                .addGap(171, 171, 171)
+                .addComponent(lblSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(collogLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, collogLayout.createSequentialGroup()
+                        .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblColExHead)
+                            .addComponent(lblColInHead)
+                            .addComponent(lblColBox)
+                            .addComponent(lblColText)
+                            .addComponent(lblColBack)
+                            .addComponent(lblColIcon)
+                            .addComponent(lblLogo)
+                            .addComponent(lblColTextAdv)
+                            .addComponent(lblSubTPri)
+                            .addComponent(lblSubTColLog))
+                        .addGap(18, 18, 18)
+                        .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblColBoxChoose, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(lblColInHeadChoose, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(lblColExHeadChoose, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(lblLogoChoose, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(lblColTextChoose, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(lblColBackChoose, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(comBoxIcon, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblColTextAdvChoos, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblColBackCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblColTextCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblColBoxCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblColExHeadCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblColInHeadCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblLogoDir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblColTextAdvCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, collogLayout.createSequentialGroup()
+                        .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPriInfo)
+                            .addComponent(lblUtlT)
+                            .addComponent(lblDataPer))
+                        .addGap(18, 18, 18)
+                        .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(collogLayout.createSequentialGroup()
+                                .addComponent(txtFDataPer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCheckBox1))
+                            .addComponent(txtFUtlT)
+                            .addComponent(txtFPriInfo))))
+                .addGap(31, 31, 31))
         );
         collogLayout.setVerticalGroup(
             collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 542, Short.MAX_VALUE)
+            .addGroup(collogLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(lblSubTColLog)
+                .addGap(18, 18, 18)
+                .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblColBack)
+                    .addComponent(lblColBackChoose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblColBackCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblColText)
+                    .addComponent(lblColTextChoose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblColTextCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblColTextAdv)
+                        .addComponent(lblColTextAdvChoos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblColTextAdvCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblColBox)
+                    .addComponent(lblColBoxChoose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblColBoxCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblColExHead)
+                    .addComponent(lblColExHeadChoose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblColExHeadCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblColInHead)
+                    .addComponent(lblColInHeadChoose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblColInHeadCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblColIcon)
+                    .addComponent(comBoxIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblLogoDir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblLogo)
+                    .addComponent(lblLogoChoose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(lblSubTPri)
+                .addGap(18, 18, 18)
+                .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDataPer)
+                    .addComponent(txtFDataPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(jCheckBox1))
+                .addGap(18, 18, 18)
+                .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPriInfo)
+                    .addComponent(txtFPriInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUtlT)
+                    .addComponent(txtFUtlT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(lblSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pnlMenu.add(collog);
         collog.setBounds(0, 56, 402, 542);
 
         getContentPane().add(pnlMenu);
-        pnlMenu.setBounds(402, 24, 402, 619);
+        pnlMenu.setBounds(0, 24, 402, 599);
 
         pack();
         setLocationRelativeTo(null);
@@ -720,7 +1020,7 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        jDialog1.setVisible(true);
+        JDialAddLang.setVisible(true);
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void exitButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButton1MouseEntered
@@ -732,7 +1032,7 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButton1MouseExited
 
     private void exitButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton1ActionPerformed
-        jDialog1.setVisible(false);
+        JDialAddLang.setVisible(false);
     }//GEN-LAST:event_exitButton1ActionPerformed
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
@@ -740,16 +1040,33 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel3MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        Point loc = new Point(getLocationOnScreen());
-        loc.x = loc.x - 117;
-        loc.y = loc.y - 111;
-        
-        jFileChooser1.showOpenDialog(jPanel1);
+        jFileChooser.showOpenDialog(rootPane);
     }//GEN-LAST:event_jLabel4MouseClicked
 
-    private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
+    private void jFileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFileChooser1ActionPerformed
+    }//GEN-LAST:event_jFileChooserActionPerformed
+
+    private void comBoxIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comBoxIconActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comBoxIconActionPerformed
+
+    private void txtFPriInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFPriInfoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFPriInfoActionPerformed
+
+    private void lblColBackChooseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblColBackChooseMouseClicked
+        jColorChooser.showDialog(rootPane, "Scegli il colore", Color.decode("#25252E"));
+    }//GEN-LAST:event_lblColBackChooseMouseClicked
+
+    private void jCheckBox1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBox1StateChanged
+        if(jCheckBox1.isSelected()) {txtFDataPer.setEnabled(false); txtFDataPer.setText(null);}
+        else {txtFDataPer.setEnabled(true);};
+    }//GEN-LAST:event_jCheckBox1StateChanged
+
+    private void lblAddFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddFieldMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblAddFieldMouseClicked
     
     private void initPersonalComponent() {
         langRead = new ReadLanguagesFile();
@@ -757,6 +1074,11 @@ public class MainPage extends javax.swing.JFrame {
         
         tranRead = new ReadTranslationsFile();
         tranList = tranRead.getList();
+        
+        genRead = new ReadGeneralFile();
+        //genSet = genRead.getSet();
+        
+        genSet = new ClassGeneralSettings(null, "Chiaro", null, null, null, null, null, Color.decode("#25252E"), Color.decode("#E6E6E6"), Color.decode("#7C7C85"), Color.decode("#E6E6E6"), Color.decode("#E6E6E6"), Color.decode("#E6E6E6"), 0);
         
         mainF = new Font("Sans Serif",Font.PLAIN, 15);
         subTitleFont = new Font("Sans Serif",Font.PLAIN, 19);
@@ -781,6 +1103,11 @@ public class MainPage extends javax.swing.JFrame {
         String[] d = {"Download"};
         
         tranList.add(new ClassTranslations("Registrazione", r));
+        tranList.add(new ClassTranslations("Ho letto ed acconsento ai termini di utilizzo e alle condizioni sulla privacy", tu));
+        tranList.add(new ClassTranslations("Tutti i campi sono obbligatori", fm));
+        tranList.add(new ClassTranslations("Ci siamo quasi", at));
+        tranList.add(new ClassTranslations("mostra il codice QR seguente alla segretaria", sqr));
+        tranList.add(new ClassTranslations("Scarica", d));
         tranList.add(new ClassTranslations("Tipo di visita", kv));
         tranList.add(new ClassTranslations("Visita aziendale", cv));
         tranList.add(new ClassTranslations("Consulenza", a));
@@ -789,11 +1116,7 @@ public class MainPage extends javax.swing.JFrame {
         tranList.add(new ClassTranslations("Cognome", s));
         tranList.add(new ClassTranslations("Azienda", c));
         tranList.add(new ClassTranslations("Referente aziendale", cr));
-        tranList.add(new ClassTranslations("Ho letto ed acconsento ai termini di utilizzo e alle condizioni sulla privacy", tu));
-        tranList.add(new ClassTranslations("Tutti i campi sono obbligatori", fm));
-        tranList.add(new ClassTranslations("Ci siamo quasi", at));
-        tranList.add(new ClassTranslations("mostra il codice QR seguente alla segretaria", sqr));
-        tranList.add(new ClassTranslations("Scarica", d));
+        
         
         
         
@@ -805,7 +1128,7 @@ public class MainPage extends javax.swing.JFrame {
             tranTable = new tranTable(tranList, checkBoxTable.getLanguages(langList));
         };*/
         tranTable = new TranslationMenuGenerator(tranList, checkBoxTable.getLanguages(langList));
-        tranTable.setFont(mainF);
+        tranTable.setFont(new Font("Sans Serif",Font.PLAIN, 11));
         
         defaultColor = Color.decode("#607D8B"); //sclego il colore primario
         mousePassedColor = Color.decode("#5E7A88");
@@ -829,9 +1152,15 @@ public class MainPage extends javax.swing.JFrame {
         fiel.setVisible(false);
         collog.setVisible(false);
         
+        //scrollPaneTran.setLayout(new GridLayout(1, 0));
+        //scrollPaneTran.add(tranTable);
+        panelHeight();
         pnlScrPnIN.add(checkBoxTable);
         pnlScrTraIn.add(tranTable);
-        jDialog1.setLocationRelativeTo(null);
+        //JDialAddLang.setLocationRelativeTo(null);
+        
+        
+        reorderCol();
     }
     
     private void selection(byte finalIndx) {
@@ -877,24 +1206,29 @@ public class MainPage extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog JDialAddLang;
     private javax.swing.JLabel barIcon;
     private javax.swing.JLabel barIcon1;
     private javax.swing.JPanel collog;
     private javax.swing.JLabel collogL;
     private javax.swing.JPanel collogP;
+    private javax.swing.JComboBox<String> comBoxIcon;
     private javax.swing.JButton exitButton;
     private javax.swing.JButton exitButton1;
     private javax.swing.JPanel fiel;
     private javax.swing.JLabel fieldL;
     private javax.swing.JPanel fieldP;
     private javax.swing.JLayeredPane headerLayPane;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JColorChooser jColorChooser;
     private javax.swing.JDialog jDialog1;
-    private javax.swing.JFileChooser jFileChooser1;
+    private javax.swing.JFileChooser jFileChooser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -903,12 +1237,37 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel lang;
     private javax.swing.JLabel langL;
     private javax.swing.JPanel langP;
+    private javax.swing.JLabel lblAddField;
+    private javax.swing.JLabel lblColBack;
+    private javax.swing.JLabel lblColBackChoose;
+    private javax.swing.JLabel lblColBackCode;
+    private javax.swing.JLabel lblColBox;
+    private javax.swing.JLabel lblColBoxChoose;
+    private javax.swing.JLabel lblColBoxCode;
+    private javax.swing.JLabel lblColExHead;
+    private javax.swing.JLabel lblColExHeadChoose;
+    private javax.swing.JLabel lblColExHeadCode;
+    private javax.swing.JLabel lblColIcon;
+    private javax.swing.JLabel lblColInHead;
+    private javax.swing.JLabel lblColInHeadChoose;
+    private javax.swing.JLabel lblColInHeadCode;
+    private javax.swing.JLabel lblColText;
+    private javax.swing.JLabel lblColTextAdv;
+    private javax.swing.JLabel lblColTextAdvChoos;
+    private javax.swing.JLabel lblColTextAdvCode;
+    private javax.swing.JLabel lblColTextChoose;
+    private javax.swing.JLabel lblColTextCode;
+    private javax.swing.JLabel lblDataPer;
     private javax.swing.JLabel lblLang1;
-    private javax.swing.JLayeredPane leftLayPane;
-    private javax.swing.JPanel leftPane;
-    private javax.swing.JLabel mobileBack;
-    private javax.swing.JLabel mobileFrame;
-    private javax.swing.JPanel pnlBtnAdd;
+    private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblLogoChoose;
+    private javax.swing.JLabel lblLogoDir;
+    private javax.swing.JLabel lblPriInfo;
+    private javax.swing.JLabel lblSave;
+    private javax.swing.JLabel lblSubTColLog;
+    private javax.swing.JLabel lblSubTPri;
+    private javax.swing.JLabel lblUtlT;
+    private javax.swing.JPanel pnlBtnAddLang;
     private javax.swing.JPanel pnlMenu;
     private javax.swing.JPanel pnlScrPnEX;
     private javax.swing.JPanel pnlScrPnIN;
@@ -916,18 +1275,41 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel pnlScrTraIn;
     private javax.swing.JPanel pnlTopHeader;
     private javax.swing.JPanel pnlTopHeader1;
-    private javax.swing.JLayeredPane previewLayPane;
     private javax.swing.JScrollPane scrollPaneLang;
     private javax.swing.JScrollPane scrollPaneTran;
     private javax.swing.JLabel titleLbl;
     private javax.swing.JLabel titleLbl1;
+    private javax.swing.JTextField txtFDataPer;
+    private javax.swing.JTextField txtFPriInfo;
+    private javax.swing.JTextField txtFUtlT;
     // End of variables declaration//GEN-END:variables
 
     private void close() {
         tranOut = new OutTranslationsFile(tranList);
         langOut = new OutLanguagesFile(langList);
-        System.out.println("Languages printed");
+        System.out.println(pnlScrTraIn.getHeight());
         System.out.println("closing");
         System.exit(0);
+    }
+
+    private void reorderCol() {
+        lblColBackCode.setBackground(genSet.getBackgroundColor());
+        lblColBoxCode.setBackground(genSet.getBox());
+        lblColExHeadCode.setBackground(genSet.getHeadEx());
+        lblColInHeadCode.setBackground(genSet.getHeadIn());
+        lblColTextAdvCode.setBackground(genSet.getTextAdv());
+        lblColTextCode.setBackground(genSet.getTextMain());
+        if (genSet.getPersitance() == 0) {txtFDataPer.setText(null); jCheckBox1.setSelected(true);}
+        else {txtFDataPer.setText(Integer.toString(genSet.getPersitance())); jCheckBox1.setSelected(false);};
+        lblLogoDir.setText(genSet.getLogo());
+        txtFPriInfo.setText(genSet.getInfoLink());
+        txtFUtlT.setText(genSet.getTermsLink());
+        if(genSet.getIconPack().equals("Chiaro")) {comBoxIcon.setSelectedIndex(0);}
+        else {comBoxIcon.setSelectedIndex(1);};
+    }
+
+    private void panelHeight() {
+        pnlScrPnIN.repaint(0,0,pnlScrPnIN.getWidth(), checkBoxTable.getRowHeight()*checkBoxTable.getRowCount());
+        pnlScrTraIn.repaint(0,0,pnlScrTraIn.getWidth(), (tranTable.getRowHeight()*tranTable.getRowCount()));
     }
 }

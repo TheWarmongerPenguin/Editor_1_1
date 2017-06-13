@@ -8,107 +8,143 @@ import java.awt.Color;
  */
 public class ClassGeneralSettings {
     
-    private int fields;
-    private String logoSrc;
-    private Color backgroundLanguages, backgroundFields, backgroundQR, textDefaultLanguages, textDefaultFields, textImmittedFields, textDefaultQR, underlineFields;
+    private String logoSrc, iconPack, iconInfo, iconStats, iconSet, infoLink, termsLink;
+    private Color background, textMain, textAdv, box, headEx, headIn;
+    private int persistance;
     
     public ClassGeneralSettings() {}
     
-    public ClassGeneralSettings (int n, String logo, Color bLang, Color bFields, Color bQR, Color tDefLanguages, Color tDefFields, Color tImmFields, Color tDefQR, Color undFields) {
-        fields = n;
+    public ClassGeneralSettings (String logo, String iPack, String iInfo, String iStats, String iSets, String iL, String tL, Color back, Color txtM, Color txtA, Color bx, Color hEx, Color hIn, int per) {
         logoSrc = logo;
-        backgroundLanguages = bLang;
-        backgroundFields = bFields;
-        backgroundQR = bQR;
-        textDefaultLanguages = tDefLanguages;
-        textDefaultFields = tDefFields;
-        textImmittedFields = tImmFields;
-        textDefaultQR = tDefQR;
-        underlineFields = undFields;
+        iconPack = iPack;
+        iconInfo = iInfo;
+        iconStats = iStats;
+        iconSet = iSets;
+        infoLink = iL;
+        termsLink = tL;
+        background = back;
+        textMain = txtM;
+        textAdv = txtA;
+        box = bx;
+        headEx = hEx;
+        headIn = hIn;
+        persistance = per;
     }
     
     public ClassGeneralSettings (ClassGeneralSettings copy) {
-        fields = copy.getFields();
         logoSrc = copy.getLogo();
     }
     
-    public void setFields(int n) {
-        fields = n;
+    public void setLogo(String txt) {
+        logoSrc = txt;
     }
     
-    public void setLogo(String logo) {
-        logoSrc = logo;
+    public void setIconPack(String txt) {
+        iconPack = txt;
     }
     
-    public void setBackgroundLanguages(Color bLang) {
-        backgroundLanguages = bLang;
+    public void setIconInfo(String txt) {
+        iconInfo = txt;
     }
     
-    public void setBackgroundFields(Color bFields) {
-        backgroundFields = bFields;
+    public void setIconStats(String txt) {
+        iconStats = txt;
     }
     
-    public void setBackgroundQR(Color bQR) {
-        backgroundQR = bQR;
+    public void setIconSet(String txt) {
+        iconSet = txt;
     }
     
-    public void setTextDefaultLanguages(Color tDefLanguages) {
-        textDefaultLanguages = tDefLanguages;
+    public void setInfoLink(String txt) {
+        infoLink = txt;
     }
     
-    public void setTextDefaultFields(Color tDefFields) {
-        textDefaultFields = tDefFields;
+    public void setTermsLink(String txt) {
+        termsLink = txt;
     }
     
-    public void setTextImmittedFields(Color tImmFields) {
-        textImmittedFields = tImmFields;
+    
+    public void setBackground(Color color) {
+        background = color;
     }
     
-    public void setTextDefaultQR(Color tDefQR) {
-        textDefaultQR = tDefQR;
+    public void setTextMain(Color color) {
+        textMain = color;
     }
     
-    public void setUnderlineFields(Color undFields) {
-        underlineFields = undFields;
+    public void setTextAdv(Color color) {
+        textAdv = color;
     }
     
-    public int getFields () {
-        return fields;
+    public void setBox(Color color) {
+        box = color;
+    }
+    
+    public void setHeadEx(Color color) {
+        headEx = color;
+    }
+    
+    public void setHeadIn(Color color) {
+        headIn = color;
+    }
+    
+    public void setPersitance(int num) {
+        persistance = num;
     }
     
     public String getLogo() {
         return logoSrc;
     }
     
-    public Color getBackgroundLanguages() {
-        return backgroundLanguages;
+    public String getIconPack() {
+        return iconPack;
     }
     
-    public Color getBackgroundFields() {
-        return backgroundFields;
+    public String getIconInfo() {
+        return iconInfo;
     }
     
-    public Color getBackgroundQR() {
-        return backgroundQR;
+    public String getIconStats() {
+        return iconStats;
     }
     
-    public Color getTextDefaultLanguages() {
-        return textDefaultLanguages;
+    public String getIconSet() {
+        return iconSet;
     }
     
-    public Color getTextDefaultFields() {
-        return textDefaultFields;
+    public String getInfoLink() {
+        return infoLink;
     }
     
-    public Color getTextImmittedFields() {
-        return textImmittedFields;
+    public String getTermsLink() {
+        return termsLink;
     }
     
-    public Color getTextDefaultQR() {
-        return textDefaultQR;
+    public Color getBackgroundColor() {
+        return background;
     }
     
-    public Color getUnderlineFields() {
-        return underlineFields;
+    public Color getTextMain() {
+        return textMain;
+    }
+    
+    public Color getTextAdv() {
+        return textAdv;
+    }
+    
+    public Color getBox() {
+        return box;
+    }
+    
+    public Color getHeadEx() {
+        return headEx;
+    }
+    
+    public Color getHeadIn() {
+        return headIn;
+    }
+    
+    public int getPersitance() {
+        return persistance;
     }
 }
