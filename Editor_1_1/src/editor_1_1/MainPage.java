@@ -2,6 +2,7 @@ package editor_1_1;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -62,8 +63,11 @@ public class MainPage extends javax.swing.JFrame {
         exitButton1 = new javax.swing.JButton();
         barIcon1 = new javax.swing.JLabel();
         titleLbl1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         pnlTopHeader = new javax.swing.JPanel();
         exitButton = new javax.swing.JButton();
         barIcon = new javax.swing.JLabel();
@@ -95,10 +99,17 @@ public class MainPage extends javax.swing.JFrame {
         pnlScrTraIn = new javax.swing.JPanel();
         collog = new javax.swing.JPanel();
 
-        jFileChooser1.setApproveButtonText("");
+        jFileChooser1.setApproveButtonText("Aggiungi");
         jFileChooser1.setCurrentDirectory(new java.io.File("C:\\Users\\Samuele Pozzebon\\Pictures"));
+        jFileChooser1.setPreferredSize(new java.awt.Dimension(570, 400));
+        jFileChooser1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFileChooser1ActionPerformed(evt);
+            }
+        });
+        jFileChooser1.getAccessibleContext().setAccessibleParent(pnlTopHeader);
+        jFileChooser1.setLocation(0, 0);
 
-        jDialog1.setAlwaysOnTop(true);
         jDialog1.setLocation(new java.awt.Point(0, 0));
         jDialog1.setMinimumSize(new java.awt.Dimension(300, 200));
         jDialog1.setUndecorated(true);
@@ -111,15 +122,17 @@ public class MainPage extends javax.swing.JFrame {
         jPanel2.setPreferredSize(new java.awt.Dimension(300, 200));
         jPanel2.setLayout(null);
 
+        jTextField1.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         jTextField1.setMaximumSize(new java.awt.Dimension(130, 20));
         jTextField1.setMinimumSize(new java.awt.Dimension(130, 20));
         jTextField1.setPreferredSize(new java.awt.Dimension(130, 20));
         jPanel2.add(jTextField1);
         jTextField1.setBounds(140, 50, 130, 20);
 
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         jLabel2.setText("Nome della lingua:");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(40, 50, 87, 20);
+        jLabel2.setBounds(20, 50, 100, 20);
 
         pnlTopHeader1.setBackground(new java.awt.Color(255, 255, 255));
         pnlTopHeader1.setMaximumSize(new java.awt.Dimension(300, 24));
@@ -167,25 +180,74 @@ public class MainPage extends javax.swing.JFrame {
         jPanel2.add(pnlTopHeader1);
         pnlTopHeader1.setBounds(1, 1, 298, 24);
 
-        jButton1.setText("Seleziona l'icona");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton1);
-        jButton1.setBounds(20, 100, 109, 23);
-
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         jLabel3.setText("jLabel3");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(160, 100, 120, 20);
+        jLabel3.setBounds(140, 100, 130, 20);
+
+        jPanel3.setBackground(new java.awt.Color(96, 125, 139));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
+            }
+        });
+
+        jLabel4.setBackground(new java.awt.Color(96, 125, 139));
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(236, 239, 241));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Seleziona l'icona");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(jPanel3);
+        jPanel3.setBounds(20, 100, 100, 20);
+
+        jPanel4.setBackground(new java.awt.Color(96, 125, 139));
+
+        jLabel5.setBackground(new java.awt.Color(96, 125, 139));
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(236, 239, 241));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Aggiungi");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel2.add(jPanel4);
+        jPanel4.setBounds(100, 150, 100, 20);
 
         jDialog1.getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 300, 200);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Site editor");
-        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
         setLocation(new java.awt.Point(0, 0));
         setMinimumSize(new java.awt.Dimension(804, 623));
@@ -673,9 +735,21 @@ public class MainPage extends javax.swing.JFrame {
         jDialog1.setVisible(false);
     }//GEN-LAST:event_exitButton1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        jFileChooser1.showDialog(jPanel1, "Scegli l'immagine");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+        
+    }//GEN-LAST:event_jPanel3MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        Point loc = new Point(getLocationOnScreen());
+        loc.x = loc.x - 117;
+        loc.y = loc.y - 111;
+        
+        jFileChooser1.showOpenDialog(jPanel1);
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFileChooser1ActionPerformed
     
     private void initPersonalComponent() {
         langRead = new ReadLanguagesFile();
@@ -689,17 +763,39 @@ public class MainPage extends javax.swing.JFrame {
         
         checkBoxTable = new CheckBoxGenerator(langList);
         checkBoxTable.setFont(mainF);
-        /*
+        
         tranList = new ArrayList<>();
         String[] n = {"Name"};
         String[] s = {"Surname"};
         String[] c = {"Company"};
-        String[] r = {"Company referrer"};
+        String[] cr = {"Company referrer"};
+        String[] r = {"Registration"};
+        String[] kv = {"Kind of visit"};
+        String[] cv = {"Corporate visit"};
+        String[] a = {"Advice"};
+        String[] o = {"Other"};
+        String[] tu = {"I have read and agree to terms of use and privacy"};
+        String[] fm = {"All fields are mandatory"};
+        String[] at = {"We are almost there"};
+        String[] sqr = {"show the following QR code to the secretary"};
+        String[] d = {"Download"};
         
+        tranList.add(new ClassTranslations("Registrazione", r));
+        tranList.add(new ClassTranslations("Tipo di visita", kv));
+        tranList.add(new ClassTranslations("Visita aziendale", cv));
+        tranList.add(new ClassTranslations("Consulenza", a));
+        tranList.add(new ClassTranslations("Altro", o));
         tranList.add(new ClassTranslations("Nome", n));
         tranList.add(new ClassTranslations("Cognome", s));
         tranList.add(new ClassTranslations("Azienda", c));
-        tranList.add(new ClassTranslations("Referente aziendale", r));
+        tranList.add(new ClassTranslations("Referente aziendale", cr));
+        tranList.add(new ClassTranslations("Ho letto ed acconsento ai termini di utilizzo e alle condizioni sulla privacy", tu));
+        tranList.add(new ClassTranslations("Tutti i campi sono obbligatori", fm));
+        tranList.add(new ClassTranslations("Ci siamo quasi", at));
+        tranList.add(new ClassTranslations("mostra il codice QR seguente alla segretaria", sqr));
+        tranList.add(new ClassTranslations("Scarica", d));
+        
+        
         
         /*if (tranList != null) {checkBoxTable = new CheckBoxGenerator(tranList);}
         else {
@@ -792,14 +888,17 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JLabel fieldL;
     private javax.swing.JPanel fieldP;
     private javax.swing.JLayeredPane headerLayPane;
-    private javax.swing.JButton jButton1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel lang;
     private javax.swing.JLabel langL;
