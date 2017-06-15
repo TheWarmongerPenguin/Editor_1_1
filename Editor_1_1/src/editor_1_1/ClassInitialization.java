@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @author Samuele Pozzebon
  */
 public class ClassInitialization implements Serializable{
-     boolean firstTime;
+    private boolean firstTime;
     
     public ClassInitialization(){}
     

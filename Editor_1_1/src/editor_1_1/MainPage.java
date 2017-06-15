@@ -1856,8 +1856,6 @@ public class MainPage extends javax.swing.JFrame {
         
         init = new ClassInitialization(new ReadInitializationFile().getInit());
         
-        init.firstTime = false;
-        
         if (init.isFirstTime()) {
             langList = new ArrayList<>();
             langList.add(new ClassLanguages(true, "Italiano.png", "Italiano"));

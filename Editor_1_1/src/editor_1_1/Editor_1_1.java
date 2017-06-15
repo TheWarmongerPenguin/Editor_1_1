@@ -1,7 +1,5 @@
 package editor_1_1;
 
-import javax.swing.JFrame;
-
 /**
  *
  * @author Samuele Pozzebon

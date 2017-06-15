@@ -6,7 +6,7 @@ import java.util.logging.*;
 
 /**
  *
- * @author samuele.pozzebon
+ * @author Samuele Pozzebon
  */
 public class ReadInitializationFile {
     

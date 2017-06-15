@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package editor_1_1;
 
 import java.awt.Font;
@@ -13,7 +8,7 @@ import java.lang.String;
 
 /**
  *
- * @author samuele.pozzebon
+ * @author Samuele Pozzebon
  */
 public class TranslationTabGenerator extends JTable{
     private String[] columnNames;
