@@ -31,6 +31,7 @@ public class MainPage extends javax.swing.JFrame {
     Color mousePassedColor;   //colore di sfondo/secondario
     Color selectedColor;    //colore di sfondo/elemento selezionato
     Color textColor;        //colore dei testi
+    Color chosenColor;
     
     Font mainF;
     Font subTitleFont;
@@ -335,6 +336,12 @@ public class MainPage extends javax.swing.JFrame {
 
         jDialAddLang.setLocationRelativeTo(null);
 
+        jColorChooser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jColorChooserKeyPressed(evt);
+            }
+        });
+
         jDialAddField.setUndecorated(true);
         jDialAddField.setResizable(false);
         jDialAddField.setSize(new java.awt.Dimension(300, 140));
@@ -624,10 +631,8 @@ public class MainPage extends javax.swing.JFrame {
 
         jDialAddFieldStart.setLocationRelativeTo(null);
 
-        jFrameStart.setMaximumSize(new java.awt.Dimension(300, 400));
         jFrameStart.setMinimumSize(new java.awt.Dimension(300, 400));
         jFrameStart.setUndecorated(true);
-        jFrameStart.setPreferredSize(new java.awt.Dimension(300, 400));
         jFrameStart.setResizable(false);
         jFrameStart.getContentPane().setLayout(null);
 
@@ -1215,6 +1220,11 @@ public class MainPage extends javax.swing.JFrame {
         lblColExHeadChoose.setText("Scegli il colore");
         lblColExHeadChoose.setOpaque(true);
         lblColExHeadChoose.setPreferredSize(new java.awt.Dimension(80, 20));
+        lblColExHeadChoose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblColExHeadChooseMouseClicked(evt);
+            }
+        });
 
         lblColInHeadChoose.setBackground(new java.awt.Color(96, 125, 139));
         lblColInHeadChoose.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
@@ -1223,6 +1233,11 @@ public class MainPage extends javax.swing.JFrame {
         lblColInHeadChoose.setText("Scegli il colore");
         lblColInHeadChoose.setOpaque(true);
         lblColInHeadChoose.setPreferredSize(new java.awt.Dimension(80, 20));
+        lblColInHeadChoose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblColInHeadChooseMouseClicked(evt);
+            }
+        });
 
         lblColBoxChoose.setBackground(new java.awt.Color(96, 125, 139));
         lblColBoxChoose.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
@@ -1231,6 +1246,11 @@ public class MainPage extends javax.swing.JFrame {
         lblColBoxChoose.setText("Scegli il colore");
         lblColBoxChoose.setOpaque(true);
         lblColBoxChoose.setPreferredSize(new java.awt.Dimension(80, 20));
+        lblColBoxChoose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblColBoxChooseMouseClicked(evt);
+            }
+        });
 
         lblColTextChoose.setBackground(new java.awt.Color(96, 125, 139));
         lblColTextChoose.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
@@ -1239,6 +1259,11 @@ public class MainPage extends javax.swing.JFrame {
         lblColTextChoose.setText("Scegli il colore");
         lblColTextChoose.setOpaque(true);
         lblColTextChoose.setPreferredSize(new java.awt.Dimension(80, 20));
+        lblColTextChoose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblColTextChooseMouseClicked(evt);
+            }
+        });
 
         lblColBackChoose.setBackground(new java.awt.Color(96, 125, 139));
         lblColBackChoose.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
@@ -1324,6 +1349,11 @@ public class MainPage extends javax.swing.JFrame {
         lblColTextAdvChoos.setText("Scegli il colore");
         lblColTextAdvChoos.setOpaque(true);
         lblColTextAdvChoos.setPreferredSize(new java.awt.Dimension(80, 20));
+        lblColTextAdvChoos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblColTextAdvChoosMouseClicked(evt);
+            }
+        });
 
         lblColTextAdvCode.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         lblColTextAdvCode.setOpaque(true);
@@ -1591,7 +1621,8 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_comBoxIconActionPerformed
 
     private void lblColBackChooseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblColBackChooseMouseClicked
-        jColorChooser.showDialog(rootPane, "Scegli il colore", Color.decode("#25252E"));
+        chosenColor = jColorChooser.showDialog(rootPane, "Scegli il colore", Color.decode("#"+Integer.toHexString(genSet.getBackgroundColor().getRGB()).substring(2)));
+        lblColBackCode.setBackground(chosenColor);
     }//GEN-LAST:event_lblColBackChooseMouseClicked
 
     private void checkDataPerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_checkDataPerStateChanged
@@ -1836,13 +1867,42 @@ public class MainPage extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(firstTimeCheck()) {
-            jFrameStart.setVisible(true);
+            //jFrameStart.setVisible(true);
         }
     }//GEN-LAST:event_formWindowOpened
 
     private void lblAddFSTartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddFSTartMouseClicked
         jDialAddFieldStart.setVisible(true);
     }//GEN-LAST:event_lblAddFSTartMouseClicked
+
+    private void lblColTextChooseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblColTextChooseMouseClicked
+        chosenColor = jColorChooser.showDialog(rootPane, "Scegli il colore", Color.decode("#"+Integer.toHexString(genSet.getTextMain().getRGB()).substring(2)));
+        lblColTextCode.setBackground(chosenColor);
+    }//GEN-LAST:event_lblColTextChooseMouseClicked
+
+    private void lblColTextAdvChoosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblColTextAdvChoosMouseClicked
+        chosenColor = jColorChooser.showDialog(rootPane, "Scegli il colore", Color.decode("#"+Integer.toHexString(genSet.getTextAdv().getRGB()).substring(2)));
+        lblColTextAdvCode.setBackground(chosenColor);
+    }//GEN-LAST:event_lblColTextAdvChoosMouseClicked
+
+    private void lblColBoxChooseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblColBoxChooseMouseClicked
+        chosenColor = jColorChooser.showDialog(rootPane, "Scegli il colore", Color.decode("#"+Integer.toHexString(genSet.getBox().getRGB()).substring(2)));
+        lblColBoxCode.setBackground(chosenColor);
+    }//GEN-LAST:event_lblColBoxChooseMouseClicked
+
+    private void lblColExHeadChooseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblColExHeadChooseMouseClicked
+        chosenColor = jColorChooser.showDialog(rootPane, "Scegli il colore", Color.decode("#"+Integer.toHexString(genSet.getHeadEx().getRGB()).substring(2)));
+        lblColExHeadCode.setBackground(chosenColor);
+    }//GEN-LAST:event_lblColExHeadChooseMouseClicked
+
+    private void lblColInHeadChooseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblColInHeadChooseMouseClicked
+        chosenColor = jColorChooser.showDialog(rootPane, "Scegli il colore", Color.decode("#"+Integer.toHexString(genSet.getHeadIn().getRGB()).substring(2)));
+        lblColInHeadCode.setBackground(chosenColor);
+    }//GEN-LAST:event_lblColInHeadChooseMouseClicked
+
+    private void jColorChooserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jColorChooserKeyPressed
+        System.out.println("Out");
+    }//GEN-LAST:event_jColorChooserKeyPressed
     
     private void initPersonalComponent() {
         langRead = new ReadLanguagesFile();
@@ -1856,7 +1916,7 @@ public class MainPage extends javax.swing.JFrame {
         
         init = new ClassInitialization(new ReadInitializationFile().getInit());
         
-        if (init.isFirstTime()) {
+        /*if (init.isFirstTime()) {
             langList = new ArrayList<>();
             langList.add(new ClassLanguages(true, "Italiano.png", "Italiano"));
             langList.add(new ClassLanguages(true, "English.png", "English"));
@@ -1870,7 +1930,7 @@ public class MainPage extends javax.swing.JFrame {
             tranList.add(new ClassTranslations("Italiano", italiano, italianoS, italianoV));
             tranList.add(new ClassTranslations("English", english, englishS, englishV));
             genSet = new ClassGeneralSettings("", "Chiaro", "", "", "", Color.decode("#25252E"), Color.decode("#E6E6E6"), Color.decode("#7C7C85"), Color.decode("#E6E6E6"), Color.decode("#E6E6E6"), Color.decode("#E6E6E6"), 0);
-        }
+        }*/
         
         mainF = new Font("Sans Serif",Font.PLAIN, 15);
         subTitleFont = new Font("Sans Serif",Font.PLAIN, 19);
