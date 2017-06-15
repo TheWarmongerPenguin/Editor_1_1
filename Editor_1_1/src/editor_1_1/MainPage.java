@@ -624,8 +624,10 @@ public class MainPage extends javax.swing.JFrame {
 
         jDialAddFieldStart.setLocationRelativeTo(null);
 
+        jFrameStart.setMaximumSize(new java.awt.Dimension(300, 400));
         jFrameStart.setMinimumSize(new java.awt.Dimension(300, 400));
         jFrameStart.setUndecorated(true);
+        jFrameStart.setPreferredSize(new java.awt.Dimension(300, 400));
         jFrameStart.setResizable(false);
         jFrameStart.getContentPane().setLayout(null);
 
@@ -1652,7 +1654,9 @@ public class MainPage extends javax.swing.JFrame {
     private void lblAddLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddLMouseClicked
         if ((txtFLanguage.getText() != "") && (lblIconDir.getText() != "")) {
             String source = lblIconDir.getText();
-            String target = new File("src/Editor_1_1/"+txtFLanguage.getText()).getAbsolutePath();
+            File f = new File (getClass().getResource("build.xml").toString());
+            
+            String target = new File(new File(getClass().getResource("build.xml").toString()).getParentFile().getParentFile().getAbsolutePath() + "sito/images/"+txtFLanguage.getText()).getAbsolutePath();
             try {
                 FileUtils.copyFile(new File(source), new File(target+".png"));
             } catch (IOException ex) {
@@ -1768,7 +1772,7 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButtonDiaStartMouseExited
 
     private void exitButtonDiaStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonDiaStartActionPerformed
-        close();
+        closeNoSave();
     }//GEN-LAST:event_exitButtonDiaStartActionPerformed
 
     private void lblContinueStartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblContinueStartMouseClicked
@@ -2099,21 +2103,13 @@ public class MainPage extends javax.swing.JFrame {
         langOut = new OutLanguagesFile(langList);
         genOut = new OutGeneralFile(genSet);
         new CSSAutoCompilator(langList, tranList, genSet, noSpacedFields);
-        if((tranRead.getList().get(0).getFieldsStableLenght() != tranList.get(0).getFieldsStableLenght()) || (tranRead.getList().get(0).getFieldsVariableLenght() != tranList.get(0).getFieldsVariableLenght()) || firstTimeCheck()) {new SQLAutoCompilator(noSpacedFields);}
+        if((tranRead.getList().get(0).getFieldsStableLenght() != tranList.get(0).getFieldsStableLenght()) || (tranRead.getList().get(0).getFieldsVariableLenght() != tranList.get(0).getFieldsVariableLenght()) || firstTimeCheck()) {new SQLAutoCompilator(noSpacedFields, txtFUser.getText(), genSet.getPersitance());}
         if(firstTimeCheck()) {new PHPAutoCompilator(txtFHost.getText(), txtFUser.getText(), passFieldIns.getText(), noSpacedFields); init.firstTimeUse();}
         new OutInitializationFile(init);
-        System.out.println("closing");
         System.exit(0);
     }
     
     private void closeNoSave() {
-        /*tranOut = new OutTranslationsFile(tranList);
-        langOut = new OutLanguagesFile(langList);
-        genOut = new OutGeneralFile(genSet);
-        new CSSAutoCompilator(langList, tranList, genSet, noSpacedFields);
-        if(firstTimeCheck()) {new PHPAutoCompilator(txtFHost.getText(), txtFUser.getText(), passFieldIns.getText(), noSpacedFields); init.firstTimeUse();}
-        new OutInitializationFile(init);
-        System.out.println("closing");*/
         System.exit(0);
     }
 
