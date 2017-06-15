@@ -1782,7 +1782,7 @@ public class MainPage extends javax.swing.JFrame {
             if (passFieldIns.getText().equals(passFieldConf.getText())) {
                 lblAdvStartFields.setVisible(false);
                 lblAdvStartPass.setVisible(false);
-                
+                jFrameStart.setVisible(false);
                 
             } else {lblAdvStartPass.setVisible(true);}
         }
