@@ -1867,7 +1867,7 @@ public class MainPage extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(firstTimeCheck()) {
-            //jFrameStart.setVisible(true);
+            jFrameStart.setVisible(true);
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -1916,7 +1916,7 @@ public class MainPage extends javax.swing.JFrame {
         
         init = new ClassInitialization(new ReadInitializationFile().getInit());
         
-        /*if (init.isFirstTime()) {
+        if (init.isFirstTime()) {
             langList = new ArrayList<>();
             langList.add(new ClassLanguages(true, "Italiano.png", "Italiano"));
             langList.add(new ClassLanguages(true, "English.png", "English"));
@@ -1930,7 +1930,7 @@ public class MainPage extends javax.swing.JFrame {
             tranList.add(new ClassTranslations("Italiano", italiano, italianoS, italianoV));
             tranList.add(new ClassTranslations("English", english, englishS, englishV));
             genSet = new ClassGeneralSettings("", "Chiaro", "", "", "", Color.decode("#25252E"), Color.decode("#E6E6E6"), Color.decode("#7C7C85"), Color.decode("#E6E6E6"), Color.decode("#E6E6E6"), Color.decode("#E6E6E6"), 0);
-        }*/
+        }
         
         mainF = new Font("Sans Serif",Font.PLAIN, 15);
         subTitleFont = new Font("Sans Serif",Font.PLAIN, 19);
@@ -1964,12 +1964,9 @@ public class MainPage extends javax.swing.JFrame {
         fiel.setVisible(false);
         collog.setVisible(false);
         
-        //scrollPaneTran.setLayout(new GridLayout(1, 0));
-        //scrollPaneTran.add(tranTable);
         panelHeight();
         pnlScrPnIN.add(langTab);
         pnlScrTraIn.add(tranTable);
-        //JDialAddLang.setLocationRelativeTo(null);
         lblAdvAddLang.setVisible(false);
         lblAdvColLog.setVisible(false);
         lblAdvAddField.setVisible(false);
