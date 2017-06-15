@@ -2,10 +2,17 @@ package editor_1_1;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import org.jdesktop.swingx.border.DropShadowBorder; 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.text.WordUtils;
 
 /**
  *
@@ -28,12 +35,14 @@ public class MainPage extends javax.swing.JFrame {
     Font mainF;
     Font subTitleFont;
     
-    CheckBoxGenerator checkBoxTable;
+    ClassInitialization init;
+    
+    LanguagesTabGenerator langTab;
     ReadLanguagesFile langRead;
     OutLanguagesFile langOut;
     List<ClassLanguages> langList;
     
-    TranslationMenuGenerator tranTable;
+    TranslationTabGenerator tranTable;
     ReadTranslationsFile tranRead;
     OutTranslationsFile tranOut;
     List<ClassTranslations> tranList;
@@ -41,6 +50,16 @@ public class MainPage extends javax.swing.JFrame {
     ReadGeneralFile genRead;
     OutGeneralFile genOut;
     ClassGeneralSettings genSet;
+    
+    String parent;
+    String[] noSpacedFields;
+    
+    final String lightSet = new File("src/Editor_1_1/lightSet.png").getAbsolutePath();
+    final String lightStat = new File("src/Editor_1_1/lightStat.png").getAbsolutePath();
+    final String lightInfo = new File("src/Editor_1_1/lightInfo.png").getAbsolutePath();
+    final String darkSet = new File("src/Editor_1_1/darkSet.png").getAbsolutePath();
+    final String darkStat = new File("src/Editor_1_1/darkStat.png").getAbsolutePath();
+    final String darkInfo = new File("src/Editor_1_1/darkInfo.png").getAbsolutePath();
     
     public MainPage() {
         initPersonalComponent();
@@ -57,22 +76,72 @@ public class MainPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFileChooser = new javax.swing.JFileChooser();
-        JDialAddLang = new javax.swing.JDialog();
-        jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        pnlTopHeader1 = new javax.swing.JPanel();
-        exitButton1 = new javax.swing.JButton();
-        barIcon1 = new javax.swing.JLabel();
-        titleLbl1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        jFileChooserFlag = new javax.swing.JFileChooser();
+        jDialAddLang = new javax.swing.JDialog();
+        DiaAddLCon = new javax.swing.JPanel();
+        txtFLanguage = new javax.swing.JTextField();
+        lblLangName = new javax.swing.JLabel();
+        pnlTopHeaderDiaAddL = new javax.swing.JPanel();
+        exitButtonDiaAddL = new javax.swing.JButton();
+        barIconDiaAddL = new javax.swing.JLabel();
+        titleLblDiaAddL = new javax.swing.JLabel();
+        lblIconDir = new javax.swing.JLabel();
+        lblIconSel = new javax.swing.JLabel();
+        lblAddL = new javax.swing.JLabel();
+        lblAdvAddLang = new javax.swing.JLabel();
         jColorChooser = new javax.swing.JColorChooser();
-        jDialog1 = new javax.swing.JDialog();
+        jDialAddField = new javax.swing.JDialog();
+        DiaAddFCon = new javax.swing.JPanel();
+        txtFField = new javax.swing.JTextField();
+        lblField = new javax.swing.JLabel();
+        pnlTopHeaderAddF = new javax.swing.JPanel();
+        exitButtonAddF = new javax.swing.JButton();
+        barIconAddF = new javax.swing.JLabel();
+        titleLblAddF = new javax.swing.JLabel();
+        lblAddF = new javax.swing.JLabel();
+        lblAdvAddField = new javax.swing.JLabel();
+        jDialDel = new javax.swing.JDialog();
+        DiaDelCont = new javax.swing.JPanel();
+        pnlTopHeaderDiaDel = new javax.swing.JPanel();
+        exitButtonDiaDel = new javax.swing.JButton();
+        barIconDiaDel = new javax.swing.JLabel();
+        titleLblDiaDel = new javax.swing.JLabel();
+        scrollPaneDel = new javax.swing.JScrollPane();
+        listDel = new javax.swing.JList<>();
+        lblDel = new javax.swing.JLabel();
+        jFileChooserLogo = new javax.swing.JFileChooser();
+        jDialAddFieldStart = new javax.swing.JDialog();
+        DiaAddFSCon = new javax.swing.JPanel();
+        txtFFieldAddFS = new javax.swing.JTextField();
+        lblFieldAddFS = new javax.swing.JLabel();
+        pnlTopHeaderAddFS = new javax.swing.JPanel();
+        exitButtonAddFS = new javax.swing.JButton();
+        barIconAddFS = new javax.swing.JLabel();
+        titleLblAddFS = new javax.swing.JLabel();
+        lblAddFS = new javax.swing.JLabel();
+        lblAdvAddFS = new javax.swing.JLabel();
+        jFrameStart = new javax.swing.JFrame();
+        DiaStartCon = new javax.swing.JPanel();
+        txtFUser = new javax.swing.JTextField();
+        lblUserStart = new javax.swing.JLabel();
+        pnlTopHeaderDiaStart = new javax.swing.JPanel();
+        exitButtonDiaStart = new javax.swing.JButton();
+        barIconDiaStart = new javax.swing.JLabel();
+        titleLblDiaStart = new javax.swing.JLabel();
+        lblContinueStart = new javax.swing.JLabel();
+        lblAdvStartFields = new javax.swing.JLabel();
+        lblPasswStart = new javax.swing.JLabel();
+        lblAddFSTart = new javax.swing.JLabel();
+        scrollPaneFStart = new javax.swing.JScrollPane();
+        listFStart = new javax.swing.JList<>();
+        lblInfoStart1 = new javax.swing.JLabel();
+        lblInfoStart2 = new javax.swing.JLabel();
+        lblConPasswStart = new javax.swing.JLabel();
+        passFieldConf = new javax.swing.JPasswordField();
+        passFieldIns = new javax.swing.JPasswordField();
+        lblAdvStartPass = new javax.swing.JLabel();
+        lblFHost = new javax.swing.JLabel();
+        txtFHost = new javax.swing.JTextField();
         pnlTopHeader = new javax.swing.JPanel();
         exitButton = new javax.swing.JButton();
         barIcon = new javax.swing.JLabel();
@@ -86,18 +155,21 @@ public class MainPage extends javax.swing.JFrame {
         collogP = new javax.swing.JPanel();
         collogL = new javax.swing.JLabel();
         lang = new javax.swing.JPanel();
-        lblLang1 = new javax.swing.JLabel();
+        lblLangHead = new javax.swing.JLabel();
         pnlScrPnEX = new javax.swing.JPanel();
         scrollPaneLang = new javax.swing.JScrollPane();
         pnlScrPnIN = new javax.swing.JPanel();
         pnlBtnAddLang = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        pnlDelLang = new javax.swing.JPanel();
+        lblDelLang = new javax.swing.JLabel();
+        pnlAddLang = new javax.swing.JPanel();
+        lblAddLan = new javax.swing.JLabel();
         fiel = new javax.swing.JPanel();
         pnlScrTraEx = new javax.swing.JPanel();
         scrollPaneTran = new javax.swing.JScrollPane();
         pnlScrTraIn = new javax.swing.JPanel();
         lblAddField = new javax.swing.JLabel();
+        lblDelField = new javax.swing.JLabel();
         collog = new javax.swing.JPanel();
         lblColBack = new javax.swing.JLabel();
         lblColText = new javax.swing.JLabel();
@@ -122,174 +194,602 @@ public class MainPage extends javax.swing.JFrame {
         lblDataPer = new javax.swing.JLabel();
         lblSubTColLog = new javax.swing.JLabel();
         lblSubTPri = new javax.swing.JLabel();
-        lblPriInfo = new javax.swing.JLabel();
-        lblUtlT = new javax.swing.JLabel();
-        txtFPriInfo = new javax.swing.JTextField();
-        txtFUtlT = new javax.swing.JTextField();
         lblSave = new javax.swing.JLabel();
         lblColTextAdv = new javax.swing.JLabel();
         lblColTextAdvChoos = new javax.swing.JLabel();
         lblColTextAdvCode = new javax.swing.JLabel();
         txtFDataPer = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        lblDataPerDay = new javax.swing.JLabel();
+        checkDataPer = new javax.swing.JCheckBox();
+        lblAdvColLog = new javax.swing.JLabel();
 
-        jFileChooser.setApproveButtonText("Aggiungi");
-        jFileChooser.setCurrentDirectory(new java.io.File("C:\\Users\\Samuele Pozzebon\\Pictures"));
-        jFileChooser.setPreferredSize(new java.awt.Dimension(570, 400));
-        jFileChooser.addActionListener(new java.awt.event.ActionListener() {
+        jFileChooserFlag.setApproveButtonText("Aggiungi");
+        jFileChooserFlag.setCurrentDirectory(new java.io.File("C:\\Users\\Samuele Pozzebon\\Pictures"));
+        jFileChooserFlag.setDialogTitle("Scegli l'immagine");
+        jFileChooserFlag.setFileFilter(new FileNameExtensionFilter("Solo immagini", "jpg", "jpeg", "png", "gif"));
+        jFileChooserFlag.setPreferredSize(new java.awt.Dimension(570, 400));
+        jFileChooserFlag.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFileChooserActionPerformed(evt);
+                jFileChooserFlagActionPerformed(evt);
             }
         });
-        jFileChooser.getAccessibleContext().setAccessibleParent(pnlTopHeader);
-        jFileChooser.setLocation(0, 0);
+        jFileChooserFlag.getAccessibleContext().setAccessibleParent(pnlTopHeader);
 
-        JDialAddLang.setLocation(new java.awt.Point(0, 0));
-        JDialAddLang.setMinimumSize(new java.awt.Dimension(300, 200));
-        JDialAddLang.setUndecorated(true);
-        JDialAddLang.setResizable(false);
-        JDialAddLang.setSize(new java.awt.Dimension(300, 200));
-        JDialAddLang.getContentPane().setLayout(null);
+        jDialAddLang.setLocation(new java.awt.Point(0, 0));
+        jDialAddLang.setMinimumSize(new java.awt.Dimension(300, 200));
+        jDialAddLang.setUndecorated(true);
+        jDialAddLang.setResizable(false);
+        jDialAddLang.setSize(new java.awt.Dimension(300, 200));
+        jDialAddLang.getContentPane().setLayout(null);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(defaultColor));
-        jPanel2.setMaximumSize(new java.awt.Dimension(300, 200));
-        jPanel2.setPreferredSize(new java.awt.Dimension(300, 200));
-        jPanel2.setLayout(null);
+        DiaAddLCon.setBorder(javax.swing.BorderFactory.createLineBorder(defaultColor));
+        DiaAddLCon.setMaximumSize(new java.awt.Dimension(300, 200));
+        DiaAddLCon.setPreferredSize(new java.awt.Dimension(300, 200));
+        DiaAddLCon.setLayout(null);
 
-        jTextField1.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        jTextField1.setMaximumSize(new java.awt.Dimension(130, 20));
-        jTextField1.setMinimumSize(new java.awt.Dimension(130, 20));
-        jTextField1.setPreferredSize(new java.awt.Dimension(130, 20));
-        jPanel2.add(jTextField1);
-        jTextField1.setBounds(140, 50, 130, 20);
+        txtFLanguage.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtFLanguage.setMaximumSize(new java.awt.Dimension(130, 20));
+        txtFLanguage.setMinimumSize(new java.awt.Dimension(130, 20));
+        txtFLanguage.setPreferredSize(new java.awt.Dimension(130, 20));
+        DiaAddLCon.add(txtFLanguage);
+        txtFLanguage.setBounds(140, 50, 130, 20);
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        jLabel2.setText("Nome della lingua:");
-        jPanel2.add(jLabel2);
-        jLabel2.setBounds(20, 50, 100, 20);
+        lblLangName.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblLangName.setText("Nome della lingua:");
+        DiaAddLCon.add(lblLangName);
+        lblLangName.setBounds(20, 50, 100, 20);
 
-        pnlTopHeader1.setBackground(new java.awt.Color(255, 255, 255));
-        pnlTopHeader1.setMaximumSize(new java.awt.Dimension(300, 24));
-        pnlTopHeader1.setMinimumSize(new java.awt.Dimension(300, 24));
-        pnlTopHeader1.setPreferredSize(new java.awt.Dimension(298, 24));
-        pnlTopHeader1.setLayout(null);
+        pnlTopHeaderDiaAddL.setBackground(new java.awt.Color(255, 255, 255));
+        pnlTopHeaderDiaAddL.setMaximumSize(new java.awt.Dimension(300, 24));
+        pnlTopHeaderDiaAddL.setMinimumSize(new java.awt.Dimension(300, 24));
+        pnlTopHeaderDiaAddL.setPreferredSize(new java.awt.Dimension(298, 24));
+        pnlTopHeaderDiaAddL.setLayout(null);
 
-        exitButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/closeIconEmpty.png"))); // NOI18N
-        exitButton1.setToolTipText("");
-        exitButton1.setBorder(null);
-        exitButton1.setBorderPainted(false);
-        exitButton1.setContentAreaFilled(false);
-        exitButton1.setMaximumSize(new java.awt.Dimension(14, 14));
-        exitButton1.setMinimumSize(new java.awt.Dimension(14, 14));
-        exitButton1.setPreferredSize(new java.awt.Dimension(14, 14));
-        exitButton1.setRolloverEnabled(false);
-        exitButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        exitButtonDiaAddL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/closeIconEmpty.png"))); // NOI18N
+        exitButtonDiaAddL.setToolTipText("");
+        exitButtonDiaAddL.setBorder(null);
+        exitButtonDiaAddL.setBorderPainted(false);
+        exitButtonDiaAddL.setContentAreaFilled(false);
+        exitButtonDiaAddL.setMaximumSize(new java.awt.Dimension(14, 14));
+        exitButtonDiaAddL.setMinimumSize(new java.awt.Dimension(14, 14));
+        exitButtonDiaAddL.setPreferredSize(new java.awt.Dimension(14, 14));
+        exitButtonDiaAddL.setRolloverEnabled(false);
+        exitButtonDiaAddL.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                exitButton1MouseEntered(evt);
+                exitButtonDiaAddLMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                exitButton1MouseExited(evt);
+                exitButtonDiaAddLMouseExited(evt);
             }
         });
-        exitButton1.addActionListener(new java.awt.event.ActionListener() {
+        exitButtonDiaAddL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitButton1ActionPerformed(evt);
+                exitButtonDiaAddLActionPerformed(evt);
             }
         });
-        pnlTopHeader1.add(exitButton1);
-        exitButton1.setBounds(280, 5, 14, 14);
+        pnlTopHeaderDiaAddL.add(exitButtonDiaAddL);
+        exitButtonDiaAddL.setBounds(280, 5, 14, 14);
 
-        barIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/editor_icon.jpg"))); // NOI18N
-        pnlTopHeader1.add(barIcon1);
-        barIcon1.setBounds(3, 2, 20, 20);
+        barIconDiaAddL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/editor_icon.jpg"))); // NOI18N
+        pnlTopHeaderDiaAddL.add(barIconDiaAddL);
+        barIconDiaAddL.setBounds(3, 2, 20, 20);
 
-        titleLbl1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        titleLbl1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleLbl1.setText("Aggiungi lingua");
-        titleLbl1.setPreferredSize(new java.awt.Dimension(200, 25));
-        titleLbl1.setRequestFocusEnabled(false);
-        pnlTopHeader1.add(titleLbl1);
-        titleLbl1.setBounds(49, 0, 200, 25);
+        titleLblDiaAddL.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        titleLblDiaAddL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleLblDiaAddL.setText("Aggiungi lingua");
+        titleLblDiaAddL.setPreferredSize(new java.awt.Dimension(200, 25));
+        titleLblDiaAddL.setRequestFocusEnabled(false);
+        pnlTopHeaderDiaAddL.add(titleLblDiaAddL);
+        titleLblDiaAddL.setBounds(49, 0, 200, 25);
 
-        jPanel2.add(pnlTopHeader1);
-        pnlTopHeader1.setBounds(1, 1, 298, 24);
+        DiaAddLCon.add(pnlTopHeaderDiaAddL);
+        pnlTopHeaderDiaAddL.setBounds(1, 1, 298, 24);
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        jPanel2.add(jLabel3);
-        jLabel3.setBounds(140, 100, 130, 20);
+        lblIconDir.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        DiaAddLCon.add(lblIconDir);
+        lblIconDir.setBounds(140, 100, 130, 20);
 
-        jPanel3.setBackground(new java.awt.Color(96, 125, 139));
-        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblIconSel.setBackground(new java.awt.Color(96, 125, 139));
+        lblIconSel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblIconSel.setForeground(new java.awt.Color(236, 239, 241));
+        lblIconSel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIconSel.setText("Seleziona l'icona");
+        lblIconSel.setMaximumSize(new java.awt.Dimension(100, 20));
+        lblIconSel.setMinimumSize(new java.awt.Dimension(100, 20));
+        lblIconSel.setOpaque(true);
+        lblIconSel.setPreferredSize(new java.awt.Dimension(100, 20));
+        lblIconSel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel3MouseClicked(evt);
+                lblIconSelMouseClicked(evt);
             }
         });
+        DiaAddLCon.add(lblIconSel);
+        lblIconSel.setBounds(20, 100, 100, 20);
 
-        jLabel4.setBackground(new java.awt.Color(96, 125, 139));
-        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(236, 239, 241));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Seleziona l'icona");
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblAddL.setBackground(new java.awt.Color(96, 125, 139));
+        lblAddL.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblAddL.setForeground(new java.awt.Color(236, 239, 241));
+        lblAddL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAddL.setText("Aggiungi");
+        lblAddL.setMaximumSize(new java.awt.Dimension(100, 20));
+        lblAddL.setMinimumSize(new java.awt.Dimension(100, 20));
+        lblAddL.setOpaque(true);
+        lblAddL.setPreferredSize(new java.awt.Dimension(100, 20));
+        lblAddL.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+                lblAddLMouseClicked(evt);
+            }
+        });
+        DiaAddLCon.add(lblAddL);
+        lblAddL.setBounds(100, 150, 100, 20);
+
+        lblAdvAddLang.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
+        lblAdvAddLang.setForeground(new java.awt.Color(255, 0, 0));
+        lblAdvAddLang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAdvAddLang.setText("TUTTI I CAMPI DEVONO ESSERE COMPLETATI");
+        DiaAddLCon.add(lblAdvAddLang);
+        lblAdvAddLang.setBounds(0, 180, 300, 14);
+
+        jDialAddLang.getContentPane().add(DiaAddLCon);
+        DiaAddLCon.setBounds(0, 0, 300, 200);
+
+        jDialAddLang.setLocationRelativeTo(null);
+
+        jDialAddField.setUndecorated(true);
+        jDialAddField.setResizable(false);
+        jDialAddField.setSize(new java.awt.Dimension(300, 140));
+        jDialAddField.getContentPane().setLayout(null);
+
+        DiaAddFCon.setBorder(javax.swing.BorderFactory.createLineBorder(defaultColor));
+        DiaAddFCon.setMaximumSize(new java.awt.Dimension(300, 200));
+        DiaAddFCon.setPreferredSize(new java.awt.Dimension(300, 140));
+        DiaAddFCon.setLayout(null);
+
+        txtFField.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtFField.setMaximumSize(new java.awt.Dimension(130, 20));
+        txtFField.setMinimumSize(new java.awt.Dimension(130, 20));
+        txtFField.setPreferredSize(new java.awt.Dimension(130, 20));
+        DiaAddFCon.add(txtFField);
+        txtFField.setBounds(140, 50, 130, 20);
+
+        lblField.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblField.setText("Nome del campo:");
+        DiaAddFCon.add(lblField);
+        lblField.setBounds(20, 50, 100, 20);
+
+        pnlTopHeaderAddF.setBackground(new java.awt.Color(255, 255, 255));
+        pnlTopHeaderAddF.setMaximumSize(new java.awt.Dimension(300, 24));
+        pnlTopHeaderAddF.setMinimumSize(new java.awt.Dimension(300, 24));
+        pnlTopHeaderAddF.setPreferredSize(new java.awt.Dimension(298, 24));
+        pnlTopHeaderAddF.setLayout(null);
+
+        exitButtonAddF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/closeIconEmpty.png"))); // NOI18N
+        exitButtonAddF.setToolTipText("");
+        exitButtonAddF.setBorder(null);
+        exitButtonAddF.setBorderPainted(false);
+        exitButtonAddF.setContentAreaFilled(false);
+        exitButtonAddF.setMaximumSize(new java.awt.Dimension(14, 14));
+        exitButtonAddF.setMinimumSize(new java.awt.Dimension(14, 14));
+        exitButtonAddF.setPreferredSize(new java.awt.Dimension(14, 14));
+        exitButtonAddF.setRolloverEnabled(false);
+        exitButtonAddF.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                exitButtonAddFMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                exitButtonAddFMouseExited(evt);
+            }
+        });
+        exitButtonAddF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButtonAddFActionPerformed(evt);
+            }
+        });
+        pnlTopHeaderAddF.add(exitButtonAddF);
+        exitButtonAddF.setBounds(280, 5, 14, 14);
+
+        barIconAddF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/editor_icon.jpg"))); // NOI18N
+        pnlTopHeaderAddF.add(barIconAddF);
+        barIconAddF.setBounds(3, 2, 20, 20);
+
+        titleLblAddF.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        titleLblAddF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleLblAddF.setText("Aggiungi campo");
+        titleLblAddF.setPreferredSize(new java.awt.Dimension(200, 25));
+        titleLblAddF.setRequestFocusEnabled(false);
+        pnlTopHeaderAddF.add(titleLblAddF);
+        titleLblAddF.setBounds(49, 0, 200, 25);
+
+        DiaAddFCon.add(pnlTopHeaderAddF);
+        pnlTopHeaderAddF.setBounds(1, 1, 298, 24);
+
+        lblAddF.setBackground(new java.awt.Color(96, 125, 139));
+        lblAddF.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblAddF.setForeground(new java.awt.Color(236, 239, 241));
+        lblAddF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAddF.setText("Aggiungi");
+        lblAddF.setOpaque(true);
+        lblAddF.setPreferredSize(new java.awt.Dimension(100, 20));
+        lblAddF.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAddFMouseClicked(evt);
+            }
+        });
+        DiaAddFCon.add(lblAddF);
+        lblAddF.setBounds(100, 90, 100, 20);
+
+        lblAdvAddField.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
+        lblAdvAddField.setForeground(new java.awt.Color(255, 0, 0));
+        lblAdvAddField.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAdvAddField.setText("TUTTI I CAMPI DEVONO ESSERE COMPLETATI");
+        DiaAddFCon.add(lblAdvAddField);
+        lblAdvAddField.setBounds(0, 120, 300, 14);
+
+        jDialAddField.getContentPane().add(DiaAddFCon);
+        DiaAddFCon.setBounds(0, 0, 300, 140);
+
+        jDialAddField.setLocationRelativeTo(null);
+
+        jDialDel.setUndecorated(true);
+        jDialDel.setResizable(false);
+        jDialDel.setSize(new java.awt.Dimension(300, 270));
+        jDialDel.getContentPane().setLayout(null);
+
+        DiaDelCont.setBorder(javax.swing.BorderFactory.createLineBorder(defaultColor));
+        DiaDelCont.setMaximumSize(new java.awt.Dimension(300, 200));
+        DiaDelCont.setPreferredSize(new java.awt.Dimension(300, 270));
+        DiaDelCont.setLayout(null);
+
+        pnlTopHeaderDiaDel.setBackground(new java.awt.Color(255, 255, 255));
+        pnlTopHeaderDiaDel.setMaximumSize(new java.awt.Dimension(300, 24));
+        pnlTopHeaderDiaDel.setMinimumSize(new java.awt.Dimension(300, 24));
+        pnlTopHeaderDiaDel.setPreferredSize(new java.awt.Dimension(298, 24));
+        pnlTopHeaderDiaDel.setLayout(null);
+
+        exitButtonDiaDel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/closeIconEmpty.png"))); // NOI18N
+        exitButtonDiaDel.setToolTipText("");
+        exitButtonDiaDel.setBorder(null);
+        exitButtonDiaDel.setBorderPainted(false);
+        exitButtonDiaDel.setContentAreaFilled(false);
+        exitButtonDiaDel.setMaximumSize(new java.awt.Dimension(14, 14));
+        exitButtonDiaDel.setMinimumSize(new java.awt.Dimension(14, 14));
+        exitButtonDiaDel.setPreferredSize(new java.awt.Dimension(14, 14));
+        exitButtonDiaDel.setRolloverEnabled(false);
+        exitButtonDiaDel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                exitButtonDiaDelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                exitButtonDiaDelMouseExited(evt);
+            }
+        });
+        exitButtonDiaDel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButtonDiaDelActionPerformed(evt);
+            }
+        });
+        pnlTopHeaderDiaDel.add(exitButtonDiaDel);
+        exitButtonDiaDel.setBounds(280, 5, 14, 14);
+
+        barIconDiaDel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/editor_icon.jpg"))); // NOI18N
+        pnlTopHeaderDiaDel.add(barIconDiaDel);
+        barIconDiaDel.setBounds(3, 2, 20, 20);
+
+        titleLblDiaDel.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        titleLblDiaDel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleLblDiaDel.setText("Elimina");
+        titleLblDiaDel.setPreferredSize(new java.awt.Dimension(200, 25));
+        titleLblDiaDel.setRequestFocusEnabled(false);
+        pnlTopHeaderDiaDel.add(titleLblDiaDel);
+        titleLblDiaDel.setBounds(49, 0, 200, 25);
+
+        DiaDelCont.add(pnlTopHeaderDiaDel);
+        pnlTopHeaderDiaDel.setBounds(1, 1, 298, 24);
+
+        scrollPaneDel.setPreferredSize(new java.awt.Dimension(250, 130));
+
+        listDel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        listDel.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        scrollPaneDel.setViewportView(listDel);
+
+        DiaDelCont.add(scrollPaneDel);
+        scrollPaneDel.setBounds(50, 60, 200, 130);
+
+        lblDel.setBackground(new java.awt.Color(96, 125, 139));
+        lblDel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblDel.setForeground(new java.awt.Color(236, 239, 241));
+        lblDel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDel.setText("Elimina");
+        lblDel.setOpaque(true);
+        lblDel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDelMouseClicked(evt);
+            }
+        });
+        DiaDelCont.add(lblDel);
+        lblDel.setBounds(101, 220, 100, 20);
+
+        jDialDel.getContentPane().add(DiaDelCont);
+        DiaDelCont.setBounds(0, 0, 300, 270);
+
+        jDialDel.setLocationRelativeTo(null);
+
+        jFileChooserLogo.setApproveButtonText("Aggiungi");
+        jFileChooserLogo.setCurrentDirectory(new java.io.File("C:\\Users\\Samuele Pozzebon\\Pictures"));
+        jFileChooserLogo.setDialogTitle("Scegli il logo");
+        jFileChooserLogo.setFileFilter(new FileNameExtensionFilter("Solo immagini", "jpg", "jpeg", "png", "gif"));
+        jFileChooserLogo.setPreferredSize(new java.awt.Dimension(570, 400));
+        jFileChooserLogo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFileChooserLogoActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-        );
+        jDialAddFieldStart.setUndecorated(true);
+        jDialAddFieldStart.setResizable(false);
+        jDialAddFieldStart.setSize(new java.awt.Dimension(300, 140));
+        jDialAddFieldStart.getContentPane().setLayout(null);
 
-        jPanel2.add(jPanel3);
-        jPanel3.setBounds(20, 100, 100, 20);
+        DiaAddFSCon.setBorder(javax.swing.BorderFactory.createLineBorder(defaultColor));
+        DiaAddFSCon.setMaximumSize(new java.awt.Dimension(300, 200));
+        DiaAddFSCon.setPreferredSize(new java.awt.Dimension(300, 140));
+        DiaAddFSCon.setLayout(null);
 
-        jPanel4.setBackground(new java.awt.Color(96, 125, 139));
+        txtFFieldAddFS.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtFFieldAddFS.setMaximumSize(new java.awt.Dimension(130, 20));
+        txtFFieldAddFS.setMinimumSize(new java.awt.Dimension(130, 20));
+        txtFFieldAddFS.setPreferredSize(new java.awt.Dimension(130, 20));
+        DiaAddFSCon.add(txtFFieldAddFS);
+        txtFFieldAddFS.setBounds(140, 50, 130, 20);
 
-        jLabel5.setBackground(new java.awt.Color(96, 125, 139));
-        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(236, 239, 241));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Aggiungi");
+        lblFieldAddFS.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblFieldAddFS.setText("Nome del campo:");
+        DiaAddFSCon.add(lblFieldAddFS);
+        lblFieldAddFS.setBounds(20, 50, 100, 20);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        pnlTopHeaderAddFS.setBackground(new java.awt.Color(255, 255, 255));
+        pnlTopHeaderAddFS.setMaximumSize(new java.awt.Dimension(300, 24));
+        pnlTopHeaderAddFS.setMinimumSize(new java.awt.Dimension(300, 24));
+        pnlTopHeaderAddFS.setPreferredSize(new java.awt.Dimension(298, 24));
+        pnlTopHeaderAddFS.setLayout(null);
 
-        jPanel2.add(jPanel4);
-        jPanel4.setBounds(100, 150, 100, 20);
+        exitButtonAddFS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/closeIconEmpty.png"))); // NOI18N
+        exitButtonAddFS.setToolTipText("");
+        exitButtonAddFS.setBorder(null);
+        exitButtonAddFS.setBorderPainted(false);
+        exitButtonAddFS.setContentAreaFilled(false);
+        exitButtonAddFS.setMaximumSize(new java.awt.Dimension(14, 14));
+        exitButtonAddFS.setMinimumSize(new java.awt.Dimension(14, 14));
+        exitButtonAddFS.setPreferredSize(new java.awt.Dimension(14, 14));
+        exitButtonAddFS.setRolloverEnabled(false);
+        exitButtonAddFS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                exitButtonAddFSMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                exitButtonAddFSMouseExited(evt);
+            }
+        });
+        exitButtonAddFS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButtonAddFSActionPerformed(evt);
+            }
+        });
+        pnlTopHeaderAddFS.add(exitButtonAddFS);
+        exitButtonAddFS.setBounds(280, 5, 14, 14);
 
-        JDialAddLang.getContentPane().add(jPanel2);
-        jPanel2.setBounds(0, 0, 300, 200);
+        barIconAddFS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/editor_icon.jpg"))); // NOI18N
+        pnlTopHeaderAddFS.add(barIconAddFS);
+        barIconAddFS.setBounds(3, 2, 20, 20);
 
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        titleLblAddFS.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        titleLblAddFS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleLblAddFS.setText("Aggiungi campo");
+        titleLblAddFS.setPreferredSize(new java.awt.Dimension(200, 25));
+        titleLblAddFS.setRequestFocusEnabled(false);
+        pnlTopHeaderAddFS.add(titleLblAddFS);
+        titleLblAddFS.setBounds(49, 0, 200, 25);
+
+        DiaAddFSCon.add(pnlTopHeaderAddFS);
+        pnlTopHeaderAddFS.setBounds(1, 1, 298, 24);
+
+        lblAddFS.setBackground(new java.awt.Color(96, 125, 139));
+        lblAddFS.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblAddFS.setForeground(new java.awt.Color(236, 239, 241));
+        lblAddFS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAddFS.setText("Aggiungi");
+        lblAddFS.setOpaque(true);
+        lblAddFS.setPreferredSize(new java.awt.Dimension(100, 20));
+        lblAddFS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAddFSMouseClicked(evt);
+            }
+        });
+        DiaAddFSCon.add(lblAddFS);
+        lblAddFS.setBounds(100, 90, 100, 20);
+
+        lblAdvAddFS.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
+        lblAdvAddFS.setForeground(new java.awt.Color(255, 0, 0));
+        lblAdvAddFS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAdvAddFS.setText("TUTTI I CAMPI DEVONO ESSERE COMPLETATI");
+        DiaAddFSCon.add(lblAdvAddFS);
+        lblAdvAddFS.setBounds(0, 120, 300, 14);
+
+        jDialAddFieldStart.getContentPane().add(DiaAddFSCon);
+        DiaAddFSCon.setBounds(0, 0, 300, 140);
+
+        jDialAddFieldStart.setLocationRelativeTo(null);
+
+        jFrameStart.setMinimumSize(new java.awt.Dimension(300, 400));
+        jFrameStart.setUndecorated(true);
+        jFrameStart.setResizable(false);
+        jFrameStart.getContentPane().setLayout(null);
+
+        DiaStartCon.setBorder(javax.swing.BorderFactory.createLineBorder(defaultColor));
+        DiaStartCon.setMaximumSize(new java.awt.Dimension(300, 200));
+        DiaStartCon.setPreferredSize(new java.awt.Dimension(300, 400));
+        DiaStartCon.setLayout(null);
+
+        txtFUser.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtFUser.setMaximumSize(new java.awt.Dimension(130, 20));
+        txtFUser.setMinimumSize(new java.awt.Dimension(130, 20));
+        txtFUser.setPreferredSize(new java.awt.Dimension(130, 20));
+        DiaStartCon.add(txtFUser);
+        txtFUser.setBounds(140, 50, 140, 20);
+
+        lblUserStart.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblUserStart.setText("Username:");
+        DiaStartCon.add(lblUserStart);
+        lblUserStart.setBounds(20, 50, 110, 20);
+
+        pnlTopHeaderDiaStart.setBackground(new java.awt.Color(255, 255, 255));
+        pnlTopHeaderDiaStart.setMaximumSize(new java.awt.Dimension(300, 24));
+        pnlTopHeaderDiaStart.setMinimumSize(new java.awt.Dimension(300, 24));
+        pnlTopHeaderDiaStart.setPreferredSize(new java.awt.Dimension(298, 24));
+        pnlTopHeaderDiaStart.setLayout(null);
+
+        exitButtonDiaStart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/closeIconEmpty.png"))); // NOI18N
+        exitButtonDiaStart.setToolTipText("");
+        exitButtonDiaStart.setBorder(null);
+        exitButtonDiaStart.setBorderPainted(false);
+        exitButtonDiaStart.setContentAreaFilled(false);
+        exitButtonDiaStart.setMaximumSize(new java.awt.Dimension(14, 14));
+        exitButtonDiaStart.setMinimumSize(new java.awt.Dimension(14, 14));
+        exitButtonDiaStart.setPreferredSize(new java.awt.Dimension(14, 14));
+        exitButtonDiaStart.setRolloverEnabled(false);
+        exitButtonDiaStart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                exitButtonDiaStartMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                exitButtonDiaStartMouseExited(evt);
+            }
+        });
+        exitButtonDiaStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButtonDiaStartActionPerformed(evt);
+            }
+        });
+        pnlTopHeaderDiaStart.add(exitButtonDiaStart);
+        exitButtonDiaStart.setBounds(280, 5, 14, 14);
+
+        barIconDiaStart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editor_1_1/editor_icon.jpg"))); // NOI18N
+        pnlTopHeaderDiaStart.add(barIconDiaStart);
+        barIconDiaStart.setBounds(3, 2, 20, 20);
+
+        titleLblDiaStart.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        titleLblDiaStart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleLblDiaStart.setText("Primo avvio");
+        titleLblDiaStart.setPreferredSize(new java.awt.Dimension(200, 25));
+        titleLblDiaStart.setRequestFocusEnabled(false);
+        pnlTopHeaderDiaStart.add(titleLblDiaStart);
+        titleLblDiaStart.setBounds(49, 0, 200, 25);
+
+        DiaStartCon.add(pnlTopHeaderDiaStart);
+        pnlTopHeaderDiaStart.setBounds(1, 1, 298, 24);
+
+        lblContinueStart.setBackground(new java.awt.Color(96, 125, 139));
+        lblContinueStart.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblContinueStart.setForeground(new java.awt.Color(236, 239, 241));
+        lblContinueStart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblContinueStart.setText("Continua");
+        lblContinueStart.setMaximumSize(new java.awt.Dimension(100, 20));
+        lblContinueStart.setMinimumSize(new java.awt.Dimension(100, 20));
+        lblContinueStart.setOpaque(true);
+        lblContinueStart.setPreferredSize(new java.awt.Dimension(100, 20));
+        lblContinueStart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblContinueStartMouseClicked(evt);
+            }
+        });
+        DiaStartCon.add(lblContinueStart);
+        lblContinueStart.setBounds(170, 350, 100, 20);
+
+        lblAdvStartFields.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblAdvStartFields.setForeground(new java.awt.Color(255, 0, 0));
+        lblAdvStartFields.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAdvStartFields.setText("Completa tutti i campi");
+        DiaStartCon.add(lblAdvStartFields);
+        lblAdvStartFields.setBounds(0, 380, 300, 15);
+
+        lblPasswStart.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblPasswStart.setText("Password:");
+        DiaStartCon.add(lblPasswStart);
+        lblPasswStart.setBounds(20, 90, 110, 20);
+
+        lblAddFSTart.setBackground(new java.awt.Color(96, 125, 139));
+        lblAddFSTart.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblAddFSTart.setForeground(new java.awt.Color(236, 239, 241));
+        lblAddFSTart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAddFSTart.setText("Aggiungi campo");
+        lblAddFSTart.setOpaque(true);
+        lblAddFSTart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAddFSTartMouseClicked(evt);
+            }
+        });
+        DiaStartCon.add(lblAddFSTart);
+        lblAddFSTart.setBounds(30, 350, 100, 20);
+
+        listFStart.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        listFStart.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = {  };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        scrollPaneFStart.setViewportView(listFStart);
+
+        DiaStartCon.add(scrollPaneFStart);
+        scrollPaneFStart.setBounds(80, 260, 140, 70);
+
+        lblInfoStart1.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblInfoStart1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblInfoStart1.setText("Campi permanenti");
+        DiaStartCon.add(lblInfoStart1);
+        lblInfoStart1.setBounds(80, 210, 130, 15);
+
+        lblInfoStart2.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
+        lblInfoStart2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblInfoStart2.setText("Questi campi non potranno poi essere rimossi");
+        DiaStartCon.add(lblInfoStart2);
+        lblInfoStart2.setBounds(10, 230, 280, 14);
+
+        lblConPasswStart.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblConPasswStart.setText("Conferma password:");
+        DiaStartCon.add(lblConPasswStart);
+        lblConPasswStart.setBounds(20, 130, 110, 20);
+        DiaStartCon.add(passFieldConf);
+        passFieldConf.setBounds(140, 130, 140, 20);
+        DiaStartCon.add(passFieldIns);
+        passFieldIns.setBounds(140, 90, 140, 20);
+
+        lblAdvStartPass.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblAdvStartPass.setForeground(new java.awt.Color(255, 0, 0));
+        lblAdvStartPass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAdvStartPass.setText("Le password non corrispondono");
+        DiaStartCon.add(lblAdvStartPass);
+        lblAdvStartPass.setBounds(0, 380, 300, 15);
+
+        lblFHost.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblFHost.setText("Destinazione DB:");
+        DiaStartCon.add(lblFHost);
+        lblFHost.setBounds(20, 170, 110, 20);
+
+        txtFHost.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtFHost.setMaximumSize(new java.awt.Dimension(130, 20));
+        txtFHost.setMinimumSize(new java.awt.Dimension(130, 20));
+        txtFHost.setPreferredSize(new java.awt.Dimension(130, 20));
+        DiaStartCon.add(txtFHost);
+        txtFHost.setBounds(140, 170, 140, 20);
+
+        jFrameStart.getContentPane().add(DiaStartCon);
+        DiaStartCon.setBounds(0, 0, 300, 400);
+
+        jFrameStart.setLocationRelativeTo(null);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Site editor");
@@ -299,6 +799,11 @@ public class MainPage extends javax.swing.JFrame {
         setName("Site editor"); // NOI18N
         setUndecorated(true);
         setSize(new java.awt.Dimension(402, 623));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         pnlTopHeader.setBackground(new java.awt.Color(255, 255, 255));
@@ -507,15 +1012,15 @@ public class MainPage extends javax.swing.JFrame {
         lang.setMinimumSize(new java.awt.Dimension(402, 542));
         lang.setPreferredSize(new java.awt.Dimension(402, 542));
 
-        lblLang1.setFont(subTitleFont);
-        lblLang1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblLang1.setText("Seleziona le lingue da visualizzare");
+        lblLangHead.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        lblLangHead.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLangHead.setText("Seleziona le lingue da visualizzare");
 
         pnlScrPnEX.setPreferredSize(new java.awt.Dimension(402, 360));
         pnlScrPnEX.setLayout(null);
 
         scrollPaneLang.setMaximumSize(new java.awt.Dimension(350, 300));
-        scrollPaneLang.setMinimumSize(new java.awt.Dimension(350, 300));
+        scrollPaneLang.setMinimumSize(new java.awt.Dimension(0, 0));
         scrollPaneLang.setOpaque(false);
         scrollPaneLang.setPreferredSize(new java.awt.Dimension(250, 300));
 
@@ -531,51 +1036,83 @@ public class MainPage extends javax.swing.JFrame {
         pnlBtnAddLang.setPreferredSize(new java.awt.Dimension(402, 107));
         pnlBtnAddLang.setLayout(null);
 
-        jPanel1.setBackground(defaultColor);
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.setMaximumSize(new java.awt.Dimension(150, 35));
-        jPanel1.setMinimumSize(new java.awt.Dimension(150, 35));
-        jPanel1.setPreferredSize(new java.awt.Dimension(150, 35));
-        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnlDelLang.setBackground(defaultColor);
+        pnlDelLang.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        pnlDelLang.setMaximumSize(new java.awt.Dimension(999999999, 99999999));
+        pnlDelLang.setPreferredSize(new java.awt.Dimension(120, 35));
+
+        lblDelLang.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        lblDelLang.setForeground(textColor);
+        lblDelLang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDelLang.setText("Elimina lingua");
+        lblDelLang.setMaximumSize(new java.awt.Dimension(120, 35));
+        lblDelLang.setMinimumSize(new java.awt.Dimension(120, 35));
+        lblDelLang.setPreferredSize(new java.awt.Dimension(120, 35));
+        lblDelLang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel1MouseClicked(evt);
+                lblDelLangMouseClicked(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel1.setForeground(textColor);
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Aggiungi lingua");
-        jLabel1.setMaximumSize(new java.awt.Dimension(150, 35));
-        jLabel1.setMinimumSize(new java.awt.Dimension(150, 35));
-        jLabel1.setPreferredSize(new java.awt.Dimension(150, 35));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout pnlDelLangLayout = new javax.swing.GroupLayout(pnlDelLang);
+        pnlDelLang.setLayout(pnlDelLangLayout);
+        pnlDelLangLayout.setHorizontalGroup(
+            pnlDelLangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblDelLang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        pnlDelLangLayout.setVerticalGroup(
+            pnlDelLangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblDelLang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pnlBtnAddLang.add(jPanel1);
-        jPanel1.setBounds(126, 20, 150, 35);
+        pnlBtnAddLang.add(pnlDelLang);
+        pnlDelLang.setBounds(232, 20, 120, 35);
+
+        pnlAddLang.setBackground(defaultColor);
+        pnlAddLang.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        pnlAddLang.setMaximumSize(new java.awt.Dimension(120, 35));
+        pnlAddLang.setMinimumSize(new java.awt.Dimension(120, 35));
+        pnlAddLang.setPreferredSize(new java.awt.Dimension(120, 35));
+        pnlAddLang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlAddLangMouseClicked(evt);
+            }
+        });
+
+        lblAddLan.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        lblAddLan.setForeground(textColor);
+        lblAddLan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAddLan.setText("Aggiungi lingua");
+        lblAddLan.setMaximumSize(new java.awt.Dimension(120, 35));
+        lblAddLan.setMinimumSize(new java.awt.Dimension(120, 35));
+        lblAddLan.setPreferredSize(new java.awt.Dimension(120, 35));
+
+        javax.swing.GroupLayout pnlAddLangLayout = new javax.swing.GroupLayout(pnlAddLang);
+        pnlAddLang.setLayout(pnlAddLangLayout);
+        pnlAddLangLayout.setHorizontalGroup(
+            pnlAddLangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblAddLan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        pnlAddLangLayout.setVerticalGroup(
+            pnlAddLangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblAddLan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        pnlBtnAddLang.add(pnlAddLang);
+        pnlAddLang.setBounds(50, 20, 120, 35);
 
         javax.swing.GroupLayout langLayout = new javax.swing.GroupLayout(lang);
         lang.setLayout(langLayout);
         langLayout.setHorizontalGroup(
             langLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblLang1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblLangHead, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnlScrPnEX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnlBtnAddLang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         langLayout.setVerticalGroup(
             langLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(langLayout.createSequentialGroup()
-                .addComponent(lblLang1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblLangHead, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(pnlScrPnEX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -590,22 +1127,23 @@ public class MainPage extends javax.swing.JFrame {
         fiel.setPreferredSize(new java.awt.Dimension(402, 542));
         fiel.setLayout(null);
 
-        pnlScrTraEx.setPreferredSize(new java.awt.Dimension(350, 350));
+        pnlScrTraEx.setMinimumSize(new java.awt.Dimension(0, 0));
+        pnlScrTraEx.setPreferredSize(new java.awt.Dimension(350, 300));
         pnlScrTraEx.setLayout(null);
 
         scrollPaneTran.setAutoscrolls(true);
-        scrollPaneTran.setPreferredSize(new java.awt.Dimension(350, 310));
+        scrollPaneTran.setPreferredSize(new java.awt.Dimension(350, 300));
 
         pnlScrTraIn.setBackground(new java.awt.Color(255, 255, 255));
-        pnlScrTraIn.setLayout(new java.awt.GridLayout());
+        pnlScrTraIn.setLayout(new java.awt.GridLayout(1, 0));
         scrollPaneTran.setViewportView(pnlScrTraIn);
         pnlScrTraIn.setSize(pnlScrTraIn.getWidth(), (tranTable.getRowHeight()*tranTable.getRowCount()));
 
         pnlScrTraEx.add(scrollPaneTran);
-        scrollPaneTran.setBounds(0, 0, 350, 310);
+        scrollPaneTran.setBounds(0, 0, 350, 300);
 
         fiel.add(pnlScrTraEx);
-        pnlScrTraEx.setBounds(26, 96, 350, 310);
+        pnlScrTraEx.setBounds(26, 105, 350, 310);
 
         lblAddField.setBackground(new java.awt.Color(96, 125, 139));
         lblAddField.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -615,14 +1153,31 @@ public class MainPage extends javax.swing.JFrame {
         lblAddField.setMaximumSize(new java.awt.Dimension(150, 35));
         lblAddField.setMinimumSize(new java.awt.Dimension(150, 35));
         lblAddField.setOpaque(true);
-        lblAddField.setPreferredSize(new java.awt.Dimension(150, 35));
+        lblAddField.setPreferredSize(new java.awt.Dimension(120, 35));
         lblAddField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblAddFieldMouseClicked(evt);
             }
         });
         fiel.add(lblAddField);
-        lblAddField.setBounds(126, 455, 150, 35);
+        lblAddField.setBounds(50, 455, 120, 35);
+
+        lblDelField.setBackground(new java.awt.Color(96, 125, 139));
+        lblDelField.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        lblDelField.setForeground(new java.awt.Color(236, 239, 241));
+        lblDelField.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDelField.setText("Elimina campo");
+        lblDelField.setMaximumSize(new java.awt.Dimension(150, 35));
+        lblDelField.setMinimumSize(new java.awt.Dimension(150, 35));
+        lblDelField.setOpaque(true);
+        lblDelField.setPreferredSize(new java.awt.Dimension(120, 35));
+        lblDelField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDelFieldMouseClicked(evt);
+            }
+        });
+        fiel.add(lblDelField);
+        lblDelField.setBounds(232, 455, 120, 35);
 
         pnlMenu.add(fiel);
         fiel.setBounds(0, 56, 402, 542);
@@ -744,21 +1299,6 @@ public class MainPage extends javax.swing.JFrame {
         lblSubTPri.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         lblSubTPri.setText("Privacy");
 
-        lblPriInfo.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        lblPriInfo.setText("Link informativa sulla privacy:");
-
-        lblUtlT.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        lblUtlT.setText("Link termini di utilizzo:");
-
-        txtFPriInfo.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        txtFPriInfo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFPriInfoActionPerformed(evt);
-            }
-        });
-
-        txtFUtlT.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-
         lblSave.setBackground(new java.awt.Color(96, 125, 139));
         lblSave.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         lblSave.setForeground(new java.awt.Color(236, 239, 241));
@@ -766,6 +1306,11 @@ public class MainPage extends javax.swing.JFrame {
         lblSave.setText("Salva");
         lblSave.setOpaque(true);
         lblSave.setPreferredSize(new java.awt.Dimension(60, 25));
+        lblSave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSaveMouseClicked(evt);
+            }
+        });
 
         lblColTextAdv.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         lblColTextAdv.setText("Colore degli avvisi:");
@@ -786,16 +1331,21 @@ public class MainPage extends javax.swing.JFrame {
         txtFDataPer.setMinimumSize(new java.awt.Dimension(50, 20));
         txtFDataPer.setPreferredSize(new java.awt.Dimension(50, 20));
 
-        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        jLabel6.setText("giorni");
+        lblDataPerDay.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblDataPerDay.setText("giorni");
 
-        jCheckBox1.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        jCheckBox1.setText("Per sempre");
-        jCheckBox1.addChangeListener(new javax.swing.event.ChangeListener() {
+        checkDataPer.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        checkDataPer.setText("Per sempre");
+        checkDataPer.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jCheckBox1StateChanged(evt);
+                checkDataPerStateChanged(evt);
             }
         });
+
+        lblAdvColLog.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        lblAdvColLog.setForeground(new java.awt.Color(255, 0, 0));
+        lblAdvColLog.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAdvColLog.setText("COMPLETARE TUTTI I CAMPI");
 
         javax.swing.GroupLayout collogLayout = new javax.swing.GroupLayout(collog);
         collog.setLayout(collogLayout);
@@ -807,8 +1357,8 @@ public class MainPage extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(collogLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, collogLayout.createSequentialGroup()
+                .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(collogLayout.createSequentialGroup()
                         .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblColExHead)
                             .addComponent(lblColInHead)
@@ -822,7 +1372,7 @@ public class MainPage extends javax.swing.JFrame {
                             .addComponent(lblSubTColLog))
                         .addGap(18, 18, 18)
                         .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblColBoxChoose, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(lblColBoxChoose, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
                             .addComponent(lblColInHeadChoose, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
                             .addComponent(lblColExHeadChoose, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
                             .addComponent(lblLogoChoose, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
@@ -838,34 +1388,29 @@ public class MainPage extends javax.swing.JFrame {
                             .addComponent(lblColExHeadCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblColInHeadCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblLogoDir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblColTextAdvCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, collogLayout.createSequentialGroup()
-                        .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPriInfo)
-                            .addComponent(lblUtlT)
-                            .addComponent(lblDataPer))
-                        .addGap(18, 18, 18)
-                        .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(collogLayout.createSequentialGroup()
-                                .addComponent(txtFDataPer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jCheckBox1))
-                            .addComponent(txtFUtlT)
-                            .addComponent(txtFPriInfo))))
-                .addGap(31, 31, 31))
+                            .addComponent(lblColTextAdvCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31))
+                    .addGroup(collogLayout.createSequentialGroup()
+                        .addComponent(lblDataPer)
+                        .addGap(63, 63, 63)
+                        .addComponent(txtFDataPer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblDataPerDay)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(checkDataPer))))
+            .addComponent(lblAdvColLog, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         collogLayout.setVerticalGroup(
             collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(collogLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(29, 29, 29)
                 .addComponent(lblSubTColLog)
                 .addGap(18, 18, 18)
-                .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblColBack)
-                    .addComponent(lblColBackChoose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblColBackCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblColBackCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblColBack)
+                        .addComponent(lblColBackChoose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblColText)
@@ -878,15 +1423,17 @@ public class MainPage extends javax.swing.JFrame {
                         .addComponent(lblColTextAdvChoos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblColTextAdvCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblColBox)
-                    .addComponent(lblColBoxChoose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblColBoxCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblColBoxCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblColBox)
+                        .addComponent(lblColBoxChoose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblColExHead)
-                    .addComponent(lblColExHeadChoose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblColExHeadCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblColExHeadCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblColExHead)
+                        .addComponent(lblColExHeadChoose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblColInHead)
@@ -901,24 +1448,18 @@ public class MainPage extends javax.swing.JFrame {
                     .addComponent(lblLogoDir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblLogo)
                     .addComponent(lblLogoChoose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(39, 39, 39)
                 .addComponent(lblSubTPri)
                 .addGap(18, 18, 18)
                 .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDataPer)
                     .addComponent(txtFDataPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(jCheckBox1))
-                .addGap(18, 18, 18)
-                .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPriInfo)
-                    .addComponent(txtFPriInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(collogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUtlT)
-                    .addComponent(txtFUtlT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(lblDataPerDay)
+                    .addComponent(checkDataPer))
+                .addGap(27, 27, 27)
                 .addComponent(lblSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblAdvColLog)
                 .addContainerGap())
         );
 
@@ -1016,57 +1557,288 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButtonMouseExited
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-        close();
+        closeNoSave();
     }//GEN-LAST:event_exitButtonActionPerformed
 
-    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        JDialAddLang.setVisible(true);
-    }//GEN-LAST:event_jPanel1MouseClicked
+    private void pnlAddLangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAddLangMouseClicked
+        jDialAddLang.setVisible(true);
+    }//GEN-LAST:event_pnlAddLangMouseClicked
 
-    private void exitButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButton1MouseEntered
-        exitButton1.setIcon(new ImageIcon(getClass().getResource("/editor_1_1/closeIconCrossed.png")));
-    }//GEN-LAST:event_exitButton1MouseEntered
+    private void exitButtonDiaAddLMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonDiaAddLMouseEntered
+        exitButtonDiaAddL.setIcon(new ImageIcon(getClass().getResource("/editor_1_1/closeIconCrossed.png")));
+    }//GEN-LAST:event_exitButtonDiaAddLMouseEntered
 
-    private void exitButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButton1MouseExited
-        exitButton1.setIcon(new ImageIcon(getClass().getResource("/editor_1_1/closeIconEmpty.png")));
-    }//GEN-LAST:event_exitButton1MouseExited
+    private void exitButtonDiaAddLMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonDiaAddLMouseExited
+        exitButtonDiaAddL.setIcon(new ImageIcon(getClass().getResource("/editor_1_1/closeIconEmpty.png")));
+    }//GEN-LAST:event_exitButtonDiaAddLMouseExited
 
-    private void exitButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton1ActionPerformed
-        JDialAddLang.setVisible(false);
-    }//GEN-LAST:event_exitButton1ActionPerformed
+    private void exitButtonDiaAddLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonDiaAddLActionPerformed
+        jDialAddLang.setVisible(false);
+    }//GEN-LAST:event_exitButtonDiaAddLActionPerformed
 
-    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
-        
-    }//GEN-LAST:event_jPanel3MouseClicked
+    private void lblIconSelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIconSelMouseClicked
+        jFileChooserFlag.showOpenDialog(rootPane);
+    }//GEN-LAST:event_lblIconSelMouseClicked
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        jFileChooser.showOpenDialog(rootPane);
-    }//GEN-LAST:event_jLabel4MouseClicked
-
-    private void jFileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFileChooserActionPerformed
+    private void jFileChooserFlagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooserFlagActionPerformed
+        lblIconDir.setText(jFileChooserFlag.getSelectedFile().getAbsolutePath());
+    }//GEN-LAST:event_jFileChooserFlagActionPerformed
 
     private void comBoxIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comBoxIconActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comBoxIconActionPerformed
 
-    private void txtFPriInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFPriInfoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFPriInfoActionPerformed
-
     private void lblColBackChooseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblColBackChooseMouseClicked
         jColorChooser.showDialog(rootPane, "Scegli il colore", Color.decode("#25252E"));
     }//GEN-LAST:event_lblColBackChooseMouseClicked
 
-    private void jCheckBox1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBox1StateChanged
-        if(jCheckBox1.isSelected()) {txtFDataPer.setEnabled(false); txtFDataPer.setText(null);}
+    private void checkDataPerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_checkDataPerStateChanged
+        if(checkDataPer.isSelected()) {txtFDataPer.setEnabled(false); txtFDataPer.setText(null);}
         else {txtFDataPer.setEnabled(true);};
-    }//GEN-LAST:event_jCheckBox1StateChanged
+    }//GEN-LAST:event_checkDataPerStateChanged
 
     private void lblAddFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddFieldMouseClicked
-        // TODO add your handling code here:
+        jDialAddField.setVisible(true);
     }//GEN-LAST:event_lblAddFieldMouseClicked
+
+    private void exitButtonAddFMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonAddFMouseEntered
+        exitButtonAddF.setIcon(new ImageIcon(getClass().getResource("/editor_1_1/closeIconCrossed.png")));
+    }//GEN-LAST:event_exitButtonAddFMouseEntered
+
+    private void exitButtonAddFMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonAddFMouseExited
+        exitButtonAddF.setIcon(new ImageIcon(getClass().getResource("/editor_1_1/closeIconEmpty.png")));
+    }//GEN-LAST:event_exitButtonAddFMouseExited
+
+    private void exitButtonAddFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonAddFActionPerformed
+        jDialAddField.setVisible(false);
+    }//GEN-LAST:event_exitButtonAddFActionPerformed
+
+    private void exitButtonDiaDelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonDiaDelMouseEntered
+        exitButtonDiaDel.setIcon(new ImageIcon(getClass().getResource("/editor_1_1/closeIconCrossed.png")));
+    }//GEN-LAST:event_exitButtonDiaDelMouseEntered
+
+    private void exitButtonDiaDelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonDiaDelMouseExited
+        exitButtonDiaDel.setIcon(new ImageIcon(getClass().getResource("/editor_1_1/closeIconEmpty.png")));
+    }//GEN-LAST:event_exitButtonDiaDelMouseExited
+
+    private void exitButtonDiaDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonDiaDelActionPerformed
+        jDialDel.setVisible(false);
+    }//GEN-LAST:event_exitButtonDiaDelActionPerformed
+
+    private void lblDelFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDelFieldMouseClicked
+        listDel.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = tranList.get(0).getFieldsVariable();
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+            });
+        parent = "field";
+        jDialDel.setVisible(true);
+    }//GEN-LAST:event_lblDelFieldMouseClicked
+
+    private void lblDelLangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDelLangMouseClicked
+        listDel.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = langTab.getLanguages();
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+            });
+        parent = "lang";
+        jDialDel.setVisible(true);
+    }//GEN-LAST:event_lblDelLangMouseClicked
+
+    private void jFileChooserLogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooserLogoActionPerformed
+        lblLogoDir.setText(jFileChooserLogo.getSelectedFile().getAbsolutePath());
+    }//GEN-LAST:event_jFileChooserLogoActionPerformed
+
+    private void lblAddLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddLMouseClicked
+        if ((txtFLanguage.getText() != "") && (lblIconDir.getText() != "")) {
+            String source = lblIconDir.getText();
+            String target = new File("src/Editor_1_1/"+txtFLanguage.getText()).getAbsolutePath();
+            try {
+                FileUtils.copyFile(new File(source), new File(target+".png"));
+            } catch (IOException ex) {
+                Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            langList.add(new ClassLanguages(true, target+".png", txtFLanguage.getText()));
+            langTab = new LanguagesTabGenerator(langList);
+            pnlScrPnIN.removeAll();
+            panelHeight();
+            pnlScrPnIN.add(langTab);
+            lblAdvAddLang.setVisible(false);
+            jDialAddLang.setVisible(false);
+        } else {lblAdvAddLang.setVisible(true);};
+    }//GEN-LAST:event_lblAddLMouseClicked
+
+    private void lblSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSaveMouseClicked
+        if (lblLogoDir.getText() != "") {
+            String source = lblIconDir.getText();
+            String target = new File("src/Editor_1_1/logo.png").getAbsolutePath();
+            try {
+                FileUtils.copyFile(new File(source), new File(target));
+            } catch (IOException ex) {
+                Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (comBoxIcon.getSelectedIndex() == 0) {
+                genSet = new ClassGeneralSettings(target, (String) comBoxIcon.getSelectedItem(), lightInfo, lightStat, lightSet, lblColBackCode.getBackground(), lblColTextCode.getBackground(), lblColTextAdvCode.getBackground(), lblColBoxCode.getBackground(), lblColExHeadCode.getBackground(), lblColInHeadCode.getBackground(), selControl());
+            } else {};
+            lblAdvColLog.setVisible(false);
+            close();
+        } else {lblAdvColLog.setVisible(true);};
+    }//GEN-LAST:event_lblSaveMouseClicked
+
+    private void lblAddFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddFMouseClicked
+        if (txtFField.getText() != "") {
+            int cont = 0;
+            while(true) {
+                String[] tt;
+                String[] f;
+                try {
+                    tt = tranList.get(cont).getFieldsVariable();
+                    f = new String[tt.length+1];
+                    int c = 0;
+                    while(true) {
+                        try {
+                            f[c] = tt[c];
+                        } catch (Exception e) {break;}
+                        c++;
+                    }
+                    if (cont == 0) {
+                        f[tt.length] = txtFField.getText();
+                    } else {f[tt.length] = "TRANSLATE";}
+                } catch (Exception e) {break;}
+                tranList.get(cont).setFieldsVariable(f);
+                cont++;
+            }
+            tranTable = new TranslationTabGenerator(tranList);
+            pnlScrTraIn.removeAll();
+            panelHeight();
+            pnlScrTraIn.add(tranTable);
+            jDialAddField.setVisible(false);
+            lblAdvAddField.setVisible(false);
+            setNoSpaceString(tranList);
+            System.out.println("Inserito");
+        } else {lblAdvAddField.setVisible(true);};
+    }//GEN-LAST:event_lblAddFMouseClicked
+
+    private void lblDelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDelMouseClicked
+        if(listDel.getSelectedIndices() != null) {
+            switch(parent) {
+                case "lang" : {
+                    int c = 0;
+                    int[] indx = listDel.getSelectedIndices();
+                    while(true) {
+                        try {
+                            langList.remove(indx[c]);
+                        } catch (Exception e) {break;}
+                        c++;
+                    }
+                    langTab = new LanguagesTabGenerator(langList);
+                    pnlScrPnIN.removeAll();
+                    panelHeight();
+                    pnlScrPnIN.add(langTab);
+                    break;
+                }
+                case "field" : {
+                    int c = 0;
+                    int[] indx = listDel.getSelectedIndices();
+                    while(true) {
+                        try {
+                            tranList.get(c).removeFields(indx);
+                        } catch (Exception e) {break;}
+                        c++;
+                    }
+                    tranTable = new TranslationTabGenerator(tranList);
+                    setNoSpaceString(tranList);
+                    pnlScrTraIn.removeAll();
+                    panelHeight();
+                    pnlScrTraIn.add(tranTable);
+                    break;
+                }
+            }
+        }
+        jDialDel.setVisible(false);
+        System.out.println("Eliminato");
+    }//GEN-LAST:event_lblDelMouseClicked
+
+    private void exitButtonDiaStartMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonDiaStartMouseEntered
+        exitButtonDiaStart.setIcon(new ImageIcon(getClass().getResource("/editor_1_1/closeIconCrossed.png")));
+    }//GEN-LAST:event_exitButtonDiaStartMouseEntered
+
+    private void exitButtonDiaStartMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonDiaStartMouseExited
+        exitButtonDiaStart.setIcon(new ImageIcon(getClass().getResource("/editor_1_1/closeIconEmpty.png")));
+    }//GEN-LAST:event_exitButtonDiaStartMouseExited
+
+    private void exitButtonDiaStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonDiaStartActionPerformed
+        close();
+    }//GEN-LAST:event_exitButtonDiaStartActionPerformed
+
+    private void lblContinueStartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblContinueStartMouseClicked
+        if((txtFUser.getText() == "") || (passFieldIns.getText() == "") || (passFieldConf.getText() == "") || (txtFHost.getText() == "")) {
+            lblAdvStartFields.setVisible(true);
+        } else {
+            if (passFieldIns.getText().equals(passFieldConf.getText())) {
+                lblAdvStartFields.setVisible(false);
+                lblAdvStartPass.setVisible(false);
+                
+                
+            } else {lblAdvStartPass.setVisible(true);}
+        }
+    }//GEN-LAST:event_lblContinueStartMouseClicked
+
+    private void exitButtonAddFSMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonAddFSMouseEntered
+        exitButtonAddFS.setIcon(new ImageIcon(getClass().getResource("/editor_1_1/closeIconCrossed.png")));
+    }//GEN-LAST:event_exitButtonAddFSMouseEntered
+
+    private void exitButtonAddFSMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonAddFSMouseExited
+        exitButtonAddFS.setIcon(new ImageIcon(getClass().getResource("/editor_1_1/closeIconEmpty.png")));
+    }//GEN-LAST:event_exitButtonAddFSMouseExited
+
+    private void exitButtonAddFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonAddFSActionPerformed
+        jDialAddFieldStart.setVisible(false);
+        txtFFieldAddFS.setText("");
+    }//GEN-LAST:event_exitButtonAddFSActionPerformed
+
+    private void lblAddFSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddFSMouseClicked
+        if(txtFFieldAddFS.getText() != "") {
+            int cont = 0;
+            while(true) {
+                String[] tt;
+                String[] f;
+                try {
+                    tt = tranList.get(cont).getFieldsStables();
+                    f = new String[tt.length+1];
+                    int c = 0;
+                    while(true) {
+                        try {
+                            f[c] = tt[c];
+                        } catch (Exception e) {break;}
+                        c++;
+                    }
+                    if (cont == 0) {
+                        f[tt.length] = txtFFieldAddFS.getText();
+                    } else {f[tt.length] = "TRANSLATE";}
+                } catch (Exception e) {break;}
+                tranList.get(cont).setFieldsStables(f);
+                cont++;
+            }
+            tranTable = new TranslationTabGenerator(tranList);
+            listFStart.setModel(new javax.swing.AbstractListModel<String>() {
+                String[] strings = tranList.get(0).getFieldsStables();
+                public int getSize() { return strings.length; }
+                public String getElementAt(int i) { return strings[i]; }
+            });
+            setNoSpaceString(tranList);
+        }
+    }//GEN-LAST:event_lblAddFSMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if(firstTimeCheck()) {
+            jFrameStart.setVisible(true);
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void lblAddFSTartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddFSTartMouseClicked
+        jDialAddFieldStart.setVisible(true);
+    }//GEN-LAST:event_lblAddFSTartMouseClicked
     
     private void initPersonalComponent() {
         langRead = new ReadLanguagesFile();
@@ -1076,59 +1848,37 @@ public class MainPage extends javax.swing.JFrame {
         tranList = tranRead.getList();
         
         genRead = new ReadGeneralFile();
-        //genSet = genRead.getSet();
+        genSet = genRead.getSet();
         
-        genSet = new ClassGeneralSettings(null, "Chiaro", null, null, null, null, null, Color.decode("#25252E"), Color.decode("#E6E6E6"), Color.decode("#7C7C85"), Color.decode("#E6E6E6"), Color.decode("#E6E6E6"), Color.decode("#E6E6E6"), 0);
+        init = new ClassInitialization(new ReadInitializationFile().getInit());
+        
+        init.firstTime = false;
+        
+        if (init.isFirstTime()) {
+            langList = new ArrayList<>();
+            langList.add(new ClassLanguages(true, "Italiano.png", "Italiano"));
+            langList.add(new ClassLanguages(true, "English.png", "English"));
+            tranList = new ArrayList<>();
+            String[] italiano = {"Inserire solo lettere, numeri o spazi", "Inserire massimo 25 caratteri", "Tutti i campi sono obbligatori", "Devi accettare i termini di utilizzo e l'informativa sulla privacy", "Ho letto e acconsento ai termini di utilizzo e all'informativa sulla privacy", "Continua", "Registrazione", "Fornitore", "Cliente", "Consulente", "Altro", "Ci siamo quasi", ", scannerizza il codice QR seguente alla reception per ottenere il badge", "Scarica", "Registrati", "Scanner QR", "Benvenuto", "La registrazione è stata completata, ti è stato assegnato il badge numero:", "Termina", "Arrivederci", "Uscita eseguita con successo"};
+            String[] italianoS = {"Nome", "Cognome", "Azienda", "Referente aziendale", "Tipo di visita"};
+            String[] italianoV = {};
+            String[] english = {"Enter only letters, numbers or spaces", "Enter a maximum of 25 characters", "All fields are required", "You must accept usage terms and privacy policy", "I read and accepted the usage terms and the privacy policy", "Continue", "Registration", "Supplier", "Costumer", "Consultant", "Other", "Almost done", ", scan the following QR code at the reception to get your badge", "Download", "Register", "QR scanner", "Welcome", "Registration complited, you have been assigned badge number:", "Finish", "Goodbye", "Exit successfully executed"};
+            String[] englishS = {"Name", "Surname", "Company", "Company contact", "Type of visit"};
+            String[] englishV = {};
+            tranList.add(new ClassTranslations("Italiano", italiano, italianoS, italianoV));
+            tranList.add(new ClassTranslations("English", english, englishS, englishV));
+            genSet = new ClassGeneralSettings("", "Chiaro", "", "", "", Color.decode("#25252E"), Color.decode("#E6E6E6"), Color.decode("#7C7C85"), Color.decode("#E6E6E6"), Color.decode("#E6E6E6"), Color.decode("#E6E6E6"), 0);
+        }
         
         mainF = new Font("Sans Serif",Font.PLAIN, 15);
         subTitleFont = new Font("Sans Serif",Font.PLAIN, 19);
         
-        checkBoxTable = new CheckBoxGenerator(langList);
-        checkBoxTable.setFont(mainF);
+        langTab = new LanguagesTabGenerator(langList);
+        langTab.setFont(mainF);
         
-        tranList = new ArrayList<>();
-        String[] n = {"Name"};
-        String[] s = {"Surname"};
-        String[] c = {"Company"};
-        String[] cr = {"Company referrer"};
-        String[] r = {"Registration"};
-        String[] kv = {"Kind of visit"};
-        String[] cv = {"Corporate visit"};
-        String[] a = {"Advice"};
-        String[] o = {"Other"};
-        String[] tu = {"I have read and agree to terms of use and privacy"};
-        String[] fm = {"All fields are mandatory"};
-        String[] at = {"We are almost there"};
-        String[] sqr = {"show the following QR code to the secretary"};
-        String[] d = {"Download"};
+        tranTable = new TranslationTabGenerator(tranList);
         
-        tranList.add(new ClassTranslations("Registrazione", r));
-        tranList.add(new ClassTranslations("Ho letto ed acconsento ai termini di utilizzo e alle condizioni sulla privacy", tu));
-        tranList.add(new ClassTranslations("Tutti i campi sono obbligatori", fm));
-        tranList.add(new ClassTranslations("Ci siamo quasi", at));
-        tranList.add(new ClassTranslations("mostra il codice QR seguente alla segretaria", sqr));
-        tranList.add(new ClassTranslations("Scarica", d));
-        tranList.add(new ClassTranslations("Tipo di visita", kv));
-        tranList.add(new ClassTranslations("Visita aziendale", cv));
-        tranList.add(new ClassTranslations("Consulenza", a));
-        tranList.add(new ClassTranslations("Altro", o));
-        tranList.add(new ClassTranslations("Nome", n));
-        tranList.add(new ClassTranslations("Cognome", s));
-        tranList.add(new ClassTranslations("Azienda", c));
-        tranList.add(new ClassTranslations("Referente aziendale", cr));
-        
-        
-        
-        
-        /*if (tranList != null) {checkBoxTable = new CheckBoxGenerator(tranList);}
-        else {
-            tranList = new ArrayList<>();
-            tranList.add(new ClassTranslations("Nome", "Name"));
-            tranList.add(new ClassTranslations("Cgnome", "Surname"));
-            tranTable = new tranTable(tranList, checkBoxTable.getLanguages(langList));
-        };*/
-        tranTable = new TranslationMenuGenerator(tranList, checkBoxTable.getLanguages(langList));
-        tranTable.setFont(new Font("Sans Serif",Font.PLAIN, 11));
+        setNoSpaceString(tranList);
         
         defaultColor = Color.decode("#607D8B"); //sclego il colore primario
         mousePassedColor = Color.decode("#5E7A88");
@@ -1155,11 +1905,21 @@ public class MainPage extends javax.swing.JFrame {
         //scrollPaneTran.setLayout(new GridLayout(1, 0));
         //scrollPaneTran.add(tranTable);
         panelHeight();
-        pnlScrPnIN.add(checkBoxTable);
+        pnlScrPnIN.add(langTab);
         pnlScrTraIn.add(tranTable);
         //JDialAddLang.setLocationRelativeTo(null);
+        lblAdvAddLang.setVisible(false);
+        lblAdvColLog.setVisible(false);
+        lblAdvAddField.setVisible(false);
+        lblAdvAddFS.setVisible(false);
+        lblAdvStartFields.setVisible(false);
+        lblAdvStartPass.setVisible(false);
         
-        
+        listFStart.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = tranList.get(0).getFieldsStables();
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
         reorderCol();
     }
     
@@ -1206,38 +1966,55 @@ public class MainPage extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDialog JDialAddLang;
+    private javax.swing.JPanel DiaAddFCon;
+    private javax.swing.JPanel DiaAddFSCon;
+    private javax.swing.JPanel DiaAddLCon;
+    private javax.swing.JPanel DiaDelCont;
+    private javax.swing.JPanel DiaStartCon;
     private javax.swing.JLabel barIcon;
-    private javax.swing.JLabel barIcon1;
+    private javax.swing.JLabel barIconAddF;
+    private javax.swing.JLabel barIconAddFS;
+    private javax.swing.JLabel barIconDiaAddL;
+    private javax.swing.JLabel barIconDiaDel;
+    private javax.swing.JLabel barIconDiaStart;
+    private javax.swing.JCheckBox checkDataPer;
     private javax.swing.JPanel collog;
     private javax.swing.JLabel collogL;
     private javax.swing.JPanel collogP;
     private javax.swing.JComboBox<String> comBoxIcon;
     private javax.swing.JButton exitButton;
-    private javax.swing.JButton exitButton1;
+    private javax.swing.JButton exitButtonAddF;
+    private javax.swing.JButton exitButtonAddFS;
+    private javax.swing.JButton exitButtonDiaAddL;
+    private javax.swing.JButton exitButtonDiaDel;
+    private javax.swing.JButton exitButtonDiaStart;
     private javax.swing.JPanel fiel;
     private javax.swing.JLabel fieldL;
     private javax.swing.JPanel fieldP;
     private javax.swing.JLayeredPane headerLayPane;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JColorChooser jColorChooser;
-    private javax.swing.JDialog jDialog1;
-    private javax.swing.JFileChooser jFileChooser;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JDialog jDialAddField;
+    private javax.swing.JDialog jDialAddFieldStart;
+    private javax.swing.JDialog jDialAddLang;
+    private javax.swing.JDialog jDialDel;
+    private javax.swing.JFileChooser jFileChooserFlag;
+    public javax.swing.JFileChooser jFileChooserLogo;
+    private javax.swing.JFrame jFrameStart;
     private javax.swing.JPanel lang;
     private javax.swing.JLabel langL;
     private javax.swing.JPanel langP;
+    private javax.swing.JLabel lblAddF;
+    private javax.swing.JLabel lblAddFS;
+    private javax.swing.JLabel lblAddFSTart;
     private javax.swing.JLabel lblAddField;
+    private javax.swing.JLabel lblAddL;
+    private javax.swing.JLabel lblAddLan;
+    private javax.swing.JLabel lblAdvAddFS;
+    private javax.swing.JLabel lblAdvAddField;
+    private javax.swing.JLabel lblAdvAddLang;
+    private javax.swing.JLabel lblAdvColLog;
+    private javax.swing.JLabel lblAdvStartFields;
+    private javax.swing.JLabel lblAdvStartPass;
     private javax.swing.JLabel lblColBack;
     private javax.swing.JLabel lblColBackChoose;
     private javax.swing.JLabel lblColBackCode;
@@ -1257,38 +2034,86 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JLabel lblColTextAdvCode;
     private javax.swing.JLabel lblColTextChoose;
     private javax.swing.JLabel lblColTextCode;
+    private javax.swing.JLabel lblConPasswStart;
+    private javax.swing.JLabel lblContinueStart;
     private javax.swing.JLabel lblDataPer;
-    private javax.swing.JLabel lblLang1;
+    private javax.swing.JLabel lblDataPerDay;
+    private javax.swing.JLabel lblDel;
+    private javax.swing.JLabel lblDelField;
+    private javax.swing.JLabel lblDelLang;
+    private javax.swing.JLabel lblFHost;
+    private javax.swing.JLabel lblField;
+    private javax.swing.JLabel lblFieldAddFS;
+    private javax.swing.JLabel lblIconDir;
+    private javax.swing.JLabel lblIconSel;
+    private javax.swing.JLabel lblInfoStart1;
+    private javax.swing.JLabel lblInfoStart2;
+    private javax.swing.JLabel lblLangHead;
+    private javax.swing.JLabel lblLangName;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblLogoChoose;
     private javax.swing.JLabel lblLogoDir;
-    private javax.swing.JLabel lblPriInfo;
+    private javax.swing.JLabel lblPasswStart;
     private javax.swing.JLabel lblSave;
     private javax.swing.JLabel lblSubTColLog;
     private javax.swing.JLabel lblSubTPri;
-    private javax.swing.JLabel lblUtlT;
+    private javax.swing.JLabel lblUserStart;
+    private javax.swing.JList<String> listDel;
+    private javax.swing.JList<String> listFStart;
+    private javax.swing.JPasswordField passFieldConf;
+    private javax.swing.JPasswordField passFieldIns;
+    private javax.swing.JPanel pnlAddLang;
     private javax.swing.JPanel pnlBtnAddLang;
+    private javax.swing.JPanel pnlDelLang;
     private javax.swing.JPanel pnlMenu;
     private javax.swing.JPanel pnlScrPnEX;
     private javax.swing.JPanel pnlScrPnIN;
     private javax.swing.JPanel pnlScrTraEx;
     private javax.swing.JPanel pnlScrTraIn;
     private javax.swing.JPanel pnlTopHeader;
-    private javax.swing.JPanel pnlTopHeader1;
+    private javax.swing.JPanel pnlTopHeaderAddF;
+    private javax.swing.JPanel pnlTopHeaderAddFS;
+    private javax.swing.JPanel pnlTopHeaderDiaAddL;
+    private javax.swing.JPanel pnlTopHeaderDiaDel;
+    private javax.swing.JPanel pnlTopHeaderDiaStart;
+    private javax.swing.JScrollPane scrollPaneDel;
+    private javax.swing.JScrollPane scrollPaneFStart;
     private javax.swing.JScrollPane scrollPaneLang;
     private javax.swing.JScrollPane scrollPaneTran;
     private javax.swing.JLabel titleLbl;
-    private javax.swing.JLabel titleLbl1;
+    private javax.swing.JLabel titleLblAddF;
+    private javax.swing.JLabel titleLblAddFS;
+    private javax.swing.JLabel titleLblDiaAddL;
+    private javax.swing.JLabel titleLblDiaDel;
+    private javax.swing.JLabel titleLblDiaStart;
     private javax.swing.JTextField txtFDataPer;
-    private javax.swing.JTextField txtFPriInfo;
-    private javax.swing.JTextField txtFUtlT;
+    private javax.swing.JTextField txtFField;
+    private javax.swing.JTextField txtFFieldAddFS;
+    private javax.swing.JTextField txtFHost;
+    private javax.swing.JTextField txtFLanguage;
+    private javax.swing.JTextField txtFUser;
     // End of variables declaration//GEN-END:variables
 
     private void close() {
         tranOut = new OutTranslationsFile(tranList);
         langOut = new OutLanguagesFile(langList);
-        System.out.println(pnlScrTraIn.getHeight());
+        genOut = new OutGeneralFile(genSet);
+        new CSSAutoCompilator(langList, tranList, genSet, noSpacedFields);
+        if((tranRead.getList().get(0).getFieldsStableLenght() != tranList.get(0).getFieldsStableLenght()) || (tranRead.getList().get(0).getFieldsVariableLenght() != tranList.get(0).getFieldsVariableLenght()) || firstTimeCheck()) {new SQLAutoCompilator(noSpacedFields);}
+        if(firstTimeCheck()) {new PHPAutoCompilator(txtFHost.getText(), txtFUser.getText(), passFieldIns.getText(), noSpacedFields); init.firstTimeUse();}
+        new OutInitializationFile(init);
         System.out.println("closing");
+        System.exit(0);
+    }
+    
+    private void closeNoSave() {
+        /*tranOut = new OutTranslationsFile(tranList);
+        langOut = new OutLanguagesFile(langList);
+        genOut = new OutGeneralFile(genSet);
+        new CSSAutoCompilator(langList, tranList, genSet, noSpacedFields);
+        if(firstTimeCheck()) {new PHPAutoCompilator(txtFHost.getText(), txtFUser.getText(), passFieldIns.getText(), noSpacedFields); init.firstTimeUse();}
+        new OutInitializationFile(init);
+        System.out.println("closing");*/
         System.exit(0);
     }
 
@@ -1299,17 +2124,45 @@ public class MainPage extends javax.swing.JFrame {
         lblColInHeadCode.setBackground(genSet.getHeadIn());
         lblColTextAdvCode.setBackground(genSet.getTextAdv());
         lblColTextCode.setBackground(genSet.getTextMain());
-        if (genSet.getPersitance() == 0) {txtFDataPer.setText(null); jCheckBox1.setSelected(true);}
-        else {txtFDataPer.setText(Integer.toString(genSet.getPersitance())); jCheckBox1.setSelected(false);};
+        if (genSet.getPersitance() == 0) {txtFDataPer.setText(null); checkDataPer.setSelected(true);}
+        else {txtFDataPer.setText(Integer.toString(genSet.getPersitance())); checkDataPer.setSelected(false);};
         lblLogoDir.setText(genSet.getLogo());
-        txtFPriInfo.setText(genSet.getInfoLink());
-        txtFUtlT.setText(genSet.getTermsLink());
         if(genSet.getIconPack().equals("Chiaro")) {comBoxIcon.setSelectedIndex(0);}
         else {comBoxIcon.setSelectedIndex(1);};
     }
 
     private void panelHeight() {
-        pnlScrPnIN.repaint(0,0,pnlScrPnIN.getWidth(), checkBoxTable.getRowHeight()*checkBoxTable.getRowCount());
+        pnlScrPnIN.repaint(0,0,pnlScrPnIN.getWidth(), langTab.getRowHeight()*langTab.getRowCount());
         pnlScrTraIn.repaint(0,0,pnlScrTraIn.getWidth(), (tranTable.getRowHeight()*tranTable.getRowCount()));
+    }
+
+    private int selControl() {
+        if(checkDataPer.isSelected()){
+            return 0;
+        } else {
+            return 1;
+        }
+    }
+
+    private boolean firstTimeCheck() {
+        return init.isFirstTime();
+    }
+
+    private void setNoSpaceString(List<ClassTranslations> tranList) {
+        noSpacedFields = new String[tranList.get(0).getFieldsStableLenght() + tranList.get(0).getFieldsVariableLenght()];
+        int cont = 0;
+        
+        int co = 0;
+        while(co < tranList.get(0).getFieldsStableLenght()) {
+            noSpacedFields[cont] = WordUtils.capitalize(tranList.get(0).getFieldsStables()[co]).replaceAll("\\s+","");
+            cont ++;
+            co++;
+        }
+        co = 0;
+        while(co < tranList.get(0).getFieldsVariableLenght()) {
+            noSpacedFields[cont] = WordUtils.capitalize(tranList.get(0).getFieldsVariable()[co]).replaceAll("\\s+","");
+            cont ++;
+            co++;
+        }
     }
 }

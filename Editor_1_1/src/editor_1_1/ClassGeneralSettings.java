@@ -1,27 +1,27 @@
 package editor_1_1;
 
 import java.awt.Color;
+import java.io.Serializable;
 
 /**
  *
  * @author Samuele Pozzebon
  */
-public class ClassGeneralSettings {
+public class ClassGeneralSettings implements Serializable{
     
-    private String logoSrc, iconPack, iconInfo, iconStats, iconSet, infoLink, termsLink;
+    private String logoSrc, iconPack, iconInfo, iconStats, iconSet;
     private Color background, textMain, textAdv, box, headEx, headIn;
     private int persistance;
     
+    
     public ClassGeneralSettings() {}
     
-    public ClassGeneralSettings (String logo, String iPack, String iInfo, String iStats, String iSets, String iL, String tL, Color back, Color txtM, Color txtA, Color bx, Color hEx, Color hIn, int per) {
+    public ClassGeneralSettings (String logo, String iPack, String iInfo, String iStats, String iSets, Color back, Color txtM, Color txtA, Color bx, Color hEx, Color hIn, int per) {
         logoSrc = logo;
         iconPack = iPack;
         iconInfo = iInfo;
         iconStats = iStats;
         iconSet = iSets;
-        infoLink = iL;
-        termsLink = tL;
         background = back;
         textMain = txtM;
         textAdv = txtA;
@@ -33,6 +33,18 @@ public class ClassGeneralSettings {
     
     public ClassGeneralSettings (ClassGeneralSettings copy) {
         logoSrc = copy.getLogo();
+        iconPack = copy.getIconPack();
+        iconInfo = copy.getIconInfo();
+        iconStats = copy.getIconStats();
+        iconSet = copy.getIconSet();
+        background = copy.getBackgroundColor();
+        textMain = copy.getTextMain();
+        textAdv = copy.getTextAdv();
+        box = copy.getBox();
+        headEx = copy.getHeadEx();
+        headIn = copy.getHeadIn();
+        persistance = copy.getPersitance();
+        
     }
     
     public void setLogo(String txt) {
@@ -54,15 +66,6 @@ public class ClassGeneralSettings {
     public void setIconSet(String txt) {
         iconSet = txt;
     }
-    
-    public void setInfoLink(String txt) {
-        infoLink = txt;
-    }
-    
-    public void setTermsLink(String txt) {
-        termsLink = txt;
-    }
-    
     
     public void setBackground(Color color) {
         background = color;
@@ -112,14 +115,6 @@ public class ClassGeneralSettings {
         return iconSet;
     }
     
-    public String getInfoLink() {
-        return infoLink;
-    }
-    
-    public String getTermsLink() {
-        return termsLink;
-    }
-    
     public Color getBackgroundColor() {
         return background;
     }
@@ -147,4 +142,5 @@ public class ClassGeneralSettings {
     public int getPersitance() {
         return persistance;
     }
+    
 }

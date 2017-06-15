@@ -7,39 +7,25 @@ import java.io.Serializable;
  * @author Samuele Pozzebon
  */
 class ClassTranslations implements Serializable{
-    private String field;
-    private String[] translations;
+    private String language;
+    private String[] translations, fieldsStable, fieldsVariable;
     
     public ClassTranslations() {}
     
-    public ClassTranslations(String fi, String[] tran) {        //costruttore in caso sia inserito stringa del campi (in italiano) e array di stringhe delle traduzioni
-        field = fi;
-        translations = new String[tran.length];
+    public ClassTranslations(String la, String[] tran, String[] stable, String[] variable) {        //costruttore in caso sia inserito stringa del campi (in italiano) e array di stringhe delle traduzioni
+        language = la;
         translations = tran;
-        /*int cont = 0;
-        while(true) {
-            try {
-                translations[cont] = tran[cont];
-            } catch (NullPointerException e) {break;}
-            cont++;
-        }*/
-    }
-    
-    public ClassTranslations(String[] tran) {                   //costruttore in caso sia utilizzato un array di stringhe unico
-        field = tran[0];
-        translations = new String[tran.length-1];
-        for(int cont = 0; cont < tran.length-1; cont ++) {
-            translations[cont] = tran[cont+1];
-        }
+        fieldsStable = stable;
+        fieldsVariable = variable;
     }
     
     public ClassTranslations(ClassTranslations copy) {          //costruttore in caso sia utilizzato diterramente un ClassTranslations
-        field = copy.getField();
+        language = copy.getLanguage();
         translations = copy.getTranslations();
     }
     
-    public String getField() {
-        return field;
+    public String getLanguage() {
+        return language;
     }
     
     public String[] getTranslations() {
@@ -50,11 +36,92 @@ class ClassTranslations implements Serializable{
         return translations.length;
     }
     
-    public void setField(String lang) {
-        field = lang;
+    public String[] getFieldsStables() {
+        return fieldsStable;
+    }
+    
+    public int getFieldsStableLenght() {
+        return fieldsStable.length;
+    }
+    
+    public String[] getFieldsVariable() {
+        return fieldsVariable;
+    }
+    
+    public int getFieldsVariableLenght() {
+        return fieldsVariable.length;
+    }
+    
+    public void setLanguage(String lang) {
+        language = lang;
     }
     
     public void setTranslations(String[] tran) {
         translations = tran;
+    }
+    
+    public void setFieldsStables(String[] stable) {
+        fieldsStable = stable;
+    }
+    
+    public void setFieldsVariable(String[] variable) {
+        fieldsVariable = variable;
+    }
+    
+    public void addField(String string) {
+        String[] f = fieldsVariable;
+        fieldsVariable = new String[f.length+1];
+        int cont = 0;
+        while(true) {
+            try {
+                fieldsVariable[cont] = f [cont];
+            } catch (ArrayIndexOutOfBoundsException e) {break;}
+            cont ++;
+            fieldsVariable[cont] = string;
+        }
+    }
+    
+    public void removeField(int n) {
+        String[] f = fieldsVariable;
+        fieldsVariable = new String[f.length-1];
+        int cont = 0;
+        int con = 0;
+        while(true) {
+            try {
+                if(cont != n){
+                    fieldsVariable[con] = f[cont];
+                    con++;
+                }
+            } catch (Exception e) {
+            }
+            cont++;
+        }
+    }
+    
+    public void removeFields(int[] n) {
+        String[] f = fieldsVariable;
+        fieldsVariable = new String[f.length-n.length];
+        int cont = 0;
+        int con = 0;
+        while(true) {
+            try {
+                if(control(n, cont)){
+                    fieldsVariable[con] = f[cont];
+                    con++;
+                }
+            } catch (Exception e) {break;}
+            cont++;
+        }
+    }
+
+    private boolean control(int[] n, int cont) {
+        int con = 0;
+        while(true) {
+            try {
+                if(cont == n[con]) {return false;}
+            } catch (Exception e) {break;}
+            con++;
+        }
+        return true;
     }
 }

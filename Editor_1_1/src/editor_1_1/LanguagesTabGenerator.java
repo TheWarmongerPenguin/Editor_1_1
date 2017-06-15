@@ -16,26 +16,30 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Samuele Pozzebon
  */
-public class CheckBoxGenerator extends JTable{
+public class LanguagesTabGenerator extends JTable{
     
     String[] columnNames = {"Visible", "Flag", "Language"};
     DefaultTableModel model;
     String src;
     ImageIcon imageIcon;
+    String[] languages;
       
-    public CheckBoxGenerator(List<ClassLanguages> list) {
+    public LanguagesTabGenerator(List<ClassLanguages> list) {
         modelSetting();
         setModel(model);
         setAutoResizeMode(AUTO_RESIZE_SUBSEQUENT_COLUMNS);
         setRowHeight(36);
         setTableHeader(null);
         setShowGrid(false);
+        
+        languages = new String[list.size()];
         int contatore = 0;
         ClassLanguages lang;
         while(true) {
             lang = new ClassLanguages();
             try {
                 lang = list.get(contatore);
+                languages[contatore] = lang.getLanguage();
                 src = lang.getIcon();
                 imgResize(src);
                 Object[] obj = {lang.isSelected(), imageIcon, lang.getLanguage()};
@@ -52,18 +56,32 @@ public class CheckBoxGenerator extends JTable{
         src = imagine;
         imgResize(src);
         model.addRow(new Object[] {true, imageIcon, title});
+        
+        String[] lang = languages;
+        languages = new String[lang.length+1];
+        int cont = 0;
+        while(true) {
+            try {
+                languages[cont] = lang [cont];
+            } catch (ArrayIndexOutOfBoundsException e) {break;}
+            cont ++;
+        }
+        cont ++;
+        languages[cont] = title;
     }
     
     private void imgResize(String src){
-        BufferedImage img = null;
+        BufferedImage img;
+        Image dimg = null;
         try {
             img = ImageIO.read(getClass().getResource("/editor_1_1/"+src));
+            dimg = img.getScaledInstance(50, 30, Image.SCALE_SMOOTH);
         } catch (IOException ex) {
-            Logger.getLogger(CheckBoxGenerator.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LanguagesTabGenerator.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
-        Image dimg = img.getScaledInstance(50, 30, Image.SCALE_SMOOTH);
+         
         
         imageIcon = new ImageIcon(dimg);
     }
@@ -93,20 +111,8 @@ public class CheckBoxGenerator extends JTable{
         
     }
     
-    public String[] getLanguages(List<ClassLanguages> list) {
-        String[] languages = new String[list.size()];
-        ClassLanguages lang;
-        int contatore = 0;
-        while (true) { 
-            lang = new ClassLanguages();
-            try {
-                lang = list.get(contatore);
-                languages[contatore] = lang.getLanguage();
-            } catch (Exception e) { break; }
-            contatore ++;
-        }
+    public String[] getLanguages() {
         return languages;
     }
-    
     
 }
