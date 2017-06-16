@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.table.DefaultTableModel;
 import org.jdesktop.swingx.border.DropShadowBorder; 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.text.WordUtils;
@@ -1816,7 +1815,7 @@ public class MainPage extends javax.swing.JFrame {
                 tr3[c] = "TRANSLATE";
                 c++;
             }
-            tranList.add(new ClassTranslations(txtFLanguage.getText(), tr1, tr2, tr2));
+            tranList.add(new ClassTranslations(txtFLanguage.getText(), tr1, tr2, tr3));
             
             pnlScrTraIn.remove(tranTable);
             tranTable = new TranslationTabGenerator(tranList);
