@@ -1282,11 +1282,6 @@ public class MainPage extends javax.swing.JFrame {
 
         comBoxIcon.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         comBoxIcon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chiaro", "Scuro"}));
-        comBoxIcon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comBoxIconActionPerformed(evt);
-            }
-        });
 
         lblColInHeadCode.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         lblColInHeadCode.setOpaque(true);
@@ -1678,10 +1673,6 @@ public class MainPage extends javax.swing.JFrame {
         lblIconDir.setText(jFileChooserFlag.getSelectedFile().getAbsolutePath());
         setEnabled(true);
     }//GEN-LAST:event_jFileChooserFlagActionPerformed
-
-    private void comBoxIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comBoxIconActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comBoxIconActionPerformed
 
     private void lblColBackChooseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblColBackChooseMouseClicked
         setEnabled(false);
