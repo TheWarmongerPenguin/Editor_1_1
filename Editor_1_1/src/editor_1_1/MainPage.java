@@ -1886,7 +1886,7 @@ public class MainPage extends javax.swing.JFrame {
             
             setEnabled(true);
             jDialAddField.setVisible(false);
-            System.out.println("Inserito");
+            txtFField.setText("");
         } else {lblAdvAddField.setVisible(true);};
     }//GEN-LAST:event_lblAddFMouseClicked
 
@@ -2006,6 +2006,8 @@ public class MainPage extends javax.swing.JFrame {
                 public String getElementAt(int i) { return strings[i]; }
             });
             setNoSpaceString(tranList);
+            txtFFieldAddFS.setText("");
+            jDialAddFieldStart.setVisible(false);
         }
     }//GEN-LAST:event_lblAddFSMouseClicked
 
