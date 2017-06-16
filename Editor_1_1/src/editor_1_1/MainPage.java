@@ -254,6 +254,7 @@ public class MainPage extends javax.swing.JFrame {
         exitButtonDiaAddL.setBorder(null);
         exitButtonDiaAddL.setBorderPainted(false);
         exitButtonDiaAddL.setContentAreaFilled(false);
+        exitButtonDiaAddL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitButtonDiaAddL.setMaximumSize(new java.awt.Dimension(14, 14));
         exitButtonDiaAddL.setMinimumSize(new java.awt.Dimension(14, 14));
         exitButtonDiaAddL.setPreferredSize(new java.awt.Dimension(14, 14));
@@ -298,6 +299,7 @@ public class MainPage extends javax.swing.JFrame {
         lblIconSel.setForeground(new java.awt.Color(236, 239, 241));
         lblIconSel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblIconSel.setText("Seleziona l'icona");
+        lblIconSel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblIconSel.setMaximumSize(new java.awt.Dimension(100, 20));
         lblIconSel.setMinimumSize(new java.awt.Dimension(100, 20));
         lblIconSel.setOpaque(true);
@@ -315,6 +317,7 @@ public class MainPage extends javax.swing.JFrame {
         lblAddL.setForeground(new java.awt.Color(236, 239, 241));
         lblAddL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAddL.setText("Aggiungi");
+        lblAddL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblAddL.setMaximumSize(new java.awt.Dimension(100, 20));
         lblAddL.setMinimumSize(new java.awt.Dimension(100, 20));
         lblAddL.setOpaque(true);
@@ -373,6 +376,7 @@ public class MainPage extends javax.swing.JFrame {
         exitButtonAddF.setBorder(null);
         exitButtonAddF.setBorderPainted(false);
         exitButtonAddF.setContentAreaFilled(false);
+        exitButtonAddF.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitButtonAddF.setMaximumSize(new java.awt.Dimension(14, 14));
         exitButtonAddF.setMinimumSize(new java.awt.Dimension(14, 14));
         exitButtonAddF.setPreferredSize(new java.awt.Dimension(14, 14));
@@ -413,6 +417,7 @@ public class MainPage extends javax.swing.JFrame {
         lblAddF.setForeground(new java.awt.Color(236, 239, 241));
         lblAddF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAddF.setText("Aggiungi");
+        lblAddF.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblAddF.setOpaque(true);
         lblAddF.setPreferredSize(new java.awt.Dimension(100, 20));
         lblAddF.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -457,6 +462,7 @@ public class MainPage extends javax.swing.JFrame {
         exitButtonDiaDel.setBorder(null);
         exitButtonDiaDel.setBorderPainted(false);
         exitButtonDiaDel.setContentAreaFilled(false);
+        exitButtonDiaDel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitButtonDiaDel.setMaximumSize(new java.awt.Dimension(14, 14));
         exitButtonDiaDel.setMinimumSize(new java.awt.Dimension(14, 14));
         exitButtonDiaDel.setPreferredSize(new java.awt.Dimension(14, 14));
@@ -510,6 +516,7 @@ public class MainPage extends javax.swing.JFrame {
         lblDel.setForeground(new java.awt.Color(236, 239, 241));
         lblDel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDel.setText("Elimina");
+        lblDel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblDel.setOpaque(true);
         lblDel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -569,6 +576,7 @@ public class MainPage extends javax.swing.JFrame {
         exitButtonAddFS.setBorder(null);
         exitButtonAddFS.setBorderPainted(false);
         exitButtonAddFS.setContentAreaFilled(false);
+        exitButtonAddFS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitButtonAddFS.setMaximumSize(new java.awt.Dimension(14, 14));
         exitButtonAddFS.setMinimumSize(new java.awt.Dimension(14, 14));
         exitButtonAddFS.setPreferredSize(new java.awt.Dimension(14, 14));
@@ -609,6 +617,7 @@ public class MainPage extends javax.swing.JFrame {
         lblAddFS.setForeground(new java.awt.Color(236, 239, 241));
         lblAddFS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAddFS.setText("Aggiungi");
+        lblAddFS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblAddFS.setOpaque(true);
         lblAddFS.setPreferredSize(new java.awt.Dimension(100, 20));
         lblAddFS.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -665,6 +674,7 @@ public class MainPage extends javax.swing.JFrame {
         exitButtonDiaStart.setBorder(null);
         exitButtonDiaStart.setBorderPainted(false);
         exitButtonDiaStart.setContentAreaFilled(false);
+        exitButtonDiaStart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitButtonDiaStart.setMaximumSize(new java.awt.Dimension(14, 14));
         exitButtonDiaStart.setMinimumSize(new java.awt.Dimension(14, 14));
         exitButtonDiaStart.setPreferredSize(new java.awt.Dimension(14, 14));
@@ -705,6 +715,7 @@ public class MainPage extends javax.swing.JFrame {
         lblContinueStart.setForeground(new java.awt.Color(236, 239, 241));
         lblContinueStart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblContinueStart.setText("Continua");
+        lblContinueStart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblContinueStart.setMaximumSize(new java.awt.Dimension(100, 20));
         lblContinueStart.setMinimumSize(new java.awt.Dimension(100, 20));
         lblContinueStart.setOpaque(true);
@@ -734,6 +745,7 @@ public class MainPage extends javax.swing.JFrame {
         lblAddFSTart.setForeground(new java.awt.Color(236, 239, 241));
         lblAddFSTart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAddFSTart.setText("Aggiungi campo");
+        lblAddFSTart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblAddFSTart.setOpaque(true);
         lblAddFSTart.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -826,6 +838,7 @@ public class MainPage extends javax.swing.JFrame {
         exitButton.setBorder(null);
         exitButton.setBorderPainted(false);
         exitButton.setContentAreaFilled(false);
+        exitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitButton.setMaximumSize(new java.awt.Dimension(14, 14));
         exitButton.setMinimumSize(new java.awt.Dimension(14, 14));
         exitButton.setPreferredSize(new java.awt.Dimension(14, 14));
@@ -896,6 +909,7 @@ public class MainPage extends javax.swing.JFrame {
         langL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         langL.setLabelFor(langP);
         langL.setText("Lingue");
+        langL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         langL.setPreferredSize(new java.awt.Dimension(134, 46));
 
         javax.swing.GroupLayout langPLayout = new javax.swing.GroupLayout(langP);
@@ -941,6 +955,7 @@ public class MainPage extends javax.swing.JFrame {
         fieldL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fieldL.setLabelFor(langP);
         fieldL.setText("Campi");
+        fieldL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         fieldL.setMaximumSize(new java.awt.Dimension(134, 46));
         fieldL.setMinimumSize(new java.awt.Dimension(134, 46));
         fieldL.setPreferredSize(new java.awt.Dimension(134, 46));
@@ -994,6 +1009,7 @@ public class MainPage extends javax.swing.JFrame {
         collogL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         collogL.setLabelFor(langP);
         collogL.setText("Colori e logo");
+        collogL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         collogL.setMaximumSize(new java.awt.Dimension(134, 46));
         collogL.setMinimumSize(new java.awt.Dimension(134, 46));
         collogL.setPreferredSize(new java.awt.Dimension(134, 46));
@@ -1054,6 +1070,7 @@ public class MainPage extends javax.swing.JFrame {
         lblDelLang.setForeground(textColor);
         lblDelLang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDelLang.setText("Elimina lingua");
+        lblDelLang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblDelLang.setMaximumSize(new java.awt.Dimension(120, 35));
         lblDelLang.setMinimumSize(new java.awt.Dimension(120, 35));
         lblDelLang.setPreferredSize(new java.awt.Dimension(120, 35));
@@ -1092,6 +1109,7 @@ public class MainPage extends javax.swing.JFrame {
         lblAddLan.setForeground(textColor);
         lblAddLan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAddLan.setText("Aggiungi lingua");
+        lblAddLan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblAddLan.setMaximumSize(new java.awt.Dimension(120, 35));
         lblAddLan.setMinimumSize(new java.awt.Dimension(120, 35));
         lblAddLan.setPreferredSize(new java.awt.Dimension(120, 35));
@@ -1159,6 +1177,7 @@ public class MainPage extends javax.swing.JFrame {
         lblAddField.setForeground(new java.awt.Color(236, 239, 241));
         lblAddField.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAddField.setText("Aggiungi campo");
+        lblAddField.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblAddField.setMaximumSize(new java.awt.Dimension(150, 35));
         lblAddField.setMinimumSize(new java.awt.Dimension(150, 35));
         lblAddField.setOpaque(true);
@@ -1176,6 +1195,7 @@ public class MainPage extends javax.swing.JFrame {
         lblDelField.setForeground(new java.awt.Color(236, 239, 241));
         lblDelField.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDelField.setText("Elimina campo");
+        lblDelField.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblDelField.setMaximumSize(new java.awt.Dimension(150, 35));
         lblDelField.setMinimumSize(new java.awt.Dimension(150, 35));
         lblDelField.setOpaque(true);
@@ -1220,6 +1240,7 @@ public class MainPage extends javax.swing.JFrame {
         lblColExHeadChoose.setForeground(new java.awt.Color(236, 239, 241));
         lblColExHeadChoose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblColExHeadChoose.setText("Scegli il colore");
+        lblColExHeadChoose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblColExHeadChoose.setOpaque(true);
         lblColExHeadChoose.setPreferredSize(new java.awt.Dimension(80, 20));
         lblColExHeadChoose.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1233,6 +1254,7 @@ public class MainPage extends javax.swing.JFrame {
         lblColInHeadChoose.setForeground(new java.awt.Color(236, 239, 241));
         lblColInHeadChoose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblColInHeadChoose.setText("Scegli il colore");
+        lblColInHeadChoose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblColInHeadChoose.setOpaque(true);
         lblColInHeadChoose.setPreferredSize(new java.awt.Dimension(80, 20));
         lblColInHeadChoose.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1246,6 +1268,7 @@ public class MainPage extends javax.swing.JFrame {
         lblColBoxChoose.setForeground(new java.awt.Color(236, 239, 241));
         lblColBoxChoose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblColBoxChoose.setText("Scegli il colore");
+        lblColBoxChoose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblColBoxChoose.setOpaque(true);
         lblColBoxChoose.setPreferredSize(new java.awt.Dimension(80, 20));
         lblColBoxChoose.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1259,6 +1282,7 @@ public class MainPage extends javax.swing.JFrame {
         lblColTextChoose.setForeground(new java.awt.Color(236, 239, 241));
         lblColTextChoose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblColTextChoose.setText("Scegli il colore");
+        lblColTextChoose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblColTextChoose.setOpaque(true);
         lblColTextChoose.setPreferredSize(new java.awt.Dimension(80, 20));
         lblColTextChoose.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1272,6 +1296,7 @@ public class MainPage extends javax.swing.JFrame {
         lblColBackChoose.setForeground(new java.awt.Color(236, 239, 241));
         lblColBackChoose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblColBackChoose.setText("Scegli il colore");
+        lblColBackChoose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblColBackChoose.setOpaque(true);
         lblColBackChoose.setPreferredSize(new java.awt.Dimension(80, 20));
         lblColBackChoose.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1311,6 +1336,7 @@ public class MainPage extends javax.swing.JFrame {
         lblLogoChoose.setForeground(new java.awt.Color(236, 239, 241));
         lblLogoChoose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLogoChoose.setText("Scegli l'immagine");
+        lblLogoChoose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblLogoChoose.setOpaque(true);
         lblLogoChoose.setPreferredSize(new java.awt.Dimension(90, 20));
         lblLogoChoose.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1333,6 +1359,7 @@ public class MainPage extends javax.swing.JFrame {
         lblSave.setForeground(new java.awt.Color(236, 239, 241));
         lblSave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSave.setText("Salva");
+        lblSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblSave.setOpaque(true);
         lblSave.setPreferredSize(new java.awt.Dimension(60, 25));
         lblSave.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1349,6 +1376,7 @@ public class MainPage extends javax.swing.JFrame {
         lblColTextAdvChoos.setForeground(new java.awt.Color(236, 239, 241));
         lblColTextAdvChoos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblColTextAdvChoos.setText("Scegli il colore");
+        lblColTextAdvChoos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblColTextAdvChoos.setOpaque(true);
         lblColTextAdvChoos.setPreferredSize(new java.awt.Dimension(80, 20));
         lblColTextAdvChoos.addMouseListener(new java.awt.event.MouseAdapter() {
