@@ -2349,20 +2349,18 @@ public class MainPage extends javax.swing.JFrame {
 
     private boolean checkTable() {
         int c = 0;
-        while (true) {
+        while (c < tranTable.getModel().getRowCount()) {
             int cc = 0;
-            try {
-                while (true) {                    
-                    try {
-                        if (tranTable.getModel().getValueAt(c, cc).equals("TRANSLATE")) {
-                            return true;
-                        }
-                    } catch (Exception e) {break;}
-                    cc++;
+            while (cc < tranTable.getModel().getColumnCount()) {                    
+                System.out.println(c+" "+cc);
+                String s = (String) tranTable.getModel().getValueAt(c, cc);
+                if (s.equals("TRANSLATE")) {
+                    return false;
                 }
-            } catch (Exception e) {break;}
+                cc++;
+            }
             c++;
         }
-        return false;
+        return true;
     }
 }
