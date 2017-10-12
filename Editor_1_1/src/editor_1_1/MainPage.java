@@ -1697,7 +1697,8 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_lblIconSelMouseClicked
 
     private void jFileChooserFlagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooserFlagActionPerformed
-        lblIconDir.setText(jFileChooserFlag.getSelectedFile().getAbsolutePath());
+        try{lblIconDir.setText(jFileChooserFlag.getSelectedFile().getAbsolutePath());}
+        catch(NullPointerException e){};
         setEnabled(true);
     }//GEN-LAST:event_jFileChooserFlagActionPerformed
 
@@ -1777,19 +1778,19 @@ public class MainPage extends javax.swing.JFrame {
             String source = lblIconDir.getText();
             File f = new File(System.getProperty("user.dir").toString());
             
-            String target = new File(f.getParentFile() + "/sito/images/"+txtFLanguage.getText()).getAbsolutePath();
+            String target = new File(f.getParentFile() + "/sito/images/" + txtFLanguage.getText()).getAbsolutePath();
             try {
-                FileUtils.copyFile(new File(source), new File(target+".png"));
+                FileUtils.copyFile(new File(source), new File(target + ".png"));
             } catch (IOException ex) {
                 Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
             }
-            target = new File(f.getParentFile() + "/Editor_1_1/src/editor_1_1/"+txtFLanguage.getText()).getAbsolutePath();
+            target = new File(f.getParentFile() + "/Editor_1_1/src/editor_1_1/" + txtFLanguage.getText()).getAbsolutePath();
             try {
-                FileUtils.copyFile(new File(source), new File(target+".png"));
+                FileUtils.copyFile(new File(source), new File(target + ".png"));
             } catch (IOException ex) {
                 Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
             }
-            langList.add(new ClassLanguages(true, txtFLanguage.getText()+".png", txtFLanguage.getText()));
+            langList.add(new ClassLanguages(true, txtFLanguage.getText() + ".png", txtFLanguage.getText()));
             langTab = new LanguagesTabGenerator(langList);
             pnlScrPnIN.removeAll();
             panelHeight();

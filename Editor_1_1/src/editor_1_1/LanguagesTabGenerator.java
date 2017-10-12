@@ -38,12 +38,14 @@ public class LanguagesTabGenerator extends JTable{
         while(true) {
             lang = new ClassLanguages();
             try {
+                System.out.println("creazione");
                 lang = list.get(contatore);
                 languages[contatore] = lang.getLanguage();
                 src = lang.getIcon();
                 imgResize(src);
                 Object[] obj = {lang.isSelected(), imageIcon, lang.getLanguage()};
                 model.addRow(obj);
+                System.out.println("creato");
             } catch (Exception e) { break; }
             contatore ++;
         }
@@ -71,19 +73,26 @@ public class LanguagesTabGenerator extends JTable{
     }
     
     private void imgResize(String src){
+        System.out.println("resizing");
         BufferedImage img;
+        System.out.println("1");
         Image dimg = null;
+        System.out.println("2"); 
         try {
             img = ImageIO.read(getClass().getResource("/editor_1_1/"+src));
-            dimg = img.getScaledInstance(50, 30, Image.SCALE_SMOOTH);
+            System.out.println("3");
+            dimg = img.getScaledInstance(50, 30, Image.SCALE_DEFAULT);
+            System.out.println("4");
         } catch (IOException ex) {
+            System.out.println("catched");
             Logger.getLogger(LanguagesTabGenerator.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
+        System.out.println("5");
          
         
         imageIcon = new ImageIcon(dimg);
+        System.out.println("resized");
     }
 
     private void modelSetting() {
